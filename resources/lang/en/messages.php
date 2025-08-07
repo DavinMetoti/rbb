@@ -66,7 +66,7 @@ return [
     'of' => 'of',
     
     // Confirmation
-    'delete_confirm' => 'Are you sure you want to delete :name (:code)?\n\nThis action cannot be undone and will delete:\n- Participant information\n- Associated photo\n- Work history records',
+    'delete_confirm' => 'Are you sure you want to delete :name (:code)?\n\nThis action cannot be undone.',
     
     // Form text
     'fill_participant_info' => 'Fill in the participant information below',

@@ -67,7 +67,7 @@
                             </div>
                             
                             <!-- Right Logo Box -->
-                            <div class="flex-shrink-0 w-32 h-32">
+                            <div class="flex-shrink-0 w-48 h-48">
                                 <img src="{{ asset('assets/images/golder-logo.jpg') }}" 
                                      alt="Golder Logo" 
                                      class="w-full h-full object-contain">
@@ -149,7 +149,7 @@
                     <tr>
                         <td class="p-2 border text-center bg-blue-100">{{ __('messages.taiwan') }}</td>
                         <td class="p-2 border text-center">{{ $participant->taiwan_year }} {{ __('messages.years') }}</td>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.mandarine') }}</td>
+                        <td class="p-2 border bg-blue-100 text-center">{{ __('messages.mandarine') }}</td>
                         <td class="p-2 border text-center">{{ $participant->mandarine == 'learning' ? '✓' : "" }}</td>
                         <td class="p-2 border text-center">{{ $participant->mandarine == 'basic' ? '✓' : "" }}</td>
                         <td class="p-2 border text-center">{{ $participant->mandarine == 'good' ? '✓' : "" }}</td>

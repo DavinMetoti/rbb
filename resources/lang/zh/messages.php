@@ -66,7 +66,7 @@ return [
     'of' => '共',
     
     // Confirmation
-    'delete_confirm' => '您确定要删除 :name (:code) 吗？\n\n此操作无法撤消，将删除：\n- 参与者信息\n- 相关照片\n- 工作历史记录',
+    'delete_confirm' => '您确定要删除 :name (:code) 吗？\n\n此操作无法撤消。',
     
     // Form text
     'fill_participant_info' => '请在下方填写参与者信息',

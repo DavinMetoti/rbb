@@ -417,6 +417,11 @@
         </div>
     </div>
 
+    <!-- Hidden translation data -->
+    <script type="application/json" id="translations-data">
+        {!! json_encode(['delete_confirm' => __('messages.delete_confirm')]) !!}
+    </script>
+
     <!-- Image Preview Modal -->
     <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
         <div class="relative max-w-4xl max-h-screen mx-4">
@@ -433,6 +438,10 @@
     <script>
         // Photo preview functionality
         document.addEventListener('DOMContentLoaded', function() {
+            // Get translations from JSON script tag
+            const translationsElement = document.getElementById('translations-data');
+            const translations = JSON.parse(translationsElement.textContent);
+            
             const photoElements = document.querySelectorAll('.photo-preview');
             
             photoElements.forEach(element => {
@@ -445,11 +454,14 @@
 
             // Delete confirmation functionality
             const deleteButtons = document.querySelectorAll('.delete-btn');
+            
             deleteButtons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     const name = this.getAttribute('data-name');
                     const code = this.getAttribute('data-code');
-                    const confirmMessage = `{{ __('delete_confirm', ['name' => ':name', 'code' => ':code']) }}`
+                    
+                    // Create the confirmation message with proper replacements
+                    const confirmMessage = translations.delete_confirm
                         .replace(':name', name)
                         .replace(':code', code);
                     
