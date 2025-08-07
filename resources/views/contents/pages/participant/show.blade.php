@@ -209,7 +209,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.elderly_healthy_care') }}</td>
+                        <td class="p-2 border bg-blue-100">ELDERLY HEALTHY CARE EXPERIENCE</td>
                         <td class="p-2 border text-center">{{ $participant->elderly_healthy_care_experience ? "✓" : "-" }}</td>
                         <td class="p-2 border text-center align-top photo-container" rowspan="24" colspan="2">
                             @if($participant->photo_path)
@@ -232,23 +232,23 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.elderly_sick_care') }}</td>
+                        <td class="p-2 border bg-blue-100">ELDERLY SICK CARE EXPERIENCE</td>
                         <td class="p-2 border text-center">{{ $participant->elderly_sick_care_experience ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.newborn_care') }}</td>
+                        <td class="p-2 border bg-blue-100">NEWBORN CARE EXPERIENCE</td>
                         <td class="p-2 border text-center">{{ $participant->newborn_care_experience ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.children_care') }}</td>
+                        <td class="p-2 border bg-blue-100">CHILDREN CARE EXPERIENCE</td>
                         <td class="p-2 border text-center">{{ $participant->children_care_experience ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.care_dog') }}</td>
+                        <td class="p-2 border bg-blue-100">I CAN TAKE CARE OF DOG</td>
                         <td class="p-2 border text-center">{{ $participant->i_can_take_care_of_dog ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.care_cat') }}</td>
+                        <td class="p-2 border bg-blue-100">I CAN TAKE CARE OF CAT</td>
                         <td class="p-2 border text-center">{{ $participant->i_can_take_care_of_cat ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
@@ -256,11 +256,11 @@
                         <td class="p-2 border text-center">{{ $participant->cooking_cleaning_washing_ironing_go_to_market ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.wash_car') }}</td>
+                        <td class="p-2 border bg-blue-100">I CAN WASH CAR</td>
                         <td class="p-2 border text-center">{{ $participant->i_can_wash_car ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.shuttle_school') }}</td>
+                        <td class="p-2 border bg-blue-100">SHUTTLE SCHOOL</td>
                         <td class="p-2 border text-center">{{ $participant->shuttle_school ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
@@ -272,55 +272,55 @@
                         <td class="p-2 border text-center">{{ $participant->go_to_hospital_handle_medication_experience ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.do_exercise') }}</td>
+                        <td class="p-2 border bg-blue-100">DO EXERCISE</td>
                         <td class="p-2 border text-center">{{ $participant->do_exercise ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.use_wheelchair') }}</td>
+                        <td class="p-2 border bg-blue-100">USE WHEELCHAIR</td>
                         <td class="p-2 border text-center">{{ $participant->use_wheelchair ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.daily_assistance') }}</td>
+                        <td class="p-2 border bg-blue-100">PROVIDE DAILY ASSISTANCE</td>
                         <td class="p-2 border text-center">{{ $participant->provide_daily_assistance ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.oral_feeding') }}</td>
+                        <td class="p-2 border bg-blue-100">ORAL FEEDING</td>
                         <td class="p-2 border text-center">{{ $participant->oral_feeding ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.dementia_care') }}</td>
+                        <td class="p-2 border bg-blue-100">WITH DEMENTIA CARE EXPERIENCE</td>
                         <td class="p-2 border text-center">{{ $participant->with_dementia_care_experience ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.assist_walking') }}</td>
+                        <td class="p-2 border bg-blue-100">ASSIST WALKING</td>
                         <td class="p-2 border text-center">{{ $participant->assist_walking ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.covid_vaccine') }}</td>
+                        <td class="p-2 border bg-blue-100">RECEIVED COVID-19 VACCINE INJECTION (3 DOSE)</td>
                         <td class="p-2 border text-center">{{ $participant->received_covid19_vaccine_injection_3_dose ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.inject_diabetes') }}</td>
+                        <td class="p-2 border bg-blue-100">I CAN INJECT DIABETES</td>
                         <td class="p-2 border text-center">{{ $participant->i_can_inject_diabetes ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.care_idiots') }}</td>
+                        <td class="p-2 border bg-blue-100">I CAN TAKE CARE OF IDIOTS</td>
                         <td class="p-2 border text-center">{{ $participant->i_can_take_care_of_idiots ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.suction_phlegm') }}</td>
+                        <td class="p-2 border bg-blue-100">SUCTION PHLEGM I CAN DO IT</td>
                         <td class="p-2 border text-center">{{ $participant->suction_phlegm_ican_do_it ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.like_children') }}</td>
+                        <td class="p-2 border bg-blue-100">I LIKE TAKE CARE OF A CHILDREN</td>
                         <td class="p-2 border text-center">{{ $participant->i_like_take_care_of_a_children ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.like_newborn') }}</td>
+                        <td class="p-2 border bg-blue-100">I LIKE TAKE CARE OF A NEWBORN BABY</td>
                         <td class="p-2 border text-center">{{ $participant->i_like_take_care_of_a_newborn_baby ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-blue-100">{{ __('messages.like_elderly') }}</td>
+                        <td class="p-2 border bg-blue-100">I LIKE TAKE CARE OF THE ELDERLY</td>
                         <td class="p-2 border text-center">{{ $participant->i_like_take_care_of_the_elderly ? "✓" : "-" }}</td>
                     </tr>
                 </tbody>

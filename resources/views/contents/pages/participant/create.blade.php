@@ -345,117 +345,45 @@
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                     <h2 class="text-lg font-medium text-gray-900 mb-6 pb-3 border-b border-gray-100">{{ __('messages.skills_experience') }}</h2>
                     
-                    <!-- Care Experience -->
-                    <div class="mb-8">
-                        <h3 class="text-base font-medium text-gray-800 mb-4">{{ __('messages.care_experience') }}</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                            @php
-                                $careExperience = [
-                                    'elderly_healthy_care_experience' => 'Elderly Healthy Care',
-                                    'elderly_sick_care_experience' => 'Elderly Sick Care',
-                                    'elderly_healthy_care_experience_v' => 'Elderly Healthy Care (Verified)',
-                                    'elderly_sick_care_experience_v' => 'Elderly Sick Care (Verified)',
-                                    'newborn_care_experience' => 'Newborn Care',
-                                    'children_care_experience' => 'Children Care',
-                                    'with_dementia_care_experience' => 'Dementia Care',
-                                ];
-                            @endphp
-                            @foreach($careExperience as $field => $label)
-                                <label class="flex items-center space-x-3 p-3 rounded-lg border border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors duration-200">
-                                    <input type="checkbox" name="{{ $field }}" value="1" 
-                                           {{ old($field) ? 'checked' : '' }}
-                                           class="w-4 h-4 text-gray-900 border-gray-300 rounded focus:ring-gray-900 focus:ring-2">
-                                    <span class="text-sm text-gray-700 font-medium">{{ $label }}</span>
-                                </label>
-                            @endforeach
-                        </div>
-                    </div>
-
-                    <!-- Household Skills -->
-                    <div class="mb-8">
-                        <h3 class="text-base font-medium text-gray-800 mb-4">{{ __('messages.household_skills') }}</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                            @php
-                                $householdSkills = [
-                                    'cooking_cleaning_washing_ironing_go_to_market' => 'General Housework',
-                                    'i_can_wash_car' => 'Car Washing',
-                                    'shuttle_school' => 'School Transportation',
-                                    'i_can_take_care_of_dog' => 'Dog Care',
-                                    'i_can_take_care_of_cat' => 'Cat Care',
-                                ];
-                            @endphp
-                            @foreach($householdSkills as $field => $label)
-                                <label class="flex items-center space-x-3 p-3 rounded-lg border border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors duration-200">
-                                    <input type="checkbox" name="{{ $field }}" value="1" 
-                                           {{ old($field) ? 'checked' : '' }}
-                                           class="w-4 h-4 text-gray-900 border-gray-300 rounded focus:ring-gray-900 focus:ring-2">
-                                    <span class="text-sm text-gray-700 font-medium">{{ $label }}</span>
-                                </label>
-                            @endforeach
-                        </div>
-                    </div>
-
-                    <!-- Medical & Specialized Care -->
-                    <div class="mb-8">
-                        <h3 class="text-base font-medium text-gray-800 mb-4">{{ __('messages.medical_specialized_care') }}</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                            @php
-                                $medicalSkills = [
-                                    'assist_toileting_change_diaper_bath_experience' => 'Personal Care Assistance',
-                                    'go_to_hospital_handle_medication_experience' => 'Medical Support',
-                                    'i_can_inject_diabetes' => 'Diabetes Injection',
-                                    'suction_phlegm_ican_do_it' => 'Phlegm Suction',
-                                    'oral_feeding' => 'Oral Feeding',
-                                    'use_wheelchair' => 'Wheelchair Operation',
-                                    'assist_walking' => 'Walking Assistance',
-                                    'provide_daily_assistance' => 'Daily Living Support',
-                                    'i_can_take_care_of_idiots' => 'Disability Care',
-                                ];
-                            @endphp
-                            @foreach($medicalSkills as $field => $label)
-                                <label class="flex items-center space-x-3 p-3 rounded-lg border border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors duration-200">
-                                    <input type="checkbox" name="{{ $field }}" value="1" 
-                                           {{ old($field) ? 'checked' : '' }}
-                                           class="w-4 h-4 text-gray-900 border-gray-300 rounded focus:ring-gray-900 focus:ring-2">
-                                    <span class="text-sm text-gray-700 font-medium">{{ $label }}</span>
-                                </label>
-                            @endforeach
-                        </div>
-                    </div>
-
-                    <!-- Personal Preferences -->
-                    <div class="mb-8">
-                        <h3 class="text-base font-medium text-gray-800 mb-4">{{ __('messages.personal_preferences') }}</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                            @php
-                                $preferences = [
-                                    'i_like_take_care_of_a_children' => 'Prefers Children Care',
-                                    'i_like_take_care_of_a_newborn_baby' => 'Prefers Newborn Care',
-                                    'i_like_take_care_of_the_elderly' => 'Prefers Elderly Care',
-                                    'do_exercise' => 'Enjoys Exercise',
-                                ];
-                            @endphp
-                            @foreach($preferences as $field => $label)
-                                <label class="flex items-center space-x-3 p-3 rounded-lg border border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors duration-200">
-                                    <input type="checkbox" name="{{ $field }}" value="1" 
-                                           {{ old($field) ? 'checked' : '' }}
-                                           class="w-4 h-4 text-gray-900 border-gray-300 rounded focus:ring-gray-900 focus:ring-2">
-                                    <span class="text-sm text-gray-700 font-medium">{{ $label }}</span>
-                                </label>
-                            @endforeach
-                        </div>
-                    </div>
-
-                    <!-- Health Status -->
-                    <div>
-                        <h3 class="text-base font-medium text-gray-800 mb-4">{{ __('messages.health_status') }}</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                        @php
+                            $allExperience = [
+                                'elderly_healthy_care_experience' => 'ELDERLY HEALTHY CARE EXPERIENCE',
+                                'elderly_sick_care_experience' => 'ELDERLY SICK CARE EXPERIENCE',
+                                'elderly_healthy_care_experience_v' => 'ELDERLY HEALTHY CARE EXPERIENCE (VERIFIED)',
+                                'elderly_sick_care_experience_v' => 'ELDERLY SICK CARE EXPERIENCE (VERIFIED)',
+                                'newborn_care_experience' => 'NEWBORN CARE EXPERIENCE',
+                                'children_care_experience' => 'CHILDREN CARE EXPERIENCE',
+                                'i_can_take_care_of_dog' => 'I CAN TAKE CARE OF DOG',
+                                'i_can_take_care_of_cat' => 'I CAN TAKE CARE OF CAT',
+                                'cooking_cleaning_washing_ironing_go_to_market' => 'COOKING\' CLEANING\' WASHING\' IRONING GO TO MARKET',
+                                'i_can_wash_car' => 'I CAN WASH CAR',
+                                'shuttle_school' => 'SHUTTLE SCHOOL',
+                                'assist_toileting_change_diaper_bath_experience' => 'ASSIST TOILETING\' CHANGE DIAPER\' BATH EXPERIENCE',
+                                'go_to_hospital_handle_medication_experience' => 'GO TO HOSPITAL\' HANDLE MEDICATION EXPERIENCE',
+                                'do_exercise' => 'DO EXERCISE',
+                                'use_wheelchair' => 'USE WHEELCHAIR',
+                                'provide_daily_assistance' => 'PROVIDE DAILY ASSISTANCE',
+                                'oral_feeding' => 'ORAL FEEDING',
+                                'with_dementia_care_experience' => 'WITH DEMENTIA CARE EXPERIENCE',
+                                'assist_walking' => 'ASSIST WALKING',
+                                'received_covid19_vaccine_injection_3_dose' => 'RECEIVED COVID-19 VACCINE INJECTION (3 DOSE)',
+                                'i_can_inject_diabetes' => 'I CAN INJECT DIABETES',
+                                'i_can_take_care_of_idiots' => 'I CAN TAKE CARE OF IDIOTS',
+                                'suction_phlegm_ican_do_it' => 'SUCTION PHLEGM I CAN DO IT',
+                                'i_like_take_care_of_a_children' => 'I LIKE TAKE CARE OF A CHILDREN',
+                                'i_like_take_care_of_a_newborn_baby' => 'I LIKE TAKE CARE OF A NEWBORN BABY',
+                                'i_like_take_care_of_the_elderly' => 'I LIKE TAKE CARE OF THE ELDERLY',
+                            ];
+                        @endphp
+                        @foreach($allExperience as $field => $label)
                             <label class="flex items-center space-x-3 p-3 rounded-lg border border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors duration-200">
-                                <input type="checkbox" name="received_covid19_vaccine_injection_3_dose" value="1" 
+                                <input type="checkbox" name="{{ $field }}" value="1" 
+                                       {{ old($field) ? 'checked' : '' }}
                                        class="w-4 h-4 text-gray-900 border-gray-300 rounded focus:ring-gray-900 focus:ring-2">
-                                <span class="text-sm text-gray-700 font-medium">COVID-19 Vaccinated (3 Doses)</span>
+                                <span class="text-sm text-gray-700 font-medium">{{ $label }}</span>
                             </label>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
 

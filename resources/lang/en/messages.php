@@ -179,4 +179,10 @@ return [
     'cooking_cleaning_market' => 'COOKING\' CLEANING\' WASHING\'IRONING GO TO MARKET',
     'wash_car' => 'I CAN WASH CAR',
     'shuttle_school' => 'SHUTTLE SCHOOL',
+    
+    // Additional experience fields
+    'elderly_healthy_care' => 'ELDERLY HEALTHY CARE EXPERIENCE',
+    'elderly_sick_care' => 'ELDERLY SICK CARE EXPERIENCE',
+    'newborn_care' => 'NEWBORN CARE EXPERIENCE',
+    'children_care' => 'CHILDREN CARE EXPERIENCE',
 ];

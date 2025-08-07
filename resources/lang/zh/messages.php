@@ -200,4 +200,10 @@ return [
     'cooking_cleaning_market' => '烹饪、清洁、洗衣、熨烫、去市场',
     'wash_car' => '我可以洗车',
     'shuttle_school' => '接送学校',
+    
+    // Additional experience fields
+    'elderly_healthy_care' => '老人健康护理经验',
+    'elderly_sick_care' => '老人病患护理经验',
+    'newborn_care' => '新生儿护理经验',
+    'children_care' => '儿童护理经验',
 ];
