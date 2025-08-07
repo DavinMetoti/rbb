@@ -105,6 +105,9 @@ return [
     'select_gender' => 'Select gender',
     'select_status' => 'Select status',
     'select_level' => 'Select level',
+    'select_religion' => 'Select religion',
+    'select_nationality' => 'Select nationality',
+    'select_education' => 'Select education',
     'no_knowledge' => 'No knowledge',
     'learning' => 'Learning',
     'basic' => 'Basic',
@@ -116,6 +119,44 @@ return [
     'married' => 'Married',
     'divorced' => 'Divorced',
     'widowed' => 'Widowed',
+    
+    // Religion options
+    'islam' => 'Islam',
+    'christian' => 'Christian',
+    'catholic' => 'Catholic',
+    'hindu' => 'Hindu',
+    'buddhist' => 'Buddhist',
+    'confucian' => 'Confucian',
+    
+    // Education options
+    'elementary_school' => 'Elementary School',
+    'junior_high_school' => 'Junior High School',
+    'senior_high_school' => 'Senior High School',
+    'vocational_school' => 'Vocational School',
+    'diploma' => 'Diploma',
+    'bachelor_degree' => 'Bachelor Degree',
+    'master_degree' => 'Master Degree',
+    'doctorate_degree' => 'Doctorate Degree',
+    
+    // Nationality options
+    'indonesian' => 'Indonesian',
+    'malaysian' => 'Malaysian',
+    'filipino' => 'Filipino',
+    'thai' => 'Thai',
+    'vietnamese' => 'Vietnamese',
+    'cambodian' => 'Cambodian',
+    'myanmar' => 'Myanmar',
+    'indian' => 'Indian',
+    'sri_lankan' => 'Sri Lankan',
+    
+    // Status options
+    'available' => 'Available',
+    'working' => 'Working',
+    'on_leave' => 'On Leave',
+    'terminated' => 'Terminated',
+    'blacklisted' => 'Blacklisted',
+    'training' => 'Training',
+    'interview' => 'Interview',
     
     // Placeholders
     'enter_code' => 'Enter participant code',

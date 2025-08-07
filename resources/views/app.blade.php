@@ -290,5 +290,64 @@
 
     <!-- Alpine.js for dropdown functionality -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Global Translation Trigger Script -->
+    <script>
+        // Global function to trigger translation from anywhere
+        window.triggerTranslation = function(targetLang = 'zh') {
+            console.log('Global trigger translation called:', targetLang);
+            
+            // Check if translation function is available on the page
+            if (typeof window.translateToLanguage === 'function') {
+                window.translateToLanguage(targetLang);
+            } else if (typeof window.forceTranslate === 'function') {
+                window.forceTranslate(targetLang);
+            } else if (typeof window.handleLanguageChange === 'function') {
+                window.handleLanguageChange(targetLang);
+            } else {
+                console.log('Translation functions not available on this page');
+            }
+        };
+        
+        // Auto-trigger translation if language is Chinese and page has translatable content
+        document.addEventListener('DOMContentLoaded', function() {
+            // Detect language from session or document attribute first, then URL path
+            let currentLang = document.documentElement.lang || 'en';
+            
+            // Override with URL path if available (more reliable)
+            if (window.location.pathname.includes('/lang/zh')) {
+                currentLang = 'zh';
+            } else if (window.location.pathname.includes('/lang/en')) {  
+                currentLang = 'en';
+            }
+            // If no /lang/ in path, check if this is a Chinese version page
+            else if (document.documentElement.lang === 'zh') {
+                currentLang = 'zh';
+            }
+            
+            console.log('Global script - detected language:', currentLang, 'from path:', window.location.pathname, 'html lang:', document.documentElement.lang);
+            
+            if (currentLang === 'zh') {
+                // Small delay to ensure page content is fully loaded
+                setTimeout(() => {
+                    console.log('Auto-triggering Chinese translation from global script');
+                    window.triggerTranslation('zh');
+                }, 2000); // Longer delay to ensure page is ready
+            }
+        });
+        
+        // Debug function
+        window.globalDebug = function() {
+            console.log('=== GLOBAL DEBUG INFO ===');
+            console.log('URL:', window.location.href);
+            console.log('Pathname:', window.location.pathname);
+            console.log('Available functions:', {
+                translateToLanguage: typeof window.translateToLanguage,
+                forceTranslate: typeof window.forceTranslate,
+                handleLanguageChange: typeof window.handleLanguageChange,
+                debugTranslation: typeof window.debugTranslation
+            });
+        };
+    </script>
 </body>
 </html>

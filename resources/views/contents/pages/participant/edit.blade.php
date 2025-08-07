@@ -108,9 +108,20 @@
                         
                         <div class="space-y-1">
                             <label for="nationality" class="block text-sm font-medium text-gray-700">{{ __('messages.nationality') }}</label>
-                            <input type="text" name="nationality" id="nationality" value="{{ old('nationality', $participant->nationality) }}"
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('nationality') border-red-300 @enderror" 
-                                   placeholder="{{ __('messages.enter_nationality') }}" required>
+                            <select name="nationality" id="nationality" 
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('nationality') border-red-300 @enderror" required>
+                                <option value="">{{ __('messages.select_nationality') }}</option>
+                                <option value="Indonesian" {{ old('nationality', $participant->nationality) == 'Indonesian' ? 'selected' : '' }}>{{ __('messages.indonesian') }}</option>
+                                <option value="Malaysian" {{ old('nationality', $participant->nationality) == 'Malaysian' ? 'selected' : '' }}>{{ __('messages.malaysian') }}</option>
+                                <option value="Filipino" {{ old('nationality', $participant->nationality) == 'Filipino' ? 'selected' : '' }}>{{ __('messages.filipino') }}</option>
+                                <option value="Thai" {{ old('nationality', $participant->nationality) == 'Thai' ? 'selected' : '' }}>{{ __('messages.thai') }}</option>
+                                <option value="Vietnamese" {{ old('nationality', $participant->nationality) == 'Vietnamese' ? 'selected' : '' }}>{{ __('messages.vietnamese') }}</option>
+                                <option value="Cambodian" {{ old('nationality', $participant->nationality) == 'Cambodian' ? 'selected' : '' }}>{{ __('messages.cambodian') }}</option>
+                                <option value="Myanmar" {{ old('nationality', $participant->nationality) == 'Myanmar' ? 'selected' : '' }}>{{ __('messages.myanmar') }}</option>
+                                <option value="Indian" {{ old('nationality', $participant->nationality) == 'Indian' ? 'selected' : '' }}>{{ __('messages.indian') }}</option>
+                                <option value="Sri Lankan" {{ old('nationality', $participant->nationality) == 'Sri Lankan' ? 'selected' : '' }}>{{ __('messages.sri_lankan') }}</option>
+                                <option value="Other" {{ old('nationality', $participant->nationality) == 'Other' ? 'selected' : '' }}>{{ __('messages.other') }}</option>
+                            </select>
                             @error('nationality')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -118,9 +129,17 @@
                         
                         <div class="space-y-1">
                             <label for="religion" class="block text-sm font-medium text-gray-700">{{ __('messages.religion') }}</label>
-                            <input type="text" name="religion" id="religion" value="{{ old('religion', $participant->religion) }}"
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('religion') border-red-300 @enderror" 
-                                   placeholder="{{ __('messages.enter_religion') }}" required>
+                            <select name="religion" id="religion" 
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('religion') border-red-300 @enderror" required>
+                                <option value="">{{ __('messages.select_religion') }}</option>
+                                <option value="Islam" {{ old('religion', $participant->religion) == 'Islam' ? 'selected' : '' }}>{{ __('messages.islam') }}</option>
+                                <option value="Christian" {{ old('religion', $participant->religion) == 'Christian' ? 'selected' : '' }}>{{ __('messages.christian') }}</option>
+                                <option value="Catholic" {{ old('religion', $participant->religion) == 'Catholic' ? 'selected' : '' }}>{{ __('messages.catholic') }}</option>
+                                <option value="Hindu" {{ old('religion', $participant->religion) == 'Hindu' ? 'selected' : '' }}>{{ __('messages.hindu') }}</option>
+                                <option value="Buddhist" {{ old('religion', $participant->religion) == 'Buddhist' ? 'selected' : '' }}>{{ __('messages.buddhist') }}</option>
+                                <option value="Confucian" {{ old('religion', $participant->religion) == 'Confucian' ? 'selected' : '' }}>{{ __('messages.confucian') }}</option>
+                                <option value="Other" {{ old('religion', $participant->religion) == 'Other' ? 'selected' : '' }}>{{ __('messages.other') }}</option>
+                            </select>
                             @error('religion')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -167,20 +186,36 @@
                         <div class="space-y-1">
                             <label for="marital_status" class="block text-sm font-medium text-gray-700">{{ __('messages.marital_status') }}</label>
                             <select name="marital_status" id="marital_status" 
-                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" required>
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('marital_status') border-red-300 @enderror" required>
                                 <option value="">{{ __('messages.select_status') }}</option>
                                 <option value="single" {{ old('marital_status', $participant->marital_status) == 'single' ? 'selected' : '' }}>{{ __('messages.single') }}</option>
                                 <option value="married" {{ old('marital_status', $participant->marital_status) == 'married' ? 'selected' : '' }}>{{ __('messages.married') }}</option>
                                 <option value="divorced" {{ old('marital_status', $participant->marital_status) == 'divorced' ? 'selected' : '' }}>{{ __('messages.divorced') }}</option>
                                 <option value="widowed" {{ old('marital_status', $participant->marital_status) == 'widowed' ? 'selected' : '' }}>{{ __('messages.widowed') }}</option>
                             </select>
+                            @error('marital_status')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                         
                         <div class="space-y-1">
                             <label for="education" class="block text-sm font-medium text-gray-700">{{ __('messages.education') }}</label>
-                            <input type="text" name="education" id="education" value="{{ old('education', $participant->education) }}"
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
-                                   placeholder="{{ __('messages.enter_education') }}" required>
+                            <select name="education" id="education" 
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('education') border-red-300 @enderror" required>
+                                <option value="">{{ __('messages.select_education') }}</option>
+                                <option value="Elementary School" {{ old('education', $participant->education) == 'Elementary School' ? 'selected' : '' }}>{{ __('messages.elementary_school') }}</option>
+                                <option value="Junior High School" {{ old('education', $participant->education) == 'Junior High School' ? 'selected' : '' }}>{{ __('messages.junior_high_school') }}</option>
+                                <option value="Senior High School" {{ old('education', $participant->education) == 'Senior High School' ? 'selected' : '' }}>{{ __('messages.senior_high_school') }}</option>
+                                <option value="Vocational School" {{ old('education', $participant->education) == 'Vocational School' ? 'selected' : '' }}>{{ __('messages.vocational_school') }}</option>
+                                <option value="Diploma" {{ old('education', $participant->education) == 'Diploma' ? 'selected' : '' }}>{{ __('messages.diploma') }}</option>
+                                <option value="Bachelor Degree" {{ old('education', $participant->education) == 'Bachelor Degree' ? 'selected' : '' }}>{{ __('messages.bachelor_degree') }}</option>
+                                <option value="Master Degree" {{ old('education', $participant->education) == 'Master Degree' ? 'selected' : '' }}>{{ __('messages.master_degree') }}</option>
+                                <option value="Doctorate Degree" {{ old('education', $participant->education) == 'Doctorate Degree' ? 'selected' : '' }}>{{ __('messages.doctorate_degree') }}</option>
+                                <option value="Other" {{ old('education', $participant->education) == 'Other' ? 'selected' : '' }}>{{ __('messages.other') }}</option>
+                            </select>
+                            @error('education')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                         
                         <div class="space-y-1">
@@ -192,9 +227,20 @@
                         
                         <div class="space-y-1">
                             <label for="status" class="block text-sm font-medium text-gray-700">{{ __('messages.current_status') }}</label>
-                            <input type="text" name="status" id="status" value="{{ old('status', $participant->status) }}"
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
-                                   placeholder="{{ __('messages.enter_status') }}" required>
+                            <select name="status" id="status" 
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('status') border-red-300 @enderror" required>
+                                <option value="">{{ __('messages.select_status') }}</option>
+                                <option value="Available" {{ old('status', $participant->status) == 'Available' ? 'selected' : '' }}>{{ __('messages.available') }}</option>
+                                <option value="Working" {{ old('status', $participant->status) == 'Working' ? 'selected' : '' }}>{{ __('messages.working') }}</option>
+                                <option value="On Leave" {{ old('status', $participant->status) == 'On Leave' ? 'selected' : '' }}>{{ __('messages.on_leave') }}</option>
+                                <option value="Terminated" {{ old('status', $participant->status) == 'Terminated' ? 'selected' : '' }}>{{ __('messages.terminated') }}</option>
+                                <option value="Blacklisted" {{ old('status', $participant->status) == 'Blacklisted' ? 'selected' : '' }}>{{ __('messages.blacklisted') }}</option>
+                                <option value="Training" {{ old('status', $participant->status) == 'Training' ? 'selected' : '' }}>{{ __('messages.training') }}</option>
+                                <option value="Interview" {{ old('status', $participant->status) == 'Interview' ? 'selected' : '' }}>{{ __('messages.interview') }}</option>
+                            </select>
+                            @error('status')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -387,31 +433,31 @@
                                         <div class="space-y-1">
                                             <label class="block text-sm font-medium text-gray-700">{{ __('messages.country') }}</label>
                                             <input type="text" name="work_history[{{ $index }}][country]" value="{{ old('work_history.' . $index . '.country', $workHistory->country) }}"
-                                                   class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200" 
+                                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
                                                    placeholder="{{ __('messages.enter_country') }}">
                                         </div>
                                         <div class="space-y-1">
                                             <label class="block text-sm font-medium text-gray-700">{{ __('messages.period') }}</label>
                                             <input type="text" name="work_history[{{ $index }}][period]" value="{{ old('work_history.' . $index . '.period', $workHistory->period) }}"
-                                                   class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200" 
-                                                   placeholder="e.g., 2019-2021">
+                                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
+                                                   placeholder="e.g., 2020-2022">
                                         </div>
                                         <div class="space-y-1">
                                             <label class="block text-sm font-medium text-gray-700">{{ __('messages.target_employer') }}</label>
                                             <input type="text" name="work_history[{{ $index }}][target]" value="{{ old('work_history.' . $index . '.target', $workHistory->target) }}"
-                                                   class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200" 
+                                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
                                                    placeholder="{{ __('messages.enter_employer') }}">
                                         </div>
                                         <div class="space-y-1">
                                             <label class="block text-sm font-medium text-gray-700">{{ __('messages.reason_for_leaving') }}</label>
                                             <input type="text" name="work_history[{{ $index }}][reason_for_leaving]" value="{{ old('work_history.' . $index . '.reason_for_leaving', $workHistory->reason_for_leaving) }}"
-                                                   class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200" 
+                                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
                                                    placeholder="{{ __('messages.enter_reason') }}">
                                         </div>
                                         <div class="space-y-1 md:col-span-2">
                                             <label class="block text-sm font-medium text-gray-700">{{ __('messages.remarks') }}</label>
-                                            <textarea name="work_history[{{ $index }}][remake]" rows="2"
-                                                      class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 resize-none" 
+                                            <textarea name="work_history[{{ $index }}][remake]" rows="3"
+                                                      class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white resize-none" 
                                                       placeholder="{{ __('messages.additional_remarks') }}">{{ old('work_history.' . $index . '.remake', $workHistory->remake) }}</textarea>
                                         </div>
                                     </div>
@@ -432,31 +478,31 @@
                                     <div class="space-y-1">
                                         <label class="block text-sm font-medium text-gray-700">{{ __('messages.country') }}</label>
                                         <input type="text" name="work_history[0][country]" value="{{ old('work_history.0.country') }}"
-                                               class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200" 
+                                               class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
                                                placeholder="{{ __('messages.enter_country') }}">
                                     </div>
                                     <div class="space-y-1">
                                         <label class="block text-sm font-medium text-gray-700">{{ __('messages.period') }}</label>
                                         <input type="text" name="work_history[0][period]" value="{{ old('work_history.0.period') }}"
-                                               class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200" 
-                                               placeholder="e.g., 2019-2021">
+                                               class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
+                                               placeholder="e.g., 2020-2022">
                                     </div>
                                     <div class="space-y-1">
                                         <label class="block text-sm font-medium text-gray-700">{{ __('messages.target_employer') }}</label>
                                         <input type="text" name="work_history[0][target]" value="{{ old('work_history.0.target') }}"
-                                               class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200" 
+                                               class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
                                                placeholder="{{ __('messages.enter_employer') }}">
                                     </div>
                                     <div class="space-y-1">
                                         <label class="block text-sm font-medium text-gray-700">{{ __('messages.reason_for_leaving') }}</label>
                                         <input type="text" name="work_history[0][reason_for_leaving]" value="{{ old('work_history.0.reason_for_leaving') }}"
-                                               class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200" 
+                                               class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
                                                placeholder="{{ __('messages.enter_reason') }}">
                                     </div>
                                     <div class="space-y-1 md:col-span-2">
                                         <label class="block text-sm font-medium text-gray-700">{{ __('messages.remarks') }}</label>
-                                        <textarea name="work_history[0][remake]" rows="2"
-                                                  class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 resize-none" 
+                                        <textarea name="work_history[0][remake]" rows="3"
+                                                  class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white resize-none" 
                                                   placeholder="{{ __('messages.additional_remarks') }}">{{ old('work_history.0.remake') }}</textarea>
                                     </div>
                                 </div>
@@ -520,31 +566,31 @@
                         <div class="space-y-1">
                             <label class="block text-sm font-medium text-gray-700">{{ __('messages.country') }}</label>
                             <input type="text" name="work_history[${index}][country]"
-                                   class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200" 
+                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
                                    placeholder="{{ __('messages.enter_country') }}">
                         </div>
                         <div class="space-y-1">
                             <label class="block text-sm font-medium text-gray-700">{{ __('messages.period') }}</label>
                             <input type="text" name="work_history[${index}][period]"
-                                   class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200" 
-                                   placeholder="e.g., 2019-2021">
+                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
+                                   placeholder="e.g., 2020-2022">
                         </div>
                         <div class="space-y-1">
                             <label class="block text-sm font-medium text-gray-700">{{ __('messages.target_employer') }}</label>
                             <input type="text" name="work_history[${index}][target]"
-                                   class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200" 
+                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
                                    placeholder="{{ __('messages.enter_employer') }}">
                         </div>
                         <div class="space-y-1">
                             <label class="block text-sm font-medium text-gray-700">{{ __('messages.reason_for_leaving') }}</label>
                             <input type="text" name="work_history[${index}][reason_for_leaving]"
-                                   class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200" 
+                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
                                    placeholder="{{ __('messages.enter_reason') }}">
                         </div>
                         <div class="space-y-1 md:col-span-2">
                             <label class="block text-sm font-medium text-gray-700">{{ __('messages.remarks') }}</label>
-                            <textarea name="work_history[${index}][remake]" rows="2"
-                                      class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 resize-none" 
+                            <textarea name="work_history[${index}][remake]" rows="3"
+                                      class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white resize-none" 
                                       placeholder="{{ __('messages.additional_remarks') }}"></textarea>
                         </div>
                     </div>

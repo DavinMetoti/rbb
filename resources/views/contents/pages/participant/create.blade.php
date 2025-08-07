@@ -107,9 +107,20 @@
                         
                         <div class="space-y-1">
                             <label for="nationality" class="block text-sm font-medium text-gray-700">{{ __('messages.nationality') }}</label>
-                            <input type="text" name="nationality" id="nationality" value="{{ old('nationality') }}"
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('nationality') border-red-300 @enderror" 
-                                   placeholder="{{ __('messages.enter_nationality') }}" required>
+                            <select name="nationality" id="nationality" 
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('nationality') border-red-300 @enderror" required>
+                                <option value="">{{ __('messages.select_nationality') }}</option>
+                                <option value="Indonesian" {{ old('nationality') == 'Indonesian' ? 'selected' : '' }}>{{ __('messages.indonesian') }}</option>
+                                <option value="Malaysian" {{ old('nationality') == 'Malaysian' ? 'selected' : '' }}>{{ __('messages.malaysian') }}</option>
+                                <option value="Filipino" {{ old('nationality') == 'Filipino' ? 'selected' : '' }}>{{ __('messages.filipino') }}</option>
+                                <option value="Thai" {{ old('nationality') == 'Thai' ? 'selected' : '' }}>{{ __('messages.thai') }}</option>
+                                <option value="Vietnamese" {{ old('nationality') == 'Vietnamese' ? 'selected' : '' }}>{{ __('messages.vietnamese') }}</option>
+                                <option value="Cambodian" {{ old('nationality') == 'Cambodian' ? 'selected' : '' }}>{{ __('messages.cambodian') }}</option>
+                                <option value="Myanmar" {{ old('nationality') == 'Myanmar' ? 'selected' : '' }}>{{ __('messages.myanmar') }}</option>
+                                <option value="Indian" {{ old('nationality') == 'Indian' ? 'selected' : '' }}>{{ __('messages.indian') }}</option>
+                                <option value="Sri Lankan" {{ old('nationality') == 'Sri Lankan' ? 'selected' : '' }}>{{ __('messages.sri_lankan') }}</option>
+                                <option value="Other" {{ old('nationality') == 'Other' ? 'selected' : '' }}>{{ __('messages.other') }}</option>
+                            </select>
                             @error('nationality')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -117,9 +128,17 @@
                         
                         <div class="space-y-1">
                             <label for="religion" class="block text-sm font-medium text-gray-700">{{ __('messages.religion') }}</label>
-                            <input type="text" name="religion" id="religion" value="{{ old('religion') }}"
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('religion') border-red-300 @enderror" 
-                                   placeholder="{{ __('messages.enter_religion') }}" required>
+                            <select name="religion" id="religion" 
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('religion') border-red-300 @enderror" required>
+                                <option value="">{{ __('messages.select_religion') }}</option>
+                                <option value="Islam" {{ old('religion') == 'Islam' ? 'selected' : '' }}>{{ __('messages.islam') }}</option>
+                                <option value="Christian" {{ old('religion') == 'Christian' ? 'selected' : '' }}>{{ __('messages.christian') }}</option>
+                                <option value="Catholic" {{ old('religion') == 'Catholic' ? 'selected' : '' }}>{{ __('messages.catholic') }}</option>
+                                <option value="Hindu" {{ old('religion') == 'Hindu' ? 'selected' : '' }}>{{ __('messages.hindu') }}</option>
+                                <option value="Buddhist" {{ old('religion') == 'Buddhist' ? 'selected' : '' }}>{{ __('messages.buddhist') }}</option>
+                                <option value="Confucian" {{ old('religion') == 'Confucian' ? 'selected' : '' }}>{{ __('messages.confucian') }}</option>
+                                <option value="Other" {{ old('religion') == 'Other' ? 'selected' : '' }}>{{ __('messages.other') }}</option>
+                            </select>
                             @error('religion')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -166,20 +185,36 @@
                         <div class="space-y-1">
                             <label for="marital_status" class="block text-sm font-medium text-gray-700">{{ __('messages.marital') }}</label>
                             <select name="marital_status" id="marital_status" 
-                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" required>
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('marital_status') border-red-300 @enderror" required>
                                 <option value="">{{ __('messages.select_status') }}</option>
-                                <option value="single">{{ __('messages.single') }}</option>
-                                <option value="married">{{ __('messages.married') }}</option>
-                                <option value="divorced">{{ __('messages.divorced') }}</option>
-                                <option value="widowed">{{ __('messages.widowed') }}</option>
+                                <option value="single" {{ old('marital_status') == 'single' ? 'selected' : '' }}>{{ __('messages.single') }}</option>
+                                <option value="married" {{ old('marital_status') == 'married' ? 'selected' : '' }}>{{ __('messages.married') }}</option>
+                                <option value="divorced" {{ old('marital_status') == 'divorced' ? 'selected' : '' }}>{{ __('messages.divorced') }}</option>
+                                <option value="widowed" {{ old('marital_status') == 'widowed' ? 'selected' : '' }}>{{ __('messages.widowed') }}</option>
                             </select>
+                            @error('marital_status')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                         
                         <div class="space-y-1">
                             <label for="education" class="block text-sm font-medium text-gray-700">{{ __('messages.education') }}</label>
-                            <input type="text" name="education" id="education" 
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
-                                   placeholder="{{ __('messages.enter_education') }}" required>
+                            <select name="education" id="education" 
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('education') border-red-300 @enderror" required>
+                                <option value="">{{ __('messages.select_education') }}</option>
+                                <option value="Elementary School" {{ old('education') == 'Elementary School' ? 'selected' : '' }}>{{ __('messages.elementary_school') }}</option>
+                                <option value="Junior High School" {{ old('education') == 'Junior High School' ? 'selected' : '' }}>{{ __('messages.junior_high_school') }}</option>
+                                <option value="Senior High School" {{ old('education') == 'Senior High School' ? 'selected' : '' }}>{{ __('messages.senior_high_school') }}</option>
+                                <option value="Vocational School" {{ old('education') == 'Vocational School' ? 'selected' : '' }}>{{ __('messages.vocational_school') }}</option>
+                                <option value="Diploma" {{ old('education') == 'Diploma' ? 'selected' : '' }}>{{ __('messages.diploma') }}</option>
+                                <option value="Bachelor Degree" {{ old('education') == 'Bachelor Degree' ? 'selected' : '' }}>{{ __('messages.bachelor_degree') }}</option>
+                                <option value="Master Degree" {{ old('education') == 'Master Degree' ? 'selected' : '' }}>{{ __('messages.master_degree') }}</option>
+                                <option value="Doctorate Degree" {{ old('education') == 'Doctorate Degree' ? 'selected' : '' }}>{{ __('messages.doctorate_degree') }}</option>
+                                <option value="Other" {{ old('education') == 'Other' ? 'selected' : '' }}>{{ __('messages.other') }}</option>
+                            </select>
+                            @error('education')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                         
                         <div class="space-y-1">
@@ -191,9 +226,20 @@
                         
                         <div class="space-y-1">
                             <label for="status" class="block text-sm font-medium text-gray-700">{{ __('messages.current_status') }}</label>
-                            <input type="text" name="status" id="status" 
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
-                                   placeholder="{{ __('messages.enter_status') }}" required>
+                            <select name="status" id="status" 
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('status') border-red-300 @enderror" required>
+                                <option value="">{{ __('messages.select_status') }}</option>
+                                <option value="Available" {{ old('status') == 'Available' ? 'selected' : '' }}>{{ __('messages.available') }}</option>
+                                <option value="Working" {{ old('status') == 'Working' ? 'selected' : '' }}>{{ __('messages.working') }}</option>
+                                <option value="On Leave" {{ old('status') == 'On Leave' ? 'selected' : '' }}>{{ __('messages.on_leave') }}</option>
+                                <option value="Terminated" {{ old('status') == 'Terminated' ? 'selected' : '' }}>{{ __('messages.terminated') }}</option>
+                                <option value="Blacklisted" {{ old('status') == 'Blacklisted' ? 'selected' : '' }}>{{ __('messages.blacklisted') }}</option>
+                                <option value="Training" {{ old('status') == 'Training' ? 'selected' : '' }}>{{ __('messages.training') }}</option>
+                                <option value="Interview" {{ old('status') == 'Interview' ? 'selected' : '' }}>{{ __('messages.interview') }}</option>
+                            </select>
+                            @error('status')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
                 </div>

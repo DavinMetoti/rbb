@@ -111,6 +111,9 @@ return [
     'select_gender' => '选择性别',
     'select_status' => '选择状态',
     'select_level' => '选择级别',
+    'select_religion' => '选择宗教',
+    'select_nationality' => '选择国籍',
+    'select_education' => '选择教育水平',
     'no_knowledge' => '无知识',
     'learning' => '学习中',
     'basic' => '基础',
@@ -122,6 +125,44 @@ return [
     'married' => '已婚',
     'divorced' => '离异',
     'widowed' => '丧偶',
+    
+    // Religion options
+    'islam' => '伊斯兰教',
+    'christian' => '基督教',
+    'catholic' => '天主教',
+    'hindu' => '印度教',
+    'buddhist' => '佛教',
+    'confucian' => '儒教',
+    
+    // Education options
+    'elementary_school' => '小学',
+    'junior_high_school' => '初中',
+    'senior_high_school' => '高中',
+    'vocational_school' => '职业学校',
+    'diploma' => '文凭',
+    'bachelor_degree' => '学士学位',
+    'master_degree' => '硕士学位',
+    'doctorate_degree' => '博士学位',
+    
+    // Nationality options
+    'indonesian' => '印度尼西亚人',
+    'malaysian' => '马来西亚人',
+    'filipino' => '菲律宾人',
+    'thai' => '泰国人',
+    'vietnamese' => '越南人',
+    'cambodian' => '柬埔寨人',
+    'myanmar' => '缅甸人',
+    'indian' => '印度人',
+    'sri_lankan' => '斯里兰卡人',
+    
+    // Status options
+    'available' => '可用',
+    'working' => '工作中',
+    'on_leave' => '请假',
+    'terminated' => '解雇',
+    'blacklisted' => '黑名单',
+    'training' => '培训中',
+    'interview' => '面试中',
     
     // Placeholders
     'enter_code' => '输入参与者代码',
