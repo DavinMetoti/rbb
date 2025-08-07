@@ -391,10 +391,10 @@
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                     <h2 class="text-lg font-medium text-gray-900 mb-6 pb-3 border-b border-gray-100">{{ __('messages.photo_upload') }}</h2>
                     <div class="space-y-1">
-                        <label for="photo_path" class="block text-sm font-medium text-gray-700">{{ __('messages.participant_photo') }}</label>
+                        <label for="photo_path" class="block text-sm font-medium text-gray-700">{{ __('messages.participant_photo') }} <span class="text-gray-500 text-xs">({{ __('messages.optional') }})</span></label>
                         <div class="mt-2">
                             <input type="file" name="photo_path" id="photo_path" accept="image/*"
-                                   class="block w-full text-sm text-gray-500 file:mr-4 file:py-3 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-gray-50 file:text-gray-700 hover:file:bg-gray-100 file:cursor-pointer cursor-pointer border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 @error('photo_path') border-red-300 @enderror" required>
+                                   class="block w-full text-sm text-gray-500 file:mr-4 file:py-3 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-gray-50 file:text-gray-700 hover:file:bg-gray-100 file:cursor-pointer cursor-pointer border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 @error('photo_path') border-red-300 @enderror">
                         </div>
                         @error('photo_path')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

@@ -132,7 +132,7 @@ return [
     // Messages
     'no_experience_note' => 'Leave empty or enter 0 if no experience in that country',
     'no_language_note' => 'Leave empty if participant doesn\'t speak the language',
-    'photo_upload_note' => 'Upload a clear photo of the participant (JPG, PNG, max 5MB)',
+    'photo_upload_note' => 'Upload a clear photo of the participant (JPEG, PNG, JPG, GIF, WEBP, max 10MB). Optional - you can add this later.',
     
     // Work history fields
     'country' => 'Country',
@@ -196,10 +196,14 @@ return [
     'work_history_required' => 'At least one work history record is required.',
     
     // Additional edit page keys
-    'photo_upload_note' => 'Leave empty to keep current photo. Supported formats: JPEG, PNG, JPG, GIF. Maximum 5MB',
+        
+    // Additional edit page keys
+    'photo_upload_note' => 'Upload a clear photo of the participant (JPEG, PNG, JPG, GIF, WEBP, max 10MB). Optional - you can add this later.',
+    'photo_upload_edit_note' => 'Leave empty to keep current photo. Supported formats: JPEG, PNG, JPG, GIF, WEBP. Maximum 10MB',
     
     // Mobile navigation
     'menu' => 'Menu',
     'close_menu' => 'Close Menu',
     'navigation' => 'Navigation',
+    'optional' => 'Optional',
 ];

@@ -303,7 +303,7 @@
                         </label>
                         <input type="file" name="photo_path" id="photo_path" accept="image/*"
                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('photo_path') border-red-300 @enderror">
-                        <p class="text-xs text-gray-500">{{ __('messages.photo_upload_note') }}</p>
+                        <p class="text-xs text-gray-500">{{ __('messages.photo_upload_edit_note') }}</p>
                         @error('photo_path')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                         @enderror

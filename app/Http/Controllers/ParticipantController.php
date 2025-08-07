@@ -82,7 +82,8 @@ class ParticipantController extends Controller
             'cantonese' => 'nullable|in:learning,basic,good',
             'mandarine' => 'nullable|in:learning,basic,good',
             'english' => 'nullable|in:learning,basic,good',
-            'photo_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120', // 5MB max
+            // Photo validation - make it more flexible and handle file upload issues
+            'photo_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:10240', // 10MB max, webp support
             
             // Experience/Skills validation - all boolean fields
             'elderly_healthy_care_experience' => 'nullable|boolean',
@@ -125,23 +126,80 @@ class ParticipantController extends Controller
             // Debug: Log validation passed
             Log::info('Validation passed for participant creation');
 
-            // Ensure storage directory exists
+            // Ensure storage directory exists with proper permissions
             $storageDir = storage_path('app/public/participants/photos');
             if (!file_exists($storageDir)) {
-                mkdir($storageDir, 0755, true);
+                if (!mkdir($storageDir, 0755, true)) {
+                    Log::error('Failed to create storage directory: ' . $storageDir);
+                    throw new \Exception('Unable to create photo storage directory');
+                }
                 Log::info('Created storage directory: ' . $storageDir);
             }
+            
+            // Verify directory is writable
+            if (!is_writable($storageDir)) {
+                Log::error('Storage directory is not writable: ' . $storageDir);
+                chmod($storageDir, 0755);
+                if (!is_writable($storageDir)) {
+                    throw new \Exception('Photo storage directory is not writable');
+                }
+            }
 
-            // Handle photo upload
+            // Handle photo upload with better error handling
             $photoPath = null;
             if ($request->hasFile('photo_path')) {
-                Log::info('Photo file detected');
+                Log::info('Photo file detected for upload');
+                
                 $photo = $request->file('photo_path');
-                $photoName = time() . '_' . $photo->getClientOriginalName();
-                $photoPath = $photo->storeAs('participants/photos', $photoName, 'public');
-                Log::info('Photo uploaded successfully: ' . $photoPath);
+                
+                // Validate file before upload
+                if (!$photo->isValid()) {
+                    Log::error('Invalid photo file uploaded', ['error' => $photo->getErrorMessage()]);
+                    throw new \Exception('Invalid photo file: ' . $photo->getErrorMessage());
+                }
+                
+                // Check file size manually (in case server limits are different)
+                $maxSize = 10 * 1024 * 1024; // 10MB in bytes
+                if ($photo->getSize() > $maxSize) {
+                    Log::error('Photo file too large', ['size' => $photo->getSize(), 'max' => $maxSize]);
+                    throw new \Exception('Photo file is too large. Maximum size is 10MB.');
+                }
+                
+                // Generate unique filename
+                $extension = $photo->getClientOriginalExtension();
+                $photoName = time() . '_' . uniqid() . '_' . str_replace(' ', '_', $photo->getClientOriginalName());
+                
+                // Ensure filename is safe
+                $photoName = preg_replace('/[^A-Za-z0-9._-]/', '', $photoName);
+                
+                try {
+                    // Store the file
+                    $photoPath = $photo->storeAs('participants/photos', $photoName, 'public');
+                    
+                    if (!$photoPath) {
+                        throw new \Exception('Failed to store photo file');
+                    }
+                    
+                    // Verify file was actually saved
+                    $fullPath = storage_path('app/public/' . $photoPath);
+                    if (!file_exists($fullPath)) {
+                        throw new \Exception('Photo file was not saved properly');
+                    }
+                    
+                    Log::info('Photo uploaded successfully', [
+                        'original_name' => $photo->getClientOriginalName(),
+                        'stored_path' => $photoPath,
+                        'file_size' => $photo->getSize()
+                    ]);
+                    
+                } catch (\Exception $e) {
+                    Log::error('Photo storage failed', ['error' => $e->getMessage()]);
+                    throw new \Exception('Failed to save photo: ' . $e->getMessage());
+                }
+                
             } else {
-                Log::warning('No photo file in request');
+                Log::info('No photo file provided - proceeding without photo');
+                // Photo is now optional, so we can proceed without it
             }
 
             // Prepare participant data
@@ -310,7 +368,7 @@ class ParticipantController extends Controller
             'cantonese' => 'nullable|in:learning,basic,good',
             'mandarine' => 'nullable|in:learning,basic,good',
             'english' => 'nullable|in:learning,basic,good',
-            'photo_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120', // 5MB max, optional for update
+            'photo_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:10240', // 10MB max, webp support, optional for update
             
             // Experience/Skills validation - all boolean fields
             'elderly_healthy_care_experience' => 'nullable|boolean',
@@ -353,21 +411,63 @@ class ParticipantController extends Controller
             // Debug: Log validation passed
             Log::info('Validation passed for participant update');
 
-            // Handle photo upload
+            // Handle photo upload with better error handling
             $photoPath = $participant->photo_path; // Keep existing photo by default
             if ($request->hasFile('photo_path')) {
-                Log::info('New photo file detected');
+                Log::info('New photo file detected for update');
                 
-                // Delete old photo if exists
-                if ($participant->photo_path) {
-                    Storage::disk('public')->delete($participant->photo_path);
+                $photo = $request->file('photo_path');
+                
+                // Validate file before upload
+                if (!$photo->isValid()) {
+                    Log::error('Invalid photo file uploaded during update', ['error' => $photo->getErrorMessage()]);
+                    throw new \Exception('Invalid photo file: ' . $photo->getErrorMessage());
                 }
                 
-                // Upload new photo
-                $photo = $request->file('photo_path');
-                $photoName = time() . '_' . $photo->getClientOriginalName();
-                $photoPath = $photo->storeAs('participants/photos', $photoName, 'public');
-                Log::info('New photo uploaded successfully: ' . $photoPath);
+                // Check file size manually
+                $maxSize = 10 * 1024 * 1024; // 10MB in bytes
+                if ($photo->getSize() > $maxSize) {
+                    Log::error('Photo file too large during update', ['size' => $photo->getSize(), 'max' => $maxSize]);
+                    throw new \Exception('Photo file is too large. Maximum size is 10MB.');
+                }
+                
+                try {
+                    // Delete old photo if exists
+                    if ($participant->photo_path && Storage::disk('public')->exists($participant->photo_path)) {
+                        Storage::disk('public')->delete($participant->photo_path);
+                        Log::info('Old photo deleted', ['old_path' => $participant->photo_path]);
+                    }
+                    
+                    // Generate unique filename
+                    $extension = $photo->getClientOriginalExtension();
+                    $photoName = time() . '_' . uniqid() . '_' . str_replace(' ', '_', $photo->getClientOriginalName());
+                    
+                    // Ensure filename is safe
+                    $photoName = preg_replace('/[^A-Za-z0-9._-]/', '', $photoName);
+                    
+                    // Upload new photo
+                    $photoPath = $photo->storeAs('participants/photos', $photoName, 'public');
+                    
+                    if (!$photoPath) {
+                        throw new \Exception('Failed to store updated photo file');
+                    }
+                    
+                    // Verify file was actually saved
+                    $fullPath = storage_path('app/public/' . $photoPath);
+                    if (!file_exists($fullPath)) {
+                        throw new \Exception('Updated photo file was not saved properly');
+                    }
+                    
+                    Log::info('Photo updated successfully', [
+                        'original_name' => $photo->getClientOriginalName(),
+                        'stored_path' => $photoPath,
+                        'file_size' => $photo->getSize()
+                    ]);
+                    
+                } catch (\Exception $e) {
+                    Log::error('Photo update failed', ['error' => $e->getMessage()]);
+                    throw new \Exception('Failed to update photo: ' . $e->getMessage());
+                }
             }
 
             // Prepare participant data

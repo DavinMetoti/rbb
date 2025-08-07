@@ -138,7 +138,7 @@ return [
     // Messages
     'no_experience_note' => '如果在该国家没有经验，请留空或输入0',
     'no_language_note' => '如果参与者不会该语言，请留空',
-    'photo_upload_note' => '留空保持当前照片。支持格式：JPEG、PNG、JPG、GIF。最大5MB',
+    'photo_upload_note' => '上传参与者的清晰照片 (JPEG, PNG, JPG, GIF, WEBP, 最大 10MB)。可选 - 您可以稍后添加。',
     'work_history_required' => '至少需要一个工作历史记录。',
     
     // Work history fields
@@ -217,10 +217,12 @@ return [
     'work_history_required' => '至少需要一个工作历史记录。',
     
     // Additional edit page keys
-    'photo_upload_note' => '留空保持当前照片。支持格式：JPEG、PNG、JPG、GIF。最大5MB',
+    'photo_upload_note' => '上传参与者的清晰照片 (JPEG, PNG, JPG, GIF, WEBP, 最大 10MB)。可选 - 您可以稍后添加。',
+    'photo_upload_edit_note' => '留空保持当前照片。支持格式：JPEG、PNG、JPG、GIF、WEBP。最大10MB',
     
     // Mobile navigation
     'menu' => '菜单',
     'close_menu' => '关闭菜单',
     'navigation' => '导航',
+    'optional' => '可选',
 ];
