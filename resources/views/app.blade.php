@@ -21,17 +21,21 @@
     @endif
 </head>
 <body class="bg-gray-50">
-    <!-- Language Dropdown Header -->
-    <div class="bg-white border-b border-gray-200 shadow-sm">
+    <!-- Responsive Header -->
+    <header class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-40" x-data="{ mobileMenuOpen: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-12">
+            <div class="flex justify-between items-center h-14 md:h-16">
+                
                 <!-- Logo/Brand (Left side) -->
                 <div class="flex items-center">
-                    <h2 class="text-lg font-semibold text-gray-900">PT Rizaldi Bina Bersama</h2>
+                    <h1 class="text-base sm:text-lg md:text-xl font-semibold text-gray-900 truncate">
+                        <span class="hidden sm:inline">PT Rizaldi Bina Bersama</span>
+                        <span class="sm:hidden">PT RBB</span>
+                    </h1>
                 </div>
                 
-                <!-- Navigation and Language Dropdown (Right side) -->
-                <div class="flex items-center space-x-4">
+                <!-- Desktop Navigation (Hidden on mobile) -->
+                <div class="hidden md:flex items-center space-x-6">
                     <!-- User Menu (if authenticated) -->
                     @auth
                         <nav class="flex items-center space-x-4">
@@ -39,8 +43,10 @@
                                class="text-sm font-medium text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md hover:bg-gray-100 transition-colors">
                                 {{ __('participants') ?? 'Participants' }}
                             </a>
-                            <span class="text-sm text-gray-500">|</span>
-                            <span class="text-sm text-gray-600">{{ __('messages.welcome') ?? 'Welcome' }}, {{ auth()->user()->name ?? auth()->user()->email }}</span>
+                            <span class="text-sm text-gray-300">•</span>
+                            <span class="text-sm text-gray-600 truncate max-w-32 lg:max-w-48">
+                                {{ __('messages.welcome') ?? 'Welcome' }}, {{ auth()->user()->name ?? auth()->user()->email }}
+                            </span>
                         </nav>
                     @else
                         <!-- Login Link for Guest Users -->
@@ -49,7 +55,7 @@
                                class="text-sm font-medium text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md hover:bg-gray-100 transition-colors">
                                 {{ __('participants') ?? 'Participants' }}
                             </a>
-                            <span class="text-sm text-gray-500">|</span>
+                            <span class="text-sm text-gray-300">•</span>
                             <a href="{{ route('login') }}" 
                                class="text-sm font-medium text-blue-600 hover:text-blue-700 px-3 py-2 rounded-md hover:bg-blue-50 transition-colors">
                                 {{ __('messages.login') ?? 'Login' }}
@@ -57,24 +63,28 @@
                         </nav>
                     @endauth
                     
-                    <!-- Language Dropdown -->
+                    <!-- Desktop Language Dropdown -->
                     <div class="relative" x-data="{ open: false }">
                         <button @click="open = !open" 
                                 class="flex items-center space-x-2 px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500 transition-colors">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
                             </svg>
-                            <span>
+                            <span class="hidden lg:inline">
                                 @if(session('applocale') === 'zh')
                                     中文
                                 @else
                                     English
                                 @endif
-                                @if(config('app.debug'))
-                                    ({{ app()->getLocale() }})
+                            </span>
+                            <span class="lg:hidden">
+                                @if(session('applocale') === 'zh')
+                                    中文
+                                @else
+                                    EN
                                 @endif
                             </span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
@@ -129,20 +139,152 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Mobile Menu Button & Language Quick Toggle (Visible on mobile) -->
+                <div class="flex items-center space-x-2 md:hidden">
+                    <!-- Mobile Language Quick Toggle -->
+                    <div class="relative" x-data="{ open: false }">
+                        <button @click="open = !open" 
+                                class="p-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+                            </svg>
+                        </button>
+                        
+                        <div x-show="open" 
+                             @click.away="open = false"
+                             x-transition:enter="transition ease-out duration-100"
+                             x-transition:enter-start="transform opacity-0 scale-95"
+                             x-transition:enter-end="transform opacity-100 scale-100"
+                             x-transition:leave="transition ease-in duration-75"
+                             x-transition:leave-start="transform opacity-100 scale-100"
+                             x-transition:leave-end="transform opacity-0 scale-95"
+                             class="absolute right-0 mt-2 w-36 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                            <div class="py-1">
+                                <a href="{{ url('/lang/en') }}" 
+                                   class="flex items-center space-x-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ session('applocale', 'en') === 'en' ? 'bg-gray-50 font-medium' : '' }}">
+                                    <span class="text-xs">🇺🇸</span>
+                                    <span>English</span>
+                                </a>
+                                <a href="{{ url('/lang/zh') }}" 
+                                   class="flex items-center space-x-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ session('applocale') === 'zh' ? 'bg-gray-50 font-medium' : '' }}">
+                                    <span class="text-xs">🇨🇳</span>
+                                    <span>中文</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" 
+                            class="p-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500">
+                        <span class="sr-only">{{ __('messages.menu') ?? 'Menu' }}</span>
+                        <!-- Hamburger icon -->
+                        <svg x-show="!mobileMenuOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <!-- Close icon -->
+                        <svg x-show="mobileMenuOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation Menu -->
+            <div x-show="mobileMenuOpen" 
+                 x-transition:enter="transition ease-out duration-200"
+                 x-transition:enter-start="transform opacity-0 -translate-y-2"
+                 x-transition:enter-end="transform opacity-100 translate-y-0"
+                 x-transition:leave="transition ease-in duration-150"
+                 x-transition:leave-start="transform opacity-100 translate-y-0"
+                 x-transition:leave-end="transform opacity-0 -translate-y-2"
+                 class="md:hidden border-t border-gray-200 bg-white">
+                <div class="px-4 pt-4 pb-6 space-y-3">
+                    @auth
+                        <!-- User Info -->
+                        <div class="pb-3 border-b border-gray-100">
+                            <p class="text-xs text-gray-500 uppercase tracking-wide">{{ __('messages.welcome') ?? 'Welcome' }}</p>
+                            <p class="text-sm font-medium text-gray-900 truncate">{{ auth()->user()->name ?? auth()->user()->email }}</p>
+                        </div>
+                        <!-- Navigation Links -->
+                        <a href="{{ route('participants.index') }}" 
+                           class="flex items-center px-3 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors">
+                            <svg class="w-5 h-5 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                            </svg>
+                            {{ __('participants') ?? 'Participants' }}
+                        </a>
+                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
+                           class="flex items-center px-3 py-3 text-base font-medium text-red-600 hover:text-red-700 hover:bg-red-50 rounded-md transition-colors">
+                            <svg class="w-5 h-5 mr-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                            </svg>
+                            {{ __('messages.logout') ?? 'Logout' }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                            @csrf
+                        </form>
+                    @else
+                        <!-- Guest Navigation -->
+                        <a href="{{ route('participants.index') }}" 
+                           class="flex items-center px-3 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors">
+                            <svg class="w-5 h-5 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                            </svg>
+                            {{ __('participants') ?? 'Participants' }}
+                        </a>
+                        <a href="{{ route('login') }}" 
+                           class="flex items-center px-3 py-3 text-base font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-md transition-colors">
+                            <svg class="w-5 h-5 mr-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+                            </svg>
+                            {{ __('messages.login') ?? 'Login' }}
+                        </a>
+                    @endauth
+                </div>
             </div>
         </div>
-    </div>
+    </header>
 
     <!-- Main Content -->
     @yield('content')
 
-    <!-- Print Styles -->
+    <!-- Print & Mobile Responsive Styles -->
     <style>
         @media print {
             /* Hide the header navigation when printing */
-            .bg-white.border-b.border-gray-200.shadow-sm {
+            header {
                 display: none !important;
             }
+        }
+        
+        /* Mobile menu animations */
+        @media (max-width: 767px) {
+            .mobile-menu-backdrop {
+                position: fixed;
+                inset: 0;
+                background-color: rgba(0, 0, 0, 0.3);
+                z-index: 30;
+            }
+        }
+        
+        /* Ensure proper stacking of dropdown menus */
+        .dropdown-menu {
+            z-index: 9999;
+        }
+        
+        /* Mobile-friendly touch targets */
+        @media (max-width: 767px) {
+            button, a {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+        
+        /* Prevent horizontal scroll on mobile */
+        .header-container {
+            overflow-x: hidden;
         }
     </style>
 

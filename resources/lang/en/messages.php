@@ -197,4 +197,9 @@ return [
     
     // Additional edit page keys
     'photo_upload_note' => 'Leave empty to keep current photo. Supported formats: JPEG, PNG, JPG, GIF. Maximum 5MB',
+    
+    // Mobile navigation
+    'menu' => 'Menu',
+    'close_menu' => 'Close Menu',
+    'navigation' => 'Navigation',
 ];

@@ -218,4 +218,9 @@ return [
     
     // Additional edit page keys
     'photo_upload_note' => '留空保持当前照片。支持格式：JPEG、PNG、JPG、GIF。最大5MB',
+    
+    // Mobile navigation
+    'menu' => '菜单',
+    'close_menu' => '关闭菜单',
+    'navigation' => '导航',
 ];
