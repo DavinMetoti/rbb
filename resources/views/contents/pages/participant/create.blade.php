@@ -345,7 +345,7 @@
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                     <h2 class="text-lg font-medium text-gray-900 mb-6 pb-3 border-b border-gray-100">{{ __('messages.skills_experience') }}</h2>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                    <div class="space-y-3">
                         @php
                             $allExperience = [
                                 'elderly_healthy_care_experience' => 'ELDERLY HEALTHY CARE EXPERIENCE',
