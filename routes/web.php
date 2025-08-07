@@ -22,10 +22,6 @@ Route::get('/lang/{lang}', function ($lang) {
     return redirect()->back();
 });
 
-// Public routes - anyone can view participants (read-only access)
-Route::get('/participants', [ParticipantController::class, 'index'])->name('participants.index');
-Route::get('/participants/{participant}', [ParticipantController::class, 'show'])->name('participants.show');
-
 // Protected routes - only authenticated users can create, edit, delete
 Route::middleware(['auth'])->group(function () {
     Route::get('/participants/create', [ParticipantController::class, 'create'])->name('participants.create');
@@ -35,31 +31,11 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/participants/{participant}', [ParticipantController::class, 'destroy'])->name('participants.destroy');
 });
 
+// Public routes - anyone can view participants (read-only access)
+Route::get('/participants', [ParticipantController::class, 'index'])->name('participants.index');
+Route::get('/participants/{participant}', [ParticipantController::class, 'show'])->name('participants.show');
+
 // Debug routes (remove in production) - temporary without auth
-Route::get('/debug/participant', [ParticipantController::class, 'debug'])->name('participant.debug');
-Route::get('/debug/participant/test', [ParticipantController::class, 'testCreate'])->name('participant.test');
-
-// Debug locale route
-Route::get('/debug/locale', function () {
-    return response()->json([
-        'session_locale' => session('applocale'),
-        'app_locale' => app()->getLocale(),
-        'config_locale' => config('app.locale'),
-        'all_session' => session()->all(),
-        'translation_test' => [
-            'participants' => __('participants'),
-            'add_participant' => __('add_participant'), 
-            'logout' => __('logout')
-        ]
-    ]);
-})->name('debug.locale');
-
-// Test locale page
-Route::get('/test/locale', function () {
-    return view('test.locale');
-})->name('test.locale');
-
-// Debug route (remove in production) - temporary without auth
 Route::get('/debug/participant', [ParticipantController::class, 'debug'])->name('participant.debug');
 Route::get('/debug/participant/test', [ParticipantController::class, 'testCreate'])->name('participant.test');
 
