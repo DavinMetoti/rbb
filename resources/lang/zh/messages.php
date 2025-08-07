@@ -206,4 +206,16 @@ return [
     'elderly_sick_care' => '老人病患护理经验',
     'newborn_care' => '新生儿护理经验',
     'children_care' => '儿童护理经验',
+    
+    // Missing keys found in views
+    'click_to_enlarge' => '点击放大',
+    'no_photo' => '无照片上传',
+    'current_photo' => '当前照片',
+    'update_photo' => '更新照片',
+    'upload_photo' => '上传照片',
+    'update_participant' => '更新参与者',
+    'work_history_required' => '至少需要一个工作历史记录。',
+    
+    // Additional edit page keys
+    'photo_upload_note' => '留空保持当前照片。支持格式：JPEG、PNG、JPG、GIF。最大5MB',
 ];

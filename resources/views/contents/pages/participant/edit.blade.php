@@ -258,7 +258,7 @@
                         </div>
                         
                         <div class="space-y-1">
-                            <label for="mandarine" class="block text-sm font-medium text-gray-700">Mandarin</label>
+                            <label for="mandarine" class="block text-sm font-medium text-gray-700">{{ __('messages.chinese') }}</label>
                             <select name="mandarine" id="mandarine" 
                                     class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white">
                                 <option value="">{{ __('messages.no_knowledge') }} / {{ __('messages.select_level') }}</option>
@@ -310,6 +310,52 @@
                     </div>
                 </div>
 
+                <!-- Skills & Experience Section -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                    <h2 class="text-lg font-medium text-gray-900 mb-6 pb-3 border-b border-gray-100">{{ __('messages.skills_experience') }}</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                        @php
+                            $allExperience = [
+                                'elderly_healthy_care_experience' => 'ELDERLY HEALTHY CARE EXPERIENCE',
+                                'elderly_sick_care_experience' => 'ELDERLY SICK CARE EXPERIENCE',
+                                'elderly_healthy_care_experience_v' => 'ELDERLY HEALTHY CARE EXPERIENCE (VERIFIED)',
+                                'elderly_sick_care_experience_v' => 'ELDERLY SICK CARE EXPERIENCE (VERIFIED)',
+                                'newborn_care_experience' => 'NEWBORN CARE EXPERIENCE',
+                                'children_care_experience' => 'CHILDREN CARE EXPERIENCE',
+                                'i_can_take_care_of_dog' => 'I CAN TAKE CARE OF DOG',
+                                'i_can_take_care_of_cat' => 'I CAN TAKE CARE OF CAT',
+                                'cooking_cleaning_washing_ironing_go_to_market' => 'COOKING\' CLEANING\' WASHING\' IRONING GO TO MARKET',
+                                'i_can_wash_car' => 'I CAN WASH CAR',
+                                'shuttle_school' => 'SHUTTLE SCHOOL',
+                                'assist_toileting_change_diaper_bath_experience' => 'ASSIST TOILETING\' CHANGE DIAPER\' BATH EXPERIENCE',
+                                'go_to_hospital_handle_medication_experience' => 'GO TO HOSPITAL\' HANDLE MEDICATION EXPERIENCE',
+                                'do_exercise' => 'DO EXERCISE',
+                                'use_wheelchair' => 'USE WHEELCHAIR',
+                                'provide_daily_assistance' => 'PROVIDE DAILY ASSISTANCE',
+                                'oral_feeding' => 'ORAL FEEDING',
+                                'with_dementia_care_experience' => 'WITH DEMENTIA CARE EXPERIENCE',
+                                'assist_walking' => 'ASSIST WALKING',
+                                'received_covid19_vaccine_injection_3_dose' => 'RECEIVED COVID-19 VACCINE INJECTION (3 DOSE)',
+                                'i_can_inject_diabetes' => 'I CAN INJECT DIABETES',
+                                'i_can_take_care_of_idiots' => 'I CAN TAKE CARE OF IDIOTS',
+                                'suction_phlegm_ican_do_it' => 'SUCTION PHLEGM I CAN DO IT',
+                                'i_like_take_care_of_a_children' => 'I LIKE TAKE CARE OF A CHILDREN',
+                                'i_like_take_care_of_a_newborn_baby' => 'I LIKE TAKE CARE OF A NEWBORN BABY',
+                                'i_like_take_care_of_the_elderly' => 'I LIKE TAKE CARE OF THE ELDERLY',
+                            ];
+                        @endphp
+                        @foreach($allExperience as $field => $label)
+                            <label class="flex items-center space-x-3 p-3 rounded-lg border border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors duration-200">
+                                <input type="checkbox" name="{{ $field }}" value="1" 
+                                       {{ old($field, $participant->{$field} ?? false) ? 'checked' : '' }}
+                                       class="w-4 h-4 text-gray-900 border-gray-300 rounded focus:ring-gray-900 focus:ring-2">
+                                <span class="text-sm text-gray-700 font-medium">{{ $label }}</span>
+                            </label>
+                        @endforeach
+                    </div>
+                </div>
+
                 <!-- Work History Section -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                     <div class="flex justify-between items-center mb-6 pb-3 border-b border-gray-100">
@@ -330,7 +376,7 @@
                             @foreach($participant->workHistories as $index => $workHistory)
                                 <div class="work-history-entry border border-gray-200 rounded-lg p-4 mb-4">
                                     <div class="flex justify-between items-center mb-4">
-                                        <h3 class="text-base font-medium text-gray-800">{{ __('messages.work_history_number', ['number' => $index + 1]) }}</h3>
+                                        <h3 class="text-base font-medium text-gray-800">{{ __('messages.work_history') }} #{{ $index + 1 }}</h3>
                                         <button type="button" class="remove-work-history text-red-500 hover:text-red-700 transition-colors duration-200">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
@@ -375,7 +421,7 @@
                             <!-- Initial work history entry if no existing work histories -->
                             <div class="work-history-entry border border-gray-200 rounded-lg p-4 mb-4">
                                 <div class="flex justify-between items-center mb-4">
-                                    <h3 class="text-base font-medium text-gray-800">{{ __('messages.work_history_number', ['number' => 1]) }}</h3>
+                                    <h3 class="text-base font-medium text-gray-800">{{ __('messages.work_history') }} #1</h3>
                                     <button type="button" class="remove-work-history text-red-500 hover:text-red-700 transition-colors duration-200">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>

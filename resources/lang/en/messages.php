@@ -185,4 +185,16 @@ return [
     'elderly_sick_care' => 'ELDERLY SICK CARE EXPERIENCE',
     'newborn_care' => 'NEWBORN CARE EXPERIENCE',
     'children_care' => 'CHILDREN CARE EXPERIENCE',
+    
+    // Missing keys found in views
+    'click_to_enlarge' => 'Click to enlarge',
+    'no_photo' => 'No photo uploaded',
+    'current_photo' => 'Current Photo',
+    'update_photo' => 'Update Photo',
+    'upload_photo' => 'Upload Photo',
+    'update_participant' => 'Update Participant',
+    'work_history_required' => 'At least one work history record is required.',
+    
+    // Additional edit page keys
+    'photo_upload_note' => 'Leave empty to keep current photo. Supported formats: JPEG, PNG, JPG, GIF. Maximum 5MB',
 ];
