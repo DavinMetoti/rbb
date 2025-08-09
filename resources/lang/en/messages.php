@@ -48,6 +48,7 @@ return [
     'experience' => 'Experience',
     'languages' => 'Languages',
     'no_languages' => 'No languages',
+    'status' => 'Status',
     
     // Countries
     'hong_kong' => 'Hong Kong',
