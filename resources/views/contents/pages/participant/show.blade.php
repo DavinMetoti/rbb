@@ -335,9 +335,27 @@
         @page {
             size: legal;
             margin: 0.5in;
+            /* Hide browser's default headers and footers */
+            @top-left { content: none; }
+            @top-center { content: none; }
+            @top-right { content: none; }
+            @bottom-left { content: none; }
+            @bottom-center { content: none; }
+            @bottom-right { content: none; }
         }
         
         @media print {
+            /* Hide browser's default print headers and footers */
+            @page {
+                margin: 0.5in;
+                @top-left { content: none; }
+                @top-center { content: none; }
+                @top-right { content: none; }
+                @bottom-left { content: none; }
+                @bottom-center { content: none; }
+                @bottom-right { content: none; }
+            }
+            
             /* Global font size reduction */
             body {
                 font-size: 11px !important;
@@ -453,7 +471,14 @@
     <script>
         // Print functionality
         function printParticipant() {
-            window.print();
+            // Hide browser's default print headers/footers if possible
+            if (window.chrome) {
+                // For Chrome/Chromium browsers
+                window.print();
+            } else {
+                // For other browsers
+                window.print();
+            }
         }
         
         // Photo preview functionality
