@@ -230,13 +230,7 @@
                             <select name="status" id="status" 
                                     class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('status') border-red-300 @enderror" required>
                                 <option value="">{{ __('messages.select_status') }}</option>
-                                <option value="Available" {{ old('status', $participant->status) == 'Available' ? 'selected' : '' }}>{{ __('messages.available') }}</option>
-                                <option value="Working" {{ old('status', $participant->status) == 'Working' ? 'selected' : '' }}>{{ __('messages.working') }}</option>
-                                <option value="On Leave" {{ old('status', $participant->status) == 'On Leave' ? 'selected' : '' }}>{{ __('messages.on_leave') }}</option>
-                                <option value="Terminated" {{ old('status', $participant->status) == 'Terminated' ? 'selected' : '' }}>{{ __('messages.terminated') }}</option>
-                                <option value="Blacklisted" {{ old('status', $participant->status) == 'Blacklisted' ? 'selected' : '' }}>{{ __('messages.blacklisted') }}</option>
-                                <option value="Training" {{ old('status', $participant->status) == 'Training' ? 'selected' : '' }}>{{ __('messages.training') }}</option>
-                                <option value="Interview" {{ old('status', $participant->status) == 'Interview' ? 'selected' : '' }}>{{ __('messages.interview') }}</option>
+                                <option value="OVERSEAS HELPER" {{ old('status', $participant->status) == 'OVERSEAS HELPER' ? 'selected' : '' }}>{{ __('messages.overseas_helper') }}</option>
                             </select>
                             @error('status')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

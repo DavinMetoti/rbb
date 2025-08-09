@@ -330,7 +330,38 @@ class ParticipantController extends Controller
     public function edit(string $id)
     {
         $participant = Participant::with('workHistories')->findOrFail($id);
-        return view('contents.pages.participant.edit', compact('participant'));
+        
+        // Define all experience fields for the view
+        $allExperience = [
+            'elderly_healthy_care_experience' => 'ELDERLY HEALTHY CARE EXPERIENCE',
+            'elderly_sick_care_experience' => 'ELDERLY SICK CARE EXPERIENCE',
+            'elderly_healthy_care_experience_v' => 'ELDERLY HEALTHY CARE EXPERIENCE (VERIFIED)',
+            'elderly_sick_care_experience_v' => 'ELDERLY SICK CARE EXPERIENCE (VERIFIED)',
+            'newborn_care_experience' => 'NEWBORN CARE EXPERIENCE',
+            'children_care_experience' => 'CHILDREN CARE EXPERIENCE',
+            'i_can_take_care_of_dog' => 'I CAN TAKE CARE OF DOG',
+            'i_can_take_care_of_cat' => 'I CAN TAKE CARE OF CAT',
+            'cooking_cleaning_washing_ironing_go_to_market' => 'COOKING\' CLEANING\' WASHING\' IRONING GO TO MARKET',
+            'i_can_wash_car' => 'I CAN WASH CAR',
+            'shuttle_school' => 'SHUTTLE SCHOOL',
+            'assist_toileting_change_diaper_bath_experience' => 'ASSIST TOILETING\' CHANGE DIAPER\' BATH EXPERIENCE',
+            'go_to_hospital_handle_medication_experience' => 'GO TO HOSPITAL\' HANDLE MEDICATION EXPERIENCE',
+            'do_exercise' => 'DO EXERCISE',
+            'use_wheelchair' => 'USE WHEELCHAIR',
+            'provide_daily_assistance' => 'PROVIDE DAILY ASSISTANCE',
+            'oral_feeding' => 'ORAL FEEDING',
+            'with_dementia_care_experience' => 'WITH DEMENTIA CARE EXPERIENCE',
+            'assist_walking' => 'ASSIST WALKING',
+            'received_covid19_vaccine_injection_3_dose' => 'RECEIVED COVID-19 VACCINE INJECTION (3 DOSE)',
+            'i_can_inject_diabetes' => 'I CAN INJECT DIABETES',
+            'i_can_take_care_of_idiots' => 'I CAN TAKE CARE OF IDIOTS',
+            'suction_phlegm_ican_do_it' => 'SUCTION PHLEGM I CAN DO IT',
+            'i_like_take_care_of_a_children' => 'I LIKE TAKE CARE OF A CHILDREN',
+            'i_like_take_care_of_a_newborn_baby' => 'I LIKE TAKE CARE OF A NEWBORN BABY',
+            'i_like_take_care_of_the_elderly' => 'I LIKE TAKE CARE OF THE ELDERLY',
+        ];
+        
+        return view('contents.pages.participant.edit', compact('participant', 'allExperience'));
     }
 
     /**
@@ -353,13 +384,13 @@ class ParticipantController extends Controller
             'gender' => 'required|in:male,female,other',
             'birth_date' => 'required|date',
             'nationality' => 'required|string|max:255',
-            'height' => 'required|numeric|min:1',
-            'weight' => 'required|numeric|min:1',
+            'height' => 'nullable|numeric|min:1',  // Changed to nullable
+            'weight' => 'nullable|numeric|min:1',  // Changed to nullable
             'religion' => 'required|string|max:255',
             'marital_status' => 'required|in:single,married,divorced,widowed',
-            'education' => 'required|string|max:255',
+            'education' => 'nullable|string|max:255', // Changed to nullable
             'no_of_children' => 'nullable|string|max:255',
-            'status' => 'required|string|max:255',
+            'status' => 'nullable|string|max:255', // Changed to nullable
             'hongkong_year' => 'nullable|integer|min:0',
             'singapore_year' => 'nullable|integer|min:0',
             'taiwan_year' => 'nullable|integer|min:0',
@@ -516,6 +547,19 @@ class ParticipantController extends Controller
             $experienceFields = ['hongkong_year', 'singapore_year', 'taiwan_year', 'malaysia_year', 'brunei_year'];
             foreach ($experienceFields as $field) {
                 $participantData[$field] = $request->input($field, 0); // Default to 0 if empty
+            }
+
+            // Handle numeric fields with null handling
+            $numericFields = ['height', 'weight'];
+            foreach ($numericFields as $field) {
+                $value = $request->input($field);
+                $participantData[$field] = (empty($value) || $value === '0') ? null : (float)$value;
+            }
+
+            // Handle optional string fields
+            $optionalFields = ['education', 'status'];
+            foreach ($optionalFields as $field) {
+                $participantData[$field] = $request->input($field) ?: null;
             }
 
             // Handle language fields (allow null if empty)

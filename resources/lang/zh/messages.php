@@ -163,6 +163,7 @@ return [
     'blacklisted' => '黑名单',
     'training' => '培训中',
     'interview' => '面试中',
+    'overseas_helper' => '海外帮手',
     
     // Placeholders
     'enter_code' => '输入参与者代码',

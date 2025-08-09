@@ -157,6 +157,7 @@ return [
     'blacklisted' => 'Blacklisted',
     'training' => 'Training',
     'interview' => 'Interview',
+    'overseas_helper' => 'OVERSEAS HELPER',
     
     // Placeholders
     'enter_code' => 'Enter participant code',
