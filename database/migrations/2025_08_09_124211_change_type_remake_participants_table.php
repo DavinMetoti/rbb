@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('participants', function (Blueprint $table) {
+        Schema::table('participant_work_histories', function (Blueprint $table) {
             $table->longText('remake')->nullable()->change();
         });
     }
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('participants', function (Blueprint $table) {
+        Schema::table('participant_work_histories', function (Blueprint $table) {
             $table->string('remake')->nullable()->change();
         });
     }
