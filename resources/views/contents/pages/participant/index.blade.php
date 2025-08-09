@@ -237,23 +237,23 @@
                                                 <tbody>
                                                     <tr>
                                                         <td class="border border-gray-200 px-2 py-1 font-medium">{{ __('messages.hong_kong') }}</td>
-                                                        <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $participant->hongkong_year ?? 0 }}</td>
+                                                        <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $participant->hongkong_year == 0 || !$participant->hongkong_year ? '-' : $participant->hongkong_year }}</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="border border-gray-200 px-2 py-1 font-medium">{{ __('messages.singapore') }}</td>
-                                                        <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $participant->singapore_year ?? 0 }}</td>
+                                                        <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $participant->singapore_year == 0 || !$participant->singapore_year ? '-' : $participant->singapore_year }}</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="border border-gray-200 px-2 py-1 font-medium">{{ __('messages.taiwan') }}</td>
-                                                        <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $participant->taiwan_year ?? 0 }}</td>
+                                                        <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $participant->taiwan_year == 0 || !$participant->taiwan_year ? '-' : $participant->taiwan_year }}</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="border border-gray-200 px-2 py-1 font-medium">{{ __('messages.malaysia') }}</td>
-                                                        <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $participant->malaysia_year ?? 0 }}</td>
+                                                        <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $participant->malaysia_year == 0 || !$participant->malaysia_year ? '-' : $participant->malaysia_year }}</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="border border-gray-200 px-2 py-1 font-medium">{{ __('messages.brunei') }}</td>
-                                                        <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $participant->brunei_year ?? 0 }}</td>
+                                                        <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $participant->brunei_year == 0 || !$participant->brunei_year ? '-' : $participant->brunei_year }}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>

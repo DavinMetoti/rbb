@@ -56,18 +56,18 @@
             <!-- Print Content Area -->
             <div class="print-content">
                 <!-- Print Header (Only visible when printing) -->
-                <div class="print-header hidden print:block mb-2">
-                    <div class="border-b-2 border-gray-800 pb-2 mb-2">
-                        <div class="flex items-center justify-center gap-2">
-                            <!-- Left Logo -->
-                            <div class="flex-shrink-0 w-20 h-20">
+                <div class="print-header hidden print:block">
+                    <div class="border-b-2 border-gray-800">
+                        <div class="flex items-center justify-between">
+                            <!-- Left Logo (Rizaldi) -->
+                            <div class="flex-shrink-0 w-24 h-24">
                                 <img src="{{ asset('assets/images/rizaldi-logo.jpg') }}" 
                                      alt="PT Rizaldi Logo" 
                                      class="w-full h-full object-contain">
                             </div>
                             
-                            <!-- Right Logo Box -->
-                            <div class="flex-shrink-0 w-48 h-48">
+                            <!-- Right Logo (Golden Tiger) - Made Larger -->
+                            <div class="flex-shrink-0 w-64 h-64">
                                 <img src="{{ asset('assets/images/golder-logo.jpg') }}" 
                                      alt="Golder Logo" 
                                      class="w-full h-full object-contain">
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 
-                <table class="w-full mb-8 bg-gray-50 rounded-lg shadow-sm border border-gray-200">
+                <table class="w-full bg-gray-50 rounded-lg shadow-sm border border-gray-200">
                 <thead>
                     <tr>
                         <th class="p-2 border bg-red-100" colspan="4">{{ __('messages.personal_information') }}</th>
@@ -132,7 +132,7 @@
                 <tbody>
                     <tr>
                         <td class="p-2 border text-center bg-blue-100">{{ __('messages.hong_kong') }}</td>
-                        <td class="p-2 border text-center">{{ $participant->hongkong_year }} {{ __('messages.years') }}</td>
+                        <td class="p-2 border text-center">{{ $participant->hongkong_year == 0 || !$participant->hongkong_year ? '-' : $participant->hongkong_year . ' ' . __('messages.years') }}</td>
                         <td class="p-2 border text-center bg-blue-100">&nbsp;</td>
                         <td class="p-2 border text-center bg-blue-100">{{ __('messages.learning') }}</td>
                         <td class="p-2 border text-center bg-blue-100">{{ __('messages.basic') }}</td>
@@ -140,7 +140,7 @@
                     </tr>
                     <tr>
                         <td class="p-2 border text-center bg-blue-100">{{ __('messages.singapore') }}</td>
-                        <td class="p-2 border text-center">{{ $participant->singapore_year }} {{ __('messages.years') }}</td>
+                        <td class="p-2 border text-center">{{ $participant->singapore_year == 0 || !$participant->singapore_year ? '-' : $participant->singapore_year . ' ' . __('messages.years') }}</td>
                         <td class="p-2 border text-center bg-blue-100">{{ __('messages.cantonese') }}</td>
                         <td class="p-2 border text-center">{{ $participant->cantonese == 'learning' ? '✓' : "" }}</td>
                         <td class="p-2 border text-center">{{ $participant->cantonese == 'basic' ? '✓' : "" }}</td>
@@ -148,7 +148,7 @@
                     </tr>
                     <tr>
                         <td class="p-2 border text-center bg-blue-100">{{ __('messages.taiwan') }}</td>
-                        <td class="p-2 border text-center">{{ $participant->taiwan_year }} {{ __('messages.years') }}</td>
+                        <td class="p-2 border text-center">{{ $participant->taiwan_year == 0 || !$participant->taiwan_year ? '-' : $participant->taiwan_year . ' ' . __('messages.years') }}</td>
                         <td class="p-2 border bg-blue-100 text-center">{{ __('messages.mandarine') }}</td>
                         <td class="p-2 border text-center">{{ $participant->mandarine == 'learning' ? '✓' : "" }}</td>
                         <td class="p-2 border text-center">{{ $participant->mandarine == 'basic' ? '✓' : "" }}</td>
@@ -156,7 +156,7 @@
                     </tr>
                     <tr>
                         <td class="p-2 border text-center bg-blue-100">{{ __('messages.malaysia') }}</td>
-                        <td class="p-2 border text-center">{{ $participant->malaysia_year }} {{ __('messages.years') }}</td>
+                        <td class="p-2 border text-center">{{ $participant->malaysia_year == 0 || !$participant->malaysia_year ? '-' : $participant->malaysia_year . ' ' . __('messages.years') }}</td>
                         <td class="p-2 border text-center bg-blue-100">{{ __('messages.english') }}</td>
                         <td class="p-2 border text-center">{{ $participant->english == 'learning' ? '✓' : "" }}</td>
                         <td class="p-2 border text-center">{{ $participant->english == 'basic' ? '✓' : "" }}</td>
@@ -164,7 +164,7 @@
                     </tr>
                     <tr>
                         <td class="p-2 border text-center bg-blue-100">{{ __('messages.brunei') }}</td>
-                        <td class="p-2 border text-center">{{ $participant->brunei_year }} {{ __('messages.years') }}</td>
+                        <td class="p-2 border text-center">{{ $participant->brunei_year == 0 || !$participant->brunei_year ? '-' : $participant->brunei_year . ' ' . __('messages.years') }}</td>
                         <td class="p-2 border text-center bg-blue-100">&nbsp;</td>
                         <td class="p-2 border text-center">&nbsp;</td>
                         <td class="p-2 border text-center">&nbsp;</td>
