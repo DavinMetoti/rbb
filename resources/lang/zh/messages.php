@@ -267,4 +267,5 @@ return [
     'close_menu' => '关闭菜单',
     'navigation' => '导航',
     'optional' => '可选',
+    'download_pdf' => '下载PDF',
 ];

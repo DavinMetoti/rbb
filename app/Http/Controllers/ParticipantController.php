@@ -325,6 +325,43 @@ class ParticipantController extends Controller
     }
 
     /**
+     * Generate PDF for participant
+     */
+    public function downloadPdf(string $id)
+    {
+        $participant = Participant::with('workHistories')->findOrFail($id);
+        
+        // Debug: Log participant photo info
+        Log::info('PDF Generation', [
+            'participant_id' => $participant->id,
+            'photo_path' => $participant->photo_path,
+            'storage_path' => $participant->photo_path ? storage_path('app/public/' . $participant->photo_path) : null,
+            'file_exists' => $participant->photo_path ? file_exists(storage_path('app/public/' . $participant->photo_path)) : false,
+        ]);
+        
+        // Load the view for PDF with better options for image handling
+        $pdf = app('dompdf.wrapper')->loadView('contents.pages.participant.pdf', compact('participant'))
+            ->setPaper('legal', 'portrait')
+            ->setOptions([
+                'isHtml5ParserEnabled' => true,
+                'isRemoteEnabled' => true,
+                'isPhpEnabled' => true,
+                'debugKeepTemp' => true,
+                'chroot' => storage_path('app/public'),
+                'defaultFont' => 'DejaVu Sans',
+                'dpi' => 96,
+                'enable_font_subsetting' => false,
+                'isFontSubsettingEnabled' => false,
+            ]);
+
+        // Generate filename
+        $filename = 'participant_' . $participant->code . '_' . date('Y-m-d_H-i-s') . '.pdf';
+
+        // Return the PDF download response
+        return $pdf->download($filename);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)

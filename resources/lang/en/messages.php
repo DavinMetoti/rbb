@@ -249,4 +249,5 @@ return [
     'close_menu' => 'Close Menu',
     'navigation' => 'Navigation',
     'optional' => 'Optional',
+    'download_pdf' => 'Download PDF',
 ];

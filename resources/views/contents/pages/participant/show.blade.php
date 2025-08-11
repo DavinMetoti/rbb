@@ -40,41 +40,21 @@
                                 </span>
                             </div>
                         @endauth
-                        <button onclick="printParticipant()" 
-                                class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 text-center">
+                        <a href="{{ route('participants.pdf', $participant) }}" 
+                           class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 text-center">
                             <span class="flex items-center justify-center space-x-2">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                 </svg>
-                                <span>Print</span>
+                                <span>{{ __('messages.download_pdf') ?? 'Download PDF' }}</span>
                             </span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
             
             <!-- Print Content Area -->
             <div class="print-content">
-                <!-- Print Header (Only visible when printing) -->
-                <div class="print-header hidden print:block">
-                    <div class="border-b-2 border-gray-800">
-                        <div class="flex items-center justify-between">
-                            <!-- Left Logo (Rizaldi) -->
-                            <div class="flex-shrink-0 w-24 h-24">
-                                <img src="{{ asset('assets/images/rizaldi-logo.jpg') }}" 
-                                     alt="PT Rizaldi Logo" 
-                                     class="w-full h-full object-contain">
-                            </div>
-                            
-                            <!-- Right Logo (Golden Tiger) - Made Larger -->
-                            <div class="flex-shrink-0 w-64 h-64">
-                                <img src="{{ asset('assets/images/golder-logo.jpg') }}" 
-                                     alt="Golder Logo" 
-                                     class="w-full h-full object-contain">
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 
                 <table class="w-full bg-gray-50 rounded-lg shadow-sm border border-gray-200">
                 <thead>
@@ -330,131 +310,6 @@
     </div>
     </div>
 
-    <!-- Print Styles -->
-    <style>
-        @page {
-            size: legal;
-            margin: 0.5in;
-            /* Hide browser's default headers and footers */
-            @top-left { content: none; }
-            @top-center { content: none; }
-            @top-right { content: none; }
-            @bottom-left { content: none; }
-            @bottom-center { content: none; }
-            @bottom-right { content: none; }
-        }
-        
-        @media print {
-            /* Hide browser's default print headers and footers */
-            @page {
-                margin: 0.5in;
-                @top-left { content: none; }
-                @top-center { content: none; }
-                @top-right { content: none; }
-                @bottom-left { content: none; }
-                @bottom-center { content: none; }
-                @bottom-right { content: none; }
-            }
-            
-            /* Global font size reduction */
-            body {
-                font-size: 11px !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-            
-            /* Remove all spacing from main container */
-            .min-h-screen.bg-gray-50.py-8.px-4 {
-                padding: 0 !important;
-                margin: 0 !important;
-                min-height: auto !important;
-            }
-            
-            /* Remove max-width and center from content container */
-            .max-w-6xl.mx-auto {
-                max-width: none !important;
-                margin: 0 !important;
-            }
-            
-            /* Remove top spacing from print content */
-            .print-content {
-                margin-top: 0 !important;
-                padding-top: 0 !important;
-            }
-            
-            /* Hide the header section with navigation buttons */
-            .bg-white.rounded-xl.shadow-sm.border.border-gray-100.p-4 {
-                display: none !important;
-            }
-            
-            /* Show the print header with logos - remove top spacing */
-            .print-header {
-                display: block !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                margin-bottom: 0px !important;
-            }
-            
-            /* Remove spacing from logo container */
-            .print-header .border-b-2 {
-                margin: 0 !important;
-                padding-bottom: 5px !important;
-                margin-bottom: 5px !important;
-            }
-            
-            /* Table styling to match blade colors */
-            table {
-                border-collapse: collapse;
-                width: 100%;
-                margin-bottom: 15px !important;
-                font-size: 11px !important;
-            }
-            
-            th, td {
-                border: 1px solid #000;
-                padding: 6px !important;
-                text-align: center;
-                font-size: 11px !important;
-            }
-            
-            /* Red headers */
-            .bg-red-100 {
-                background-color: #fee2e2 !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            
-            /* Blue headers */
-            .bg-blue-100 {
-                background-color: #dbeafe !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            
-            /* Gray backgrounds */
-            .bg-gray-50 {
-                background-color: #f9fafb !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            
-            /* Text alignment */
-            .text-left {
-                text-align: left !important;
-            }
-            
-            .text-center {
-                text-align: center !important;
-            }
-            
-            /* Remove shadows and rounded corners for print */
-            .rounded-lg, .shadow-sm {
-                border-radius: 0 !important;
-                box-shadow: none !important;
-            }
-        }
-    </style>
-
     <!-- Image Preview Modal -->
     <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
         <div class="relative max-w-4xl max-h-screen mx-4">
@@ -469,18 +324,6 @@
     </div>
 
     <script>
-        // Print functionality
-        function printParticipant() {
-            // Hide browser's default print headers/footers if possible
-            if (window.chrome) {
-                // For Chrome/Chromium browsers
-                window.print();
-            } else {
-                // For other browsers
-                window.print();
-            }
-        }
-        
         // Photo preview functionality
         document.addEventListener('DOMContentLoaded', function() {
             const photoElements = document.querySelectorAll('.photo-preview');
