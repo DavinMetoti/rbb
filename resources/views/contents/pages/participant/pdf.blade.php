@@ -45,7 +45,10 @@
             height: 80px;
             object-fit: contain;
         }
-        
+        .experience {
+            font-size: 7px !important;
+        }
+
         .logo-right img {
             width: 100%;
             height: 80px;
@@ -61,16 +64,16 @@
         
         th, td {
             border: 1px solid #000;
-            padding: 3px;
+            padding: 2px;
             text-align: center;
-            font-size: 8px;
+            font-size: 7px;
             vertical-align: middle;
             line-height: 1.1;
         }
         
         th {
             font-weight: bold;
-            font-size: 9px;
+            font-size: 7px;
         }
         
         .text-left {
@@ -92,26 +95,26 @@
         .photo-container {
             text-align: center;
             vertical-align: top;
-            padding: 6px;
+            padding: 5px;
         }
         
         .photo-container img {
-            max-width: 120px;
-            max-height: 160px;
+            max-width: 100%;
+            max-height: 400px;
             object-fit: contain;
             border: 1px solid #ccc;
         }
         
         .no-photo {
-            width: 120px;
-            height: 160px;
+            width: 180px;
+            height: 240px;
             background-color: #f3f4f6;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             color: #6b7280;
             border: 1px solid #ccc;
-            font-size: 8px;
+            font-size: 10px;
         }
         
         .page-break {
@@ -344,15 +347,15 @@
                                 }
                             @endphp
                             @if(isset($imageData) && $imageData)
-                                <div style="text-align: center; padding: 6px;">
+                                <div style="text-align: center; padding: 8px;">
                                     <img src="data:{{ $mimeType }};base64,{{ $imageData }}" 
                                          alt="{{ $participant->name }}" 
-                                         style="max-width: 120px; max-height: 160px; object-fit: contain; border: 1px solid #ddd; display: block; margin: 0 auto;">
-                                    <div style="margin-top: 3px; font-size: 7px; color: #666;">{{ $participant->name }}</div>
+                                         style="max-width: 100%; max-height: 400px; object-fit: contain; border: 1px solid #ddd; display: block; margin: 0 auto;">
+                                    <div style="margin-top: 5px; font-size: 8px; color: #666;">{{ $participant->name }}</div>
                                 </div>
                             @else
                                 <div class="no-photo">
-                                    <div style="text-align: center; color: #666; font-size: 8px;">
+                                    <div style="text-align: center; color: #666; font-size: 10px;">
                                         Image processing failed
                                         <br>Path: {{ basename($participant->photo_path) }}
                                     </div>
@@ -360,7 +363,7 @@
                             @endif
                         @else
                             <div class="no-photo">
-                                <div style="text-align: center; color: #666; font-size: 8px;">
+                                <div style="text-align: center; color: #666; font-size: 10px;">
                                     Photo file not accessible
                                     <br>{{ basename($participant->photo_path ?? 'N/A') }}
                                 </div>
@@ -368,7 +371,7 @@
                         @endif
                     @else
                         <div class="no-photo">
-                            <div style="text-align: center; color: #666; font-size: 9px; padding: 15px;">
+                            <div style="text-align: center; color: #666; font-size: 11px; padding: 20px;">
                                 No Photo Available
                             </div>
                         </div>
@@ -376,95 +379,95 @@
                 </td>
             </tr>
             <tr>
-                <td class="bg-blue">ELDERLY SICK CARE EXPERIENCE</td>
+                <td class="bg-blue experience">ELDERLY SICK CARE EXPERIENCE</td>
                 <td>{{ $participant->elderly_sick_care_experience ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">NEWBORN CARE EXPERIENCE</td>
+                <td class="bg-blue experience">NEWBORN CARE EXPERIENCE</td>
                 <td>{{ $participant->newborn_care_experience ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">CHILDREN CARE EXPERIENCE</td>
+                <td class="bg-blue experience">CHILDREN CARE EXPERIENCE</td>
                 <td>{{ $participant->children_care_experience ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">I CAN TAKE CARE OF DOG</td>
+                <td class="bg-blue experience">I CAN TAKE CARE OF DOG</td>
                 <td>{{ $participant->i_can_take_care_of_dog ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">I CAN TAKE CARE OF CAT</td>
+                <td class="bg-blue experience">I CAN TAKE CARE OF CAT</td>
                 <td>{{ $participant->i_can_take_care_of_cat ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">COOKING' CLEANING' WASHING'IRONING GO TO MARKET</td>
+                <td class="bg-blue experience">COOKING' CLEANING' WASHING'IRONING GO TO MARKET</td>
                 <td>{{ $participant->cooking_cleaning_washing_ironing_go_to_market ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">I CAN WASH CAR</td>
+                <td class="bg-blue experience">I CAN WASH CAR</td>
                 <td>{{ $participant->i_can_wash_car ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">SHUTTLE SCHOOL</td>
+                <td class="bg-blue experience">SHUTTLE SCHOOL</td>
                 <td>{{ $participant->shuttle_school ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">ASSIST TOILETING' CHANGE DIAPER' BATH EXPERIENCE</td>
+                <td class="bg-blue experience">ASSIST TOILETING' CHANGE DIAPER' BATH EXPERIENCE</td>
                 <td>{{ $participant->assist_toileting_change_diaper_bath_experience ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">GO TO HOSPITAL' HANDLE MEDICATION EXPERIENCE</td>
+                <td class="bg-blue experience">GO TO HOSPITAL' HANDLE MEDICATION EXPERIENCE</td>
                 <td>{{ $participant->go_to_hospital_handle_medication_experience ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">DO EXERCISE</td>
+                <td class="bg-blue experience">DO EXERCISE</td>
                 <td>{{ $participant->do_exercise ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">USE WHEELCHAIR</td>
+                <td class="bg-blue experience">USE WHEELCHAIR</td>
                 <td>{{ $participant->use_wheelchair ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">PROVIDE DAILY ASSISTANCE</td>
+                <td class="bg-blue experience">PROVIDE DAILY ASSISTANCE</td>
                 <td>{{ $participant->provide_daily_assistance ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">ORAL FEEDING</td>
+                <td class="bg-blue experience">ORAL FEEDING</td>
                 <td>{{ $participant->oral_feeding ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">WITH DEMENTIA CARE EXPERIENCE</td>
+                <td class="bg-blue experience">WITH DEMENTIA CARE EXPERIENCE</td>
                 <td>{{ $participant->with_dementia_care_experience ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">ASSIST WALKING</td>
+                <td class="bg-blue experience">ASSIST WALKING</td>
                 <td>{{ $participant->assist_walking ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">RECEIVED COVID-19 VACCINE INJECTION (3 DOSE)</td>
+                <td class="bg-blue experience">RECEIVED COVID-19 VACCINE INJECTION (3 DOSE)</td>
                 <td>{{ $participant->received_covid19_vaccine_injection_3_dose ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">I CAN INJECT DIABETES</td>
+                <td class="bg-blue experience">I CAN INJECT DIABETES</td>
                 <td>{{ $participant->i_can_inject_diabetes ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">I CAN TAKE CARE OF IDIOTS</td>
+                <td class="bg-blue experience">I CAN TAKE CARE OF IDIOTS</td>
                 <td>{{ $participant->i_can_take_care_of_idiots ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">SUCTION PHLEGM I CAN DO IT</td>
+                <td class="bg-blue experience">SUCTION PHLEGM I CAN DO IT</td>
                 <td>{{ $participant->suction_phlegm_ican_do_it ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">I LIKE TAKE CARE OF A CHILDREN</td>
+                <td class="bg-blue experience">I LIKE TAKE CARE OF A CHILDREN</td>
                 <td>{{ $participant->i_like_take_care_of_a_children ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">I LIKE TAKE CARE OF A NEWBORN BABY</td>
+                <td class="bg-blue experience">I LIKE TAKE CARE OF A NEWBORN BABY</td>
                 <td>{{ $participant->i_like_take_care_of_a_newborn_baby ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">I LIKE TAKE CARE OF THE ELDERLY</td>
+                <td class="bg-blue experience">I LIKE TAKE CARE OF THE ELDERLY</td>
                 <td>{{ $participant->i_like_take_care_of_the_elderly ? "✓" : "-" }}</td>
             </tr>
         </tbody>
