@@ -321,6 +321,31 @@
                     </div>
                 </div>
 
+                <!-- New Job & Date Section -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                    <h2 class="text-lg font-medium text-gray-900 mb-6 pb-3 border-b border-gray-100">{{ __('messages.new_job') }} & {{ __('messages.date') }}</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-1">
+                            <label for="new_job" class="block text-sm font-medium text-gray-700">{{ __('messages.new_job') }}</label>
+                            <input type="text" name="new_job" id="new_job" value="{{ old('new_job', $participant->new_job) }}"
+                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('new_job') border-red-300 @enderror"
+                                   placeholder="Enter new job">
+                            @error('new_job')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        
+                        <div class="space-y-1">
+                            <label for="date" class="block text-sm font-medium text-gray-700">{{ __('messages.date') }}</label>
+                            <input type="date" name="date" id="date" value="{{ old('date', $participant->date) }}"
+                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('date') border-red-300 @enderror">
+                            @error('date')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Photo Section -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                     <h2 class="text-lg font-medium text-gray-900 mb-6 pb-3 border-b border-gray-100">{{ __('messages.participant_photo') }}</h2>

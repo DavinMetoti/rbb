@@ -56,6 +56,8 @@ class Participant extends Model
         'i_like_take_care_of_a_newborn_baby',
         'i_like_take_care_of_the_elderly',
         'photo_path',
+        'new_job',
+        'date',
     ];
 
     public function workHistories()

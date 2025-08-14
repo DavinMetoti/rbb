@@ -100,6 +100,8 @@ return [
     'current_status' => '当前状态',
     'number_of_children' => '子女数量',
     'add_work_history' => '添加工作历史',
+    'new_job' => '新工作',
+    'date' => '日期',
     'marital_status' => '婚姻状况',
     'current_photo' => '当前照片',
     'upload_photo' => '上传照片',

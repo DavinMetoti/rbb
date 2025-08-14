@@ -305,6 +305,25 @@
                     </tr>
                 </tbody>
             </table>
+            <!-- New Job Section -->
+            <table class="w-full mb-8 bg-gray-50 rounded-lg shadow-sm border border-gray-200">
+                <tbody>
+                    <tr>
+                        <td class="p-2 border text-center bg-blue-100" colspan="1">{{ __('messages.new_job') }}</td>
+                        <td class="p-2 border text-center" style="width: 60%;" colspan="2" rowspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 border text-center" style="height: 60px; vertical-align: top; padding-top: 8px;">
+                            {{ $participant->new_job ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 border text-center bg-blue-100" style="width: 60%;">&nbsp;</td>
+                        <td class="p-2 border text-center bg-blue-100" style="width: 20%;">{{ __('messages.date') }}:</td>
+                        <td class="p-2 border text-center" style="width: 20%;" colspan="4">{{ $participant->date ? \Carbon\Carbon::parse($participant->date)->format('d/m/Y') : '' }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <!-- End Print Content Area -->
     </div>

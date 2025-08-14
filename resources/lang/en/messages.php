@@ -101,6 +101,8 @@ return [
     'current_status' => 'Current Status',
     'number_of_children' => 'Number of Children',
     'add_work_history' => 'Add Work History',
+    'new_job' => 'New Job',
+    'date' => 'Date',
     
     // Options
     'select_gender' => 'Select gender',

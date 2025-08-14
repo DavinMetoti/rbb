@@ -85,6 +85,10 @@ class ParticipantController extends Controller
             // Photo validation - make it more flexible and handle file upload issues
             'photo_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:10240', // 10MB max, webp support
             
+            // New fields validation
+            'new_job' => 'nullable|string|max:255',
+            'date' => 'nullable|date',
+            
             // Experience/Skills validation - all boolean fields
             'elderly_healthy_care_experience' => 'nullable|boolean',
             'elderly_sick_care_experience' => 'nullable|boolean',
@@ -437,6 +441,10 @@ class ParticipantController extends Controller
             'mandarine' => 'nullable|in:learning,basic,good',
             'english' => 'nullable|in:learning,basic,good',
             'photo_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:10240', // 10MB max, webp support, optional for update
+            
+            // New fields validation
+            'new_job' => 'nullable|string|max:255',
+            'date' => 'nullable|date',
             
             // Experience/Skills validation - all boolean fields
             'elderly_healthy_care_experience' => 'nullable|boolean',

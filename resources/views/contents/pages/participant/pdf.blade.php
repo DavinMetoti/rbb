@@ -9,14 +9,14 @@
             font-family: 'DejaVu Sans', Arial, sans-serif;
             font-size: 9px;
             margin: 0;
-            padding: 15px;
+            padding: 2px;
             line-height: 1.2;
         }
         
         .header {
             border-bottom: 2px solid #333;
             margin-bottom: 8px;
-            padding-bottom: 3px;
+            padding-bottom: 2px;
         }
         
         .logos {
@@ -95,7 +95,7 @@
         .photo-container {
             text-align: center;
             vertical-align: top;
-            padding: 5px;
+            padding: 2px;
         }
         
         .photo-container img {
@@ -261,33 +261,36 @@
     </table>
 
     <!-- Work History -->
-    @foreach($participant->workHistories as $index => $workHistory)
-    <table>
-        <thead>
-            <tr>
-                <th class="bg-red" colspan="4">{{ __('messages.work_history') }} {{ $index + 1 }}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="bg-blue">{{ __('messages.country') }}</td>
-                <td>{{ $workHistory->country }}</td>
-                <td class="bg-blue">{{ __('messages.target_employer') }}</td>
-                <td>{{ $workHistory->target }}</td>
-            </tr>
-            <tr>
-                <td class="bg-blue">{{ __('messages.period') }}</td>
-                <td>{{ $workHistory->period }}</td>
-                <td class="bg-blue">{{ __('messages.reason_for_leaving') }}</td>
-                <td>{{ $workHistory->reason_for_leaving }}</td>
-            </tr>
-            <tr>
-                <td class="bg-blue">{{ __('messages.remarks') }}</td>
-                <td class="text-left" colspan="3">{{ $workHistory->remake }}</td>
-            </tr>
-        </tbody>
-    </table>
-    @endforeach
+    @for($i = 0; $i < 3; $i++)
+        @php
+            $workHistory = $participant->workHistories->get($i);
+        @endphp
+        <table>
+            <thead>
+                <tr>
+                    <th class="bg-red" colspan="4">{{ __('messages.work_history') }} {{ $i + 1 }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="bg-blue">{{ __('messages.country') }}</td>
+                    <td>{{ $workHistory->country ?? '' }}</td>
+                    <td class="bg-blue">{{ __('messages.target_employer') }}</td>
+                    <td>{{ $workHistory->target ?? '' }}</td>
+                </tr>
+                <tr>
+                    <td class="bg-blue">{{ __('messages.period') }}</td>
+                    <td>{{ $workHistory->period ?? '' }}</td>
+                    <td class="bg-blue">{{ __('messages.reason_for_leaving') }}</td>
+                    <td>{{ $workHistory->reason_for_leaving ?? '' }}</td>
+                </tr>
+                <tr>
+                    <td class="bg-blue">{{ __('messages.remarks') }}</td>
+                    <td class="text-left" colspan="3">{{ $workHistory->remake ?? '' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    @endfor
 
     <!-- Experience & Photo -->
     <table>
@@ -347,7 +350,7 @@
                                 }
                             @endphp
                             @if(isset($imageData) && $imageData)
-                                <div style="text-align: center; padding: 8px;">
+                                <div style="text-align: center; padding: 2px;">
                                     <img src="data:{{ $mimeType }};base64,{{ $imageData }}" 
                                          alt="{{ $participant->name }}" 
                                          style="max-width: 100%; max-height: 400px; object-fit: contain; border: 1px solid #ddd; display: block; margin: 0 auto;">
@@ -371,7 +374,7 @@
                         @endif
                     @else
                         <div class="no-photo">
-                            <div style="text-align: center; color: #666; font-size: 11px; padding: 20px;">
+                            <div style="text-align: center; color: #666; font-size: 11px; padding: 2px;">
                                 No Photo Available
                             </div>
                         </div>
@@ -469,6 +472,26 @@
             <tr>
                 <td class="bg-blue experience">I LIKE TAKE CARE OF THE ELDERLY</td>
                 <td>{{ $participant->i_like_take_care_of_the_elderly ? "✓" : "-" }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- New Job Section -->
+    <table>
+        <tbody>
+            <tr>
+                <td class="bg-blue">{{ __('messages.new_job') }}</td>
+                <td colspan="2" rowspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+                <td style="height: 40px; vertical-align: top; padding-top: 2px; text-align: left; padding-left: 2px;">
+                    {{ $participant->new_job ?? '' }}
+                </td>
+            </tr>
+            <tr>
+                <td class="bg-blue">&nbsp;</td>
+                <td class="bg-blue">{{ __('messages.date') }}:</td>
+                <td>{{ $participant->date ? \Carbon\Carbon::parse($participant->date)->format('d/m/Y') : '' }}</td>
             </tr>
         </tbody>
     </table>
