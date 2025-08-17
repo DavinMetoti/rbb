@@ -329,7 +329,7 @@
         </thead>
         <tbody>
             <tr class="photo-row">
-                <td class="bg-blue" style="width: 40%;">ELDERLY HEALTHY CARE EXPERIENCE</td>
+                <td class="bg-blue" style="width: 40%;font-style: italic;">ELDERLY HEALTHY CARE EXPERIENCE</td>
                 <td class="" style="width: 10%;">{{ $participant->elderly_healthy_care_experience ? "✓" : "-" }}</td>
                 <td class="photo-container" rowspan="24" colspan="2">
                     @if($participant->photo_path)
@@ -409,95 +409,95 @@
                 </td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">ELDERLY SICK CARE EXPERIENCE</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">ELDERLY SICK CARE EXPERIENCE</td>
                 <td class="" style="width: 10%;">{{ $participant->elderly_sick_care_experience ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">NEWBORN CARE EXPERIENCE</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">NEWBORN CARE EXPERIENCE</td>
                 <td class="" style="width: 10%;">{{ $participant->newborn_care_experience ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">CHILDREN CARE EXPERIENCE</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">CHILDREN CARE EXPERIENCE</td>
                 <td class="" style="width: 10%;">{{ $participant->children_care_experience ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">I CAN TAKE CARE OF DOG</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">I CAN TAKE CARE OF DOG</td>
                 <td class="" style="width: 10%;">{{ $participant->i_can_take_care_of_dog ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">I CAN TAKE CARE OF CAT</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">I CAN TAKE CARE OF CAT</td>
                 <td class="" style="width: 10%;">{{ $participant->i_can_take_care_of_cat ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">COOKING' CLEANING' WASHING'IRONING GO TO MARKET</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">COOKING' CLEANING' WASHING'IRONING GO TO MARKET</td>
                 <td class="" style="width: 10%;">{{ $participant->cooking_cleaning_washing_ironing_go_to_market ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">I CAN WASH CAR</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">I CAN WASH CAR</td>
                 <td class="" style="width: 10%;">{{ $participant->i_can_wash_car ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">SHUTTLE SCHOOL</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">SHUTTLE SCHOOL</td>
                 <td class="" style="width: 10%;">{{ $participant->shuttle_school ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">ASSIST TOILETING' CHANGE DIAPER' BATH EXPERIENCE</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">ASSIST TOILETING' CHANGE DIAPER' BATH EXPERIENCE</td>
                 <td class="" style="width: 10%;">{{ $participant->assist_toileting_change_diaper_bath_experience ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">GO TO HOSPITAL' HANDLE MEDICATION EXPERIENCE</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">GO TO HOSPITAL' HANDLE MEDICATION EXPERIENCE</td>
                 <td class="" style="width: 10%;">{{ $participant->go_to_hospital_handle_medication_experience ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">DO EXERCISE</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">DO EXERCISE</td>
                 <td class="" style="width: 10%;">{{ $participant->do_exercise ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">USE WHEELCHAIR</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">USE WHEELCHAIR</td>
                 <td class="" style="width: 10%;">{{ $participant->use_wheelchair ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">PROVIDE DAILY ASSISTANCE</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">PROVIDE DAILY ASSISTANCE</td>
                 <td class="" style="width: 10%;">{{ $participant->provide_daily_assistance ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">ORAL FEEDING</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">ORAL FEEDING</td>
                 <td class="" style="width: 10%;">{{ $participant->oral_feeding ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">WITH DEMENTIA CARE EXPERIENCE</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">WITH DEMENTIA CARE EXPERIENCE</td>
                 <td class="" style="width: 10%;">{{ $participant->with_dementia_care_experience ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">ASSIST WALKING</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">ASSIST WALKING</td>
                 <td class="" style="width: 10%;">{{ $participant->assist_walking ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">RECEIVED COVID-19 VACCINE INJECTION (3 DOSE)</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">RECEIVED COVID-19 VACCINE INJECTION (3 DOSE)</td>
                 <td class="" style="width: 10%;">{{ $participant->received_covid19_vaccine_injection_3_dose ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">I CAN INJECT DIABETES</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">I CAN INJECT DIABETES</td>
                 <td class="" style="width: 10%;">{{ $participant->i_can_inject_diabetes ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">I CAN TAKE CARE OF IDIOTS</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">I CAN TAKE CARE OF IDIOTS</td>
                 <td class="" style="width: 10%;">{{ $participant->i_can_take_care_of_idiots ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">SUCTION PHLEGM I CAN DO IT</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">SUCTION PHLEGM I CAN DO IT</td>
                 <td class="" style="width: 10%;">{{ $participant->suction_phlegm_ican_do_it ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">I LIKE TAKE CARE OF A CHILDREN</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">I LIKE TAKE CARE OF A CHILDREN</td>
                 <td class="" style="width: 10%;">{{ $participant->i_like_take_care_of_a_children ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">I LIKE TAKE CARE OF A NEWBORN BABY</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">I LIKE TAKE CARE OF A NEWBORN BABY</td>
                 <td class="" style="width: 10%;">{{ $participant->i_like_take_care_of_a_newborn_baby ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience" style="width: 40%;">I LIKE TAKE CARE OF THE ELDERLY</td>
+                <td class="bg-blue experience" style="width: 40%;font-style: italic;">I LIKE TAKE CARE OF THE ELDERLY</td>
                 <td class="" style="width: 10%;">{{ $participant->i_like_take_care_of_the_elderly ? "✓" : "-" }}</td>
             </tr>
         </tbody>
