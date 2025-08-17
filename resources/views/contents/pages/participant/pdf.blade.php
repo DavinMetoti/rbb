@@ -247,42 +247,42 @@
             <tr>
                 <td class="bg-blue" style="width: 25%;">{{ __('messages.hong_kong') }}</td>
                 <td style="width: 25%;">{{ $participant->hongkong_year == 0 || !$participant->hongkong_year ? '-' : $participant->hongkong_year . ' ' . __('messages.years') }}</td>
-                <td class="bg-blue" style="width: 20%;">&nbsp;</td>
-                <td class="bg-blue" style="width: 10%;">{{ __('messages.learning') }}</td>
-                <td class="bg-blue" style="width: 10%;">{{ __('messages.basic') }}</td>
-                <td class="bg-blue" style="width: 10%;">{{ __('messages.good') }}</td>
+                <td class="bg-blue" style="width: 25%;">&nbsp;</td>
+                <td class="bg-blue" style="width: 8.3%;">{{ __('messages.learning') }}</td>
+                <td class="bg-blue" style="width: 8.3%;">{{ __('messages.basic') }}</td>
+                <td class="bg-blue" style="width: 8.3%;">{{ __('messages.good') }}</td>
             </tr>
             <tr>
                 <td class="bg-blue" style="width: 25%;">{{ __('messages.singapore') }}</td>
                 <td style="width: 25%;">{{ $participant->singapore_year == 0 || !$participant->singapore_year ? '-' : $participant->singapore_year . ' ' . __('messages.years') }}</td>
-                <td class="bg-blue" style="width: 20%;">{{ __('messages.cantonese') }}</td>
-                <td style="width: 10%;">{{ $participant->cantonese == 'learning' ? '✓' : "" }}</td>
-                <td style="width: 10%;">{{ $participant->cantonese == 'basic' ? '✓' : "" }}</td>
-                <td style="width: 10%;">{{ $participant->cantonese == 'good' ? '✓' : "" }}</td>
+                <td class="bg-blue" style="width: 25%;">{{ __('messages.cantonese') }}</td>
+                <td style="width: 8.3%;">{{ $participant->cantonese == 'learning' ? '✓' : "" }}</td>
+                <td style="width: 8.3%;">{{ $participant->cantonese == 'basic' ? '✓' : "" }}</td>
+                <td style="width: 8.3%;">{{ $participant->cantonese == 'good' ? '✓' : "" }}</td>
             </tr>
             <tr>
                 <td class="bg-blue" style="width: 25%;">{{ __('messages.taiwan') }}</td>
                 <td style="width: 25%;">{{ $participant->taiwan_year == 0 || !$participant->taiwan_year ? '-' : $participant->taiwan_year . ' ' . __('messages.years') }}</td>
-                <td class="bg-blue" style="width: 20%;">{{ __('messages.mandarine') }}</td>
-                <td style="width: 10%;">{{ $participant->mandarine == 'learning' ? '✓' : "" }}</td>
-                <td style="width: 10%;">{{ $participant->mandarine == 'basic' ? '✓' : "" }}</td>
-                <td style="width: 10%;">{{ $participant->mandarine == 'good' ? '✓' : "" }}</td>
+                <td class="bg-blue" style="width: 25%;">{{ __('messages.mandarine') }}</td>
+                <td style="width: 8.3%;">{{ $participant->mandarine == 'learning' ? '✓' : "" }}</td>
+                <td style="width: 8.3%;">{{ $participant->mandarine == 'basic' ? '✓' : "" }}</td>
+                <td style="width: 8.3%;">{{ $participant->mandarine == 'good' ? '✓' : "" }}</td>
             </tr>
             <tr>
                 <td class="bg-blue" style="width: 25%;">{{ __('messages.malaysia') }}</td>
                 <td style="width: 25%;">{{ $participant->malaysia_year == 0 || !$participant->malaysia_year ? '-' : $participant->malaysia_year . ' ' . __('messages.years') }}</td>
-                <td class="bg-blue" style="width: 20%;">{{ __('messages.english') }}</td>
-                <td style="width: 10%;">{{ $participant->english == 'learning' ? '✓' : "" }}</td>
-                <td style="width: 10%;">{{ $participant->english == 'basic' ? '✓' : "" }}</td>
-                <td style="width: 10%;">{{ $participant->english == 'good' ? '✓' : "" }}</td>
+                <td class="bg-blue" style="width: 25%;">{{ __('messages.english') }}</td>
+                <td style="width: 8.3%;">{{ $participant->english == 'learning' ? '✓' : "" }}</td>
+                <td style="width: 8.3%;">{{ $participant->english == 'basic' ? '✓' : "" }}</td>
+                <td style="width: 8.3%;">{{ $participant->english == 'good' ? '✓' : "" }}</td>
             </tr>
             <tr>
                 <td class="bg-blue" style="width: 25%;">{{ __('messages.brunei') }}</td>
                 <td style="width: 25%;">{{ $participant->brunei_year == 0 || !$participant->brunei_year ? '-' : $participant->brunei_year . ' ' . __('messages.years') }}</td>
-                <td class="bg-blue" style="width: 20%;">&nbsp;</td>
-                <td style="width: 10%;">&nbsp;</td>
-                <td style="width: 10%;">&nbsp;</td>
-                <td style="width: 10%;">&nbsp;</td>
+                <td class="bg-blue" style="width: 25%;">&nbsp;</td>
+                <td style="width: 8.3%;">&nbsp;</td>
+                <td style="width: 8.3%;">&nbsp;</td>
+                <td style="width: 8.3%;">&nbsp;</td>
             </tr>
         </tbody>
     </table>
