@@ -9,14 +9,14 @@
             font-family: 'DejaVu Sans', Arial, sans-serif;
             font-size: 9px;
             margin: 0;
-            padding: 2px;
+            padding: 1px;
             line-height: 1.2;
         }
         
         .header {
             border-bottom: 2px solid #333;
-            margin-bottom: 8px;
-            padding-bottom: 2px;
+            margin-bottom: 5px;
+            padding-bottom: 1px;
         }
         
         .logos {
@@ -48,6 +48,11 @@
         .experience {
             font-size: 7px !important;
         }
+        
+        .experience-value {
+            font-size: 9px !important;
+            font-weight: bold;
+        }
 
         .logo-right img {
             width: 100%;
@@ -58,17 +63,18 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             font-size: 8px;
         }
         
         th, td {
             border: 1px solid #000;
-            padding: 2px;
+            padding: 1px;
             text-align: center;
             font-size: 7px;
             vertical-align: middle;
             line-height: 1.1;
+            height: 15px;
         }
         
         th {
@@ -95,7 +101,28 @@
         .photo-container {
             text-align: center;
             vertical-align: top;
-            padding: 2px;
+            padding: 1px;
+            height: auto;
+        }
+        
+        .photo-row {
+            height: auto;
+        }
+        
+        .col-25 {
+            width: 25%;
+        }
+        
+        .col-20 {
+            width: 20%;
+        }
+        
+        .col-15 {
+            width: 15%;
+        }
+        
+        .col-10 {
+            width: 10%;
         }
         
         .photo-container img {
@@ -170,40 +197,40 @@
         </thead>
         <tbody>
             <tr>
-                <td class="bg-blue">{{ __('messages.name') }}</td>
-                <td>{{ $participant->name }}</td>
-                <td class="bg-blue">{{ __('messages.birth_date') }}</td>
-                <td>{{ $participant->birth_date }}</td>
+                <td class="bg-blue col-25">{{ __('messages.name') }}</td>
+                <td class="col-25">{{ $participant->name }}</td>
+                <td class="bg-blue col-25">{{ __('messages.birth_date') }}</td>
+                <td class="col-25">{{ $participant->birth_date }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">{{ __('messages.gender') }}</td>
-                <td>{{ $participant->gender }}</td>
-                <td class="bg-blue">{{ __('messages.age') }}</td>
-                <td>{{ \Carbon\Carbon::parse($participant->birth_date)->age }}</td>
+                <td class="bg-blue col-25">{{ __('messages.gender') }}</td>
+                <td class="col-25">{{ $participant->gender }}</td>
+                <td class="bg-blue col-25">{{ __('messages.age') }}</td>
+                <td class="col-25">{{ \Carbon\Carbon::parse($participant->birth_date)->age }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">{{ __('messages.nationality') }}</td>
-                <td>{{ $participant->nationality }}</td>
-                <td class="bg-blue">{{ __('messages.height') }}</td>
-                <td>{{ $participant->height }} cm</td>
+                <td class="bg-blue col-25">{{ __('messages.nationality') }}</td>
+                <td class="col-25">{{ $participant->nationality }}</td>
+                <td class="bg-blue col-25">{{ __('messages.height') }}</td>
+                <td class="col-25">{{ $participant->height }} cm</td>
             </tr>
             <tr>
-                <td class="bg-blue">{{ __('messages.religion') }}</td>
-                <td>{{ $participant->religion }}</td>
-                <td class="bg-blue">{{ __('messages.weight') }}</td>
-                <td>{{ $participant->weight }} kg</td>
+                <td class="bg-blue col-25">{{ __('messages.religion') }}</td>
+                <td class="col-25">{{ $participant->religion }}</td>
+                <td class="bg-blue col-25">{{ __('messages.weight') }}</td>
+                <td class="col-25">{{ $participant->weight }} kg</td>
             </tr>
             <tr>
-                <td class="bg-blue">{{ __('messages.marital_status') }}</td>
-                <td>{{ $participant->marital_status }}</td>
-                <td class="bg-blue">{{ __('messages.education') }}</td>
-                <td>{{ $participant->education }}</td>
+                <td class="bg-blue col-25">{{ __('messages.marital_status') }}</td>
+                <td class="col-25">{{ $participant->marital_status }}</td>
+                <td class="bg-blue col-25">{{ __('messages.education') }}</td>
+                <td class="col-25">{{ $participant->education }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">{{ __('messages.number_of_children') }}</td>
-                <td>{{ $participant->no_of_children }}</td>
-                <td class="bg-blue">{{ __('messages.status') }}</td>
-                <td>{{ $participant->status }}</td>
+                <td class="bg-blue col-25">{{ __('messages.number_of_children') }}</td>
+                <td class="col-25">{{ $participant->no_of_children }}</td>
+                <td class="bg-blue col-25">{{ __('messages.status') }}</td>
+                <td class="col-25">{{ $participant->status }}</td>
             </tr>
         </tbody>
     </table>
@@ -212,50 +239,50 @@
     <table>
         <thead>
             <tr>
-                <th class="bg-red" colspan="2">{{ __('messages.work_experience') }}</th>
-                <th class="bg-red" colspan="4">{{ __('messages.language_skills') }}</th>
+                <th class="bg-red" colspan="2" style="width: 50%;">{{ __('messages.work_experience') }}</th>
+                <th class="bg-red" colspan="4" style="width: 50%;">{{ __('messages.language_skills') }}</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td class="bg-blue">{{ __('messages.hong_kong') }}</td>
-                <td>{{ $participant->hongkong_year == 0 || !$participant->hongkong_year ? '-' : $participant->hongkong_year . ' ' . __('messages.years') }}</td>
-                <td class="bg-blue">&nbsp;</td>
-                <td class="bg-blue">{{ __('messages.learning') }}</td>
-                <td class="bg-blue">{{ __('messages.basic') }}</td>
-                <td class="bg-blue">{{ __('messages.good') }}</td>
+                <td class="bg-blue" style="width: 25%;">{{ __('messages.hong_kong') }}</td>
+                <td style="width: 25%;">{{ $participant->hongkong_year == 0 || !$participant->hongkong_year ? '-' : $participant->hongkong_year . ' ' . __('messages.years') }}</td>
+                <td class="bg-blue" style="width: 20%;">&nbsp;</td>
+                <td class="bg-blue" style="width: 10%;">{{ __('messages.learning') }}</td>
+                <td class="bg-blue" style="width: 10%;">{{ __('messages.basic') }}</td>
+                <td class="bg-blue" style="width: 10%;">{{ __('messages.good') }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">{{ __('messages.singapore') }}</td>
-                <td>{{ $participant->singapore_year == 0 || !$participant->singapore_year ? '-' : $participant->singapore_year . ' ' . __('messages.years') }}</td>
-                <td class="bg-blue">{{ __('messages.cantonese') }}</td>
-                <td>{{ $participant->cantonese == 'learning' ? '✓' : "" }}</td>
-                <td>{{ $participant->cantonese == 'basic' ? '✓' : "" }}</td>
-                <td>{{ $participant->cantonese == 'good' ? '✓' : "" }}</td>
+                <td class="bg-blue" style="width: 25%;">{{ __('messages.singapore') }}</td>
+                <td style="width: 25%;">{{ $participant->singapore_year == 0 || !$participant->singapore_year ? '-' : $participant->singapore_year . ' ' . __('messages.years') }}</td>
+                <td class="bg-blue" style="width: 20%;">{{ __('messages.cantonese') }}</td>
+                <td style="width: 10%;">{{ $participant->cantonese == 'learning' ? '✓' : "" }}</td>
+                <td style="width: 10%;">{{ $participant->cantonese == 'basic' ? '✓' : "" }}</td>
+                <td style="width: 10%;">{{ $participant->cantonese == 'good' ? '✓' : "" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">{{ __('messages.taiwan') }}</td>
-                <td>{{ $participant->taiwan_year == 0 || !$participant->taiwan_year ? '-' : $participant->taiwan_year . ' ' . __('messages.years') }}</td>
-                <td class="bg-blue">{{ __('messages.mandarine') }}</td>
-                <td>{{ $participant->mandarine == 'learning' ? '✓' : "" }}</td>
-                <td>{{ $participant->mandarine == 'basic' ? '✓' : "" }}</td>
-                <td>{{ $participant->mandarine == 'good' ? '✓' : "" }}</td>
+                <td class="bg-blue" style="width: 25%;">{{ __('messages.taiwan') }}</td>
+                <td style="width: 25%;">{{ $participant->taiwan_year == 0 || !$participant->taiwan_year ? '-' : $participant->taiwan_year . ' ' . __('messages.years') }}</td>
+                <td class="bg-blue" style="width: 20%;">{{ __('messages.mandarine') }}</td>
+                <td style="width: 10%;">{{ $participant->mandarine == 'learning' ? '✓' : "" }}</td>
+                <td style="width: 10%;">{{ $participant->mandarine == 'basic' ? '✓' : "" }}</td>
+                <td style="width: 10%;">{{ $participant->mandarine == 'good' ? '✓' : "" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">{{ __('messages.malaysia') }}</td>
-                <td>{{ $participant->malaysia_year == 0 || !$participant->malaysia_year ? '-' : $participant->malaysia_year . ' ' . __('messages.years') }}</td>
-                <td class="bg-blue">{{ __('messages.english') }}</td>
-                <td>{{ $participant->english == 'learning' ? '✓' : "" }}</td>
-                <td>{{ $participant->english == 'basic' ? '✓' : "" }}</td>
-                <td>{{ $participant->english == 'good' ? '✓' : "" }}</td>
+                <td class="bg-blue" style="width: 25%;">{{ __('messages.malaysia') }}</td>
+                <td style="width: 25%;">{{ $participant->malaysia_year == 0 || !$participant->malaysia_year ? '-' : $participant->malaysia_year . ' ' . __('messages.years') }}</td>
+                <td class="bg-blue" style="width: 20%;">{{ __('messages.english') }}</td>
+                <td style="width: 10%;">{{ $participant->english == 'learning' ? '✓' : "" }}</td>
+                <td style="width: 10%;">{{ $participant->english == 'basic' ? '✓' : "" }}</td>
+                <td style="width: 10%;">{{ $participant->english == 'good' ? '✓' : "" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue">{{ __('messages.brunei') }}</td>
-                <td>{{ $participant->brunei_year == 0 || !$participant->brunei_year ? '-' : $participant->brunei_year . ' ' . __('messages.years') }}</td>
-                <td class="bg-blue">&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="bg-blue" style="width: 25%;">{{ __('messages.brunei') }}</td>
+                <td style="width: 25%;">{{ $participant->brunei_year == 0 || !$participant->brunei_year ? '-' : $participant->brunei_year . ' ' . __('messages.years') }}</td>
+                <td class="bg-blue" style="width: 20%;">&nbsp;</td>
+                <td style="width: 10%;">&nbsp;</td>
+                <td style="width: 10%;">&nbsp;</td>
+                <td style="width: 10%;">&nbsp;</td>
             </tr>
         </tbody>
     </table>
@@ -273,19 +300,19 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="bg-blue">{{ __('messages.country') }}</td>
-                    <td>{{ $workHistory->country ?? '' }}</td>
-                    <td class="bg-blue">{{ __('messages.target_employer') }}</td>
-                    <td>{{ $workHistory->target ?? '' }}</td>
+                    <td class="bg-blue col-25">{{ __('messages.country') }}</td>
+                    <td class="col-25">{{ $workHistory->country ?? '' }}</td>
+                    <td class="bg-blue col-25">{{ __('messages.target_employer') }}</td>
+                    <td class="col-25">{{ $workHistory->target ?? '' }}</td>
                 </tr>
                 <tr>
-                    <td class="bg-blue">{{ __('messages.period') }}</td>
-                    <td>{{ $workHistory->period ?? '' }}</td>
-                    <td class="bg-blue">{{ __('messages.reason_for_leaving') }}</td>
-                    <td>{{ $workHistory->reason_for_leaving ?? '' }}</td>
+                    <td class="bg-blue col-25">{{ __('messages.period') }}</td>
+                    <td class="col-25">{{ $workHistory->period ?? '' }}</td>
+                    <td class="bg-blue col-25">{{ __('messages.reason_for_leaving') }}</td>
+                    <td class="col-25">{{ $workHistory->reason_for_leaving ?? '' }}</td>
                 </tr>
                 <tr>
-                    <td class="bg-blue">{{ __('messages.remarks') }}</td>
+                    <td class="bg-blue col-25">{{ __('messages.remarks') }}</td>
                     <td class="text-left" colspan="3">{{ $workHistory->remake ?? '' }}</td>
                 </tr>
             </tbody>
@@ -301,9 +328,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class="bg-blue">ELDERLY HEALTHY CARE EXPERIENCE</td>
-                <td>{{ $participant->elderly_healthy_care_experience ? "✓" : "-" }}</td>
+            <tr class="photo-row">
+                <td class="bg-blue" style="width: 40%;">ELDERLY HEALTHY CARE EXPERIENCE</td>
+                <td class="" style="width: 10%;">{{ $participant->elderly_healthy_care_experience ? "✓" : "-" }}</td>
                 <td class="photo-container" rowspan="24" colspan="2">
                     @if($participant->photo_path)
                         @php
@@ -350,7 +377,7 @@
                                 }
                             @endphp
                             @if(isset($imageData) && $imageData)
-                                <div style="text-align: center; padding: 2px;">
+                                <div style="text-align: center; padding: 1px;">
                                     <img src="data:{{ $mimeType }};base64,{{ $imageData }}" 
                                          alt="{{ $participant->name }}" 
                                          style="max-width: 100%; max-height: 400px; object-fit: contain; border: 1px solid #ddd; display: block; margin: 0 auto;">
@@ -374,7 +401,7 @@
                         @endif
                     @else
                         <div class="no-photo">
-                            <div style="text-align: center; color: #666; font-size: 11px; padding: 2px;">
+                            <div style="text-align: center; color: #666; font-size: 11px; padding: 1px;">
                                 No Photo Available
                             </div>
                         </div>
@@ -382,96 +409,96 @@
                 </td>
             </tr>
             <tr>
-                <td class="bg-blue experience">ELDERLY SICK CARE EXPERIENCE</td>
-                <td>{{ $participant->elderly_sick_care_experience ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">ELDERLY SICK CARE EXPERIENCE</td>
+                <td class="" style="width: 10%;">{{ $participant->elderly_sick_care_experience ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">NEWBORN CARE EXPERIENCE</td>
-                <td>{{ $participant->newborn_care_experience ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">NEWBORN CARE EXPERIENCE</td>
+                <td class="" style="width: 10%;">{{ $participant->newborn_care_experience ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">CHILDREN CARE EXPERIENCE</td>
-                <td>{{ $participant->children_care_experience ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">CHILDREN CARE EXPERIENCE</td>
+                <td class="" style="width: 10%;">{{ $participant->children_care_experience ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">I CAN TAKE CARE OF DOG</td>
-                <td>{{ $participant->i_can_take_care_of_dog ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">I CAN TAKE CARE OF DOG</td>
+                <td class="" style="width: 10%;">{{ $participant->i_can_take_care_of_dog ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">I CAN TAKE CARE OF CAT</td>
-                <td>{{ $participant->i_can_take_care_of_cat ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">I CAN TAKE CARE OF CAT</td>
+                <td class="" style="width: 10%;">{{ $participant->i_can_take_care_of_cat ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">COOKING' CLEANING' WASHING'IRONING GO TO MARKET</td>
-                <td>{{ $participant->cooking_cleaning_washing_ironing_go_to_market ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">COOKING' CLEANING' WASHING'IRONING GO TO MARKET</td>
+                <td class="" style="width: 10%;">{{ $participant->cooking_cleaning_washing_ironing_go_to_market ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">I CAN WASH CAR</td>
-                <td>{{ $participant->i_can_wash_car ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">I CAN WASH CAR</td>
+                <td class="" style="width: 10%;">{{ $participant->i_can_wash_car ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">SHUTTLE SCHOOL</td>
-                <td>{{ $participant->shuttle_school ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">SHUTTLE SCHOOL</td>
+                <td class="" style="width: 10%;">{{ $participant->shuttle_school ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">ASSIST TOILETING' CHANGE DIAPER' BATH EXPERIENCE</td>
-                <td>{{ $participant->assist_toileting_change_diaper_bath_experience ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">ASSIST TOILETING' CHANGE DIAPER' BATH EXPERIENCE</td>
+                <td class="" style="width: 10%;">{{ $participant->assist_toileting_change_diaper_bath_experience ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">GO TO HOSPITAL' HANDLE MEDICATION EXPERIENCE</td>
-                <td>{{ $participant->go_to_hospital_handle_medication_experience ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">GO TO HOSPITAL' HANDLE MEDICATION EXPERIENCE</td>
+                <td class="" style="width: 10%;">{{ $participant->go_to_hospital_handle_medication_experience ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">DO EXERCISE</td>
-                <td>{{ $participant->do_exercise ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">DO EXERCISE</td>
+                <td class="" style="width: 10%;">{{ $participant->do_exercise ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">USE WHEELCHAIR</td>
-                <td>{{ $participant->use_wheelchair ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">USE WHEELCHAIR</td>
+                <td class="" style="width: 10%;">{{ $participant->use_wheelchair ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">PROVIDE DAILY ASSISTANCE</td>
-                <td>{{ $participant->provide_daily_assistance ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">PROVIDE DAILY ASSISTANCE</td>
+                <td class="" style="width: 10%;">{{ $participant->provide_daily_assistance ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">ORAL FEEDING</td>
-                <td>{{ $participant->oral_feeding ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">ORAL FEEDING</td>
+                <td class="" style="width: 10%;">{{ $participant->oral_feeding ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">WITH DEMENTIA CARE EXPERIENCE</td>
-                <td>{{ $participant->with_dementia_care_experience ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">WITH DEMENTIA CARE EXPERIENCE</td>
+                <td class="" style="width: 10%;">{{ $participant->with_dementia_care_experience ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">ASSIST WALKING</td>
-                <td>{{ $participant->assist_walking ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">ASSIST WALKING</td>
+                <td class="" style="width: 10%;">{{ $participant->assist_walking ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">RECEIVED COVID-19 VACCINE INJECTION (3 DOSE)</td>
-                <td>{{ $participant->received_covid19_vaccine_injection_3_dose ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">RECEIVED COVID-19 VACCINE INJECTION (3 DOSE)</td>
+                <td class="" style="width: 10%;">{{ $participant->received_covid19_vaccine_injection_3_dose ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">I CAN INJECT DIABETES</td>
-                <td>{{ $participant->i_can_inject_diabetes ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">I CAN INJECT DIABETES</td>
+                <td class="" style="width: 10%;">{{ $participant->i_can_inject_diabetes ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">I CAN TAKE CARE OF IDIOTS</td>
-                <td>{{ $participant->i_can_take_care_of_idiots ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">I CAN TAKE CARE OF IDIOTS</td>
+                <td class="" style="width: 10%;">{{ $participant->i_can_take_care_of_idiots ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">SUCTION PHLEGM I CAN DO IT</td>
-                <td>{{ $participant->suction_phlegm_ican_do_it ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">SUCTION PHLEGM I CAN DO IT</td>
+                <td class="" style="width: 10%;">{{ $participant->suction_phlegm_ican_do_it ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">I LIKE TAKE CARE OF A CHILDREN</td>
-                <td>{{ $participant->i_like_take_care_of_a_children ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">I LIKE TAKE CARE OF A CHILDREN</td>
+                <td class="" style="width: 10%;">{{ $participant->i_like_take_care_of_a_children ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">I LIKE TAKE CARE OF A NEWBORN BABY</td>
-                <td>{{ $participant->i_like_take_care_of_a_newborn_baby ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">I LIKE TAKE CARE OF A NEWBORN BABY</td>
+                <td class="" style="width: 10%;">{{ $participant->i_like_take_care_of_a_newborn_baby ? "✓" : "-" }}</td>
             </tr>
             <tr>
-                <td class="bg-blue experience">I LIKE TAKE CARE OF THE ELDERLY</td>
-                <td>{{ $participant->i_like_take_care_of_the_elderly ? "✓" : "-" }}</td>
+                <td class="bg-blue experience" style="width: 40%;">I LIKE TAKE CARE OF THE ELDERLY</td>
+                <td class="" style="width: 10%;">{{ $participant->i_like_take_care_of_the_elderly ? "✓" : "-" }}</td>
             </tr>
         </tbody>
     </table>
@@ -480,18 +507,18 @@
     <table>
         <tbody>
             <tr>
-                <td class="bg-blue">{{ __('messages.new_job') }}</td>
+                <td class="bg-blue col-25">{{ __('messages.new_job') }}</td>
                 <td colspan="2" rowspan="2">&nbsp;</td>
             </tr>
             <tr>
-                <td style="height: 40px; vertical-align: top; padding-top: 2px; text-align: left; padding-left: 2px;">
+                <td class="col-25" style="vertical-align: top; padding-top: 1px; text-align: left; padding-left: 1px;">
                     {{ $participant->new_job ?? '' }}
                 </td>
             </tr>
             <tr>
-                <td class="bg-blue">&nbsp;</td>
-                <td class="bg-blue">{{ __('messages.date') }}:</td>
-                <td>{{ $participant->date ? \Carbon\Carbon::parse($participant->date)->format('d/m/Y') : '' }}</td>
+                <td class="bg-blue col-25">&nbsp;</td>
+                <td class="bg-blue col-15">{{ __('messages.date') }}:</td>
+                <td class="col-10">{{ $participant->date ? \Carbon\Carbon::parse($participant->date)->format('d/m/Y') : '' }}</td>
             </tr>
         </tbody>
     </table>
