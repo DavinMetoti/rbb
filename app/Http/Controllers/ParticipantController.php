@@ -90,7 +90,7 @@ class ParticipantController extends Controller
             // Work experiences validation
             'work_experiences' => 'nullable|array',
             'work_experiences.*.country' => 'required|string|max:255',
-            'work_experiences.*.years' => 'required|integer|min:0',
+            'work_experiences.*.years' => 'nullable|string|max:255',
             
             // Experience/Skills validation - all boolean fields
             'elderly_healthy_care_experience' => 'nullable|boolean',
@@ -271,8 +271,8 @@ class ParticipantController extends Controller
             if ($request->has('work_experiences') && is_array($request->work_experiences)) {
                 Log::info('Processing work experiences', ['work_experiences_count' => count($request->work_experiences)]);
                 foreach ($request->work_experiences as $index => $workExperience) {
-                    // Only create work experience if country is filled and years > 0
-                    if (!empty($workExperience['country']) && isset($workExperience['years']) && $workExperience['years'] > 0) {
+                    // Only create work experience if country is filled and years is not empty
+                    if (!empty($workExperience['country']) && !empty($workExperience['years'])) {
                         $workExperienceRecord = $participant->workExperiences()->create([
                             'country' => $workExperience['country'],
                             'years' => $workExperience['years']
@@ -469,7 +469,7 @@ class ParticipantController extends Controller
             // Work experiences validation
             'work_experiences' => 'nullable|array',
             'work_experiences.*.country' => 'required|string|max:255',
-            'work_experiences.*.years' => 'required|integer|min:0',
+            'work_experiences.*.years' => 'nullable|string|max:255',
             
             // Experience/Skills validation - all boolean fields
             'elderly_healthy_care_experience' => 'nullable|boolean',
@@ -646,8 +646,8 @@ class ParticipantController extends Controller
             if ($request->has('work_experiences') && is_array($request->work_experiences)) {
                 Log::info('Processing work experiences update', ['work_experiences_count' => count($request->work_experiences)]);
                 foreach ($request->work_experiences as $index => $workExperience) {
-                    // Only create work experience if country is filled and years > 0
-                    if (!empty($workExperience['country']) && isset($workExperience['years']) && $workExperience['years'] > 0) {
+                    // Only create work experience if country is filled and years is not empty
+                    if (!empty($workExperience['country']) && !empty($workExperience['years'])) {
                         $workExperienceRecord = $participant->workExperiences()->create([
                             'country' => $workExperience['country'],
                             'years' => $workExperience['years']

@@ -333,7 +333,7 @@
             @foreach($displayExperiences as $country => $years)
                 <tr>
                     <td class="bg-blue" style="width: 25%; text-transform: uppercase;">{{ $country }}</td>
-                    <td style="width: 25%;">{{ $years === '-' ? '-' : ($years == 0 ? '-' : $years . ' ' . __('messages.years')) }}</td>
+                    <td style="width: 25%;">{{ $years === '-' ? '-' : (empty($years) ? '-' : $years) }}</td>
                     @if($experienceIndex < count($languages))
                         @php $language = $languages[$experienceIndex]; @endphp
                         <td class="bg-blue" style="width: 25%;">{{ $language['label'] }}</td>

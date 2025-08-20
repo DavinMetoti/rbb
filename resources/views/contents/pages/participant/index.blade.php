@@ -269,7 +269,7 @@
                                                     @foreach($countries as $countryKey => $countryName)
                                                         @php
                                                             // Try to find the experience for this country
-                                                            $years = 0;
+                                                            $years = '';
                                                             $searchKeys = [
                                                                 strtolower($countryName),
                                                                 strtolower(str_replace(' ', '', $countryName)),
@@ -286,7 +286,7 @@
                                                         @endphp
                                                         <tr>
                                                             <td class="border border-gray-200 px-2 py-1 font-medium">{{ $countryName }}</td>
-                                                            <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $years == 0 ? '-' : $years }}</td>
+                                                            <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ empty($years) ? '-' : $years }}</td>
                                                         </tr>
                                                     @endforeach
                                                     

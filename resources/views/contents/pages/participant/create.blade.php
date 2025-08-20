@@ -263,9 +263,9 @@
                             </div>
                             <input type="text" name="work_experiences[0][country]" value="Hong Kong" readonly 
                                    class="hidden">
-                            <input type="number" name="work_experiences[0][years]" value="{{ old('work_experiences.0.years', 0) }}"
+                            <input type="text" name="work_experiences[0][years]" value="{{ old('work_experiences.0.years', '') }}"
                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
-                                   placeholder="0" min="0">
+                                   placeholder="e.g., 2 years 3 months, 0, or leave blank">
                         </div>
                         
                         <div class="work-experience-entry space-y-1">
@@ -274,9 +274,9 @@
                             </div>
                             <input type="text" name="work_experiences[1][country]" value="Singapore" readonly 
                                    class="hidden">
-                            <input type="number" name="work_experiences[1][years]" value="{{ old('work_experiences.1.years', 0) }}"
+                            <input type="text" name="work_experiences[1][years]" value="{{ old('work_experiences.1.years', '') }}"
                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
-                                   placeholder="0" min="0">
+                                   placeholder="e.g., 2 years 3 months, 0, or leave blank">
                         </div>
                         
                         <div class="work-experience-entry space-y-1">
@@ -285,9 +285,9 @@
                             </div>
                             <input type="text" name="work_experiences[2][country]" value="Taiwan" readonly 
                                    class="hidden">
-                            <input type="number" name="work_experiences[2][years]" value="{{ old('work_experiences.2.years', 0) }}"
+                            <input type="text" name="work_experiences[2][years]" value="{{ old('work_experiences.2.years', '') }}"
                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
-                                   placeholder="0" min="0">
+                                   placeholder="e.g., 2 years 3 months, 0, or leave blank">
                         </div>
                         
                         <div class="work-experience-entry space-y-1">
@@ -296,9 +296,9 @@
                             </div>
                             <input type="text" name="work_experiences[3][country]" value="Malaysia" readonly 
                                    class="hidden">
-                            <input type="number" name="work_experiences[3][years]" value="{{ old('work_experiences.3.years', 0) }}"
+                            <input type="text" name="work_experiences[3][years]" value="{{ old('work_experiences.3.years', '') }}"
                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
-                                   placeholder="0" min="0">
+                                   placeholder="e.g., 2 years 3 months, 0, or leave blank">
                         </div>
                         
                         <div class="work-experience-entry space-y-1">
@@ -307,9 +307,9 @@
                             </div>
                             <input type="text" name="work_experiences[4][country]" value="Brunei" readonly 
                                    class="hidden">
-                            <input type="number" name="work_experiences[4][years]" value="{{ old('work_experiences.4.years', 0) }}"
+                            <input type="text" name="work_experiences[4][years]" value="{{ old('work_experiences.4.years', '') }}"
                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
-                                   placeholder="0" min="0">
+                                   placeholder="e.g., 2 years 3 months, 0, or leave blank">
                         </div>
                     </div>
                 </div>
@@ -670,9 +670,9 @@
                             </svg>
                         </button>
                     </div>
-                    <input type="number" name="work_experiences[${workExperienceIndex}][years]" 
+                    <input type="text" name="work_experiences[${workExperienceIndex}][years]" 
                            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
-                           placeholder="0" min="0" value="0">
+                           placeholder="e.g., 2 years 3 months, 0, or leave blank">
                 `;
 
                 workExperienceContainer.appendChild(newEntry);

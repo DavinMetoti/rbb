@@ -269,10 +269,10 @@
                                 </div>
                                 <input type="text" name="work_experiences[{{ $index }}][country]" value="{{ $country }}" readonly 
                                        class="hidden">
-                                <input type="number" name="work_experiences[{{ $index }}][years]" 
-                                       value="{{ old('work_experiences.'.$index.'.years', $existingExperiences[$country] ?? 0) }}"
+                                <input type="text" name="work_experiences[{{ $index }}][years]" 
+                                       value="{{ old('work_experiences.'.$index.'.years', $existingExperiences[$country] ?? '') }}"
                                        class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
-                                       placeholder="0" min="0">
+                                       placeholder="e.g., 2 years 6 months">
                             </div>
                         @endforeach
                         
@@ -290,10 +290,10 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <input type="number" name="work_experiences[{{ $index + 5 }}][years]" 
+                                    <input type="text" name="work_experiences[{{ $index + 5 }}][years]" 
                                            value="{{ old('work_experiences.'.($index + 5).'.years', $experience->years) }}"
                                            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
-                                           placeholder="0" min="0">
+                                           placeholder="e.g., 2 years 6 months">
                                 </div>
                             @endif
                         @endforeach
@@ -689,9 +689,9 @@
                             </svg>
                         </button>
                     </div>
-                    <input type="number" name="work_experiences[${workExperienceIndex}][years]" 
+                    <input type="text" name="work_experiences[${workExperienceIndex}][years]" 
                            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
-                           placeholder="0" min="0" value="0">
+                           placeholder="e.g., 2 years 6 months" value="">
                 `;
 
                 workExperienceContainer.appendChild(newEntry);
