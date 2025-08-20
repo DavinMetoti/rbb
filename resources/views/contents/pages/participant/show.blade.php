@@ -118,37 +118,72 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="p-2 border text-center bg-blue-100 italic" style="width: 25%;">{{ __('messages.hong_kong') }}</td>
-                        <td class="p-2 border text-center italic" style="width: 25%;">{{ $participant->hongkong_year == 0 || !$participant->hongkong_year ? '-' : $participant->hongkong_year . ' ' . __('messages.years') }}</td>
-                        <td class="p-2 border text-center bg-blue-100 italic" style="width: 25%;">&nbsp;</td>
-                        <td class="p-2 border text-center bg-blue-100 italic" style="width: 8.3%;">{{ __('messages.learning') }}</td>
-                        <td class="p-2 border text-center bg-blue-100 italic" style="width: 8.3%;">{{ __('messages.basic') }}</td>
-                        <td class="p-2 border text-center bg-blue-100 italic" style="width: 8.3%;">{{ __('messages.good') }}</td>
-                    </tr>
-                    <tr>
-                        <td class="p-2 border text-center italic bg-blue-100" style="width: 25%;">{{ __('messages.singapore') }}</td>
-                        <td class="p-2 border text-center italic" style="width: 25%;">{{ $participant->singapore_year == 0 || !$participant->singapore_year ? '-' : $participant->singapore_year . ' ' . __('messages.years') }}</td>
-                        <td class="p-2 border text-center italic bg-blue-100" style="width: 25%;">{{ __('messages.cantonese') }}</td>
-                        <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->cantonese == 'learning' ? '✓' : "" }}</td>
-                        <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->cantonese == 'basic' ? '✓' : "" }}</td>
-                        <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->cantonese == 'good' ? '✓' : "" }}</td>
-                    </tr>
-                    <tr>
-                        <td class="p-2 border text-center italic bg-blue-100" style="width: 25%;">{{ __('messages.taiwan') }}</td>
-                        <td class="p-2 border text-center italic" style="width: 25%;">{{ $participant->taiwan_year == 0 || !$participant->taiwan_year ? '-' : $participant->taiwan_year . ' ' . __('messages.years') }}</td>
-                        <td class="p-2 border bg-blue-100 text-center italic" style="width: 25%;">{{ __('messages.mandarine') }}</td>
-                        <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->mandarine == 'learning' ? '✓' : "" }}</td>
-                        <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->mandarine == 'basic' ? '✓' : "" }}</td>
-                        <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->mandarine == 'good' ? '✓' : "" }}</td>
-                    </tr>
-                    <tr>
-                        <td class="p-2 border text-center italic bg-blue-100" style="width: 25%;">{{ __('messages.malaysia') }}</td>
-                        <td class="p-2 border text-center italic" style="width: 25%;">{{ $participant->malaysia_year == 0 || !$participant->malaysia_year ? '-' : $participant->malaysia_year . ' ' . __('messages.years') }}</td>
-                        <td class="p-2 border text-center italic bg-blue-100" style="width: 25%;">{{ __('messages.english') }}</td>
-                        <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->english == 'learning' ? '✓' : "" }}</td>
-                        <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->english == 'basic' ? '✓' : "" }}</td>
-                        <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->english == 'good' ? '✓' : "" }}</td>
+                    @php
+                        $workExperiences = $participant->workExperiences->pluck('years', 'country')->toArray();
+                        $languages = [
+                            ['name' => 'cantonese', 'label' => __('messages.cantonese')],
+                            ['name' => 'mandarine', 'label' => __('messages.mandarine')],
+                            ['name' => 'english', 'label' => __('messages.english')]
+                        ];
+                        $experienceIndex = 0;
+                    @endphp
+                    
+                    @foreach($workExperiences as $country => $years)
+                        <tr>
+                            <td class="p-2 border text-center bg-blue-100 italic" style="width: 25%;">{{ $country }}</td>
+                            <td class="p-2 border text-center italic" style="width: 25%;">{{ $years == 0 ? '-' : $years . ' ' . __('messages.years') }}</td>
+                            @if($experienceIndex < count($languages))
+                                @php $language = $languages[$experienceIndex]; @endphp
+                                <td class="p-2 border text-center bg-blue-100 italic" style="width: 25%;">{{ $language['label'] }}</td>
+                                <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->{$language['name']} == 'learning' ? '✓' : "" }}</td>
+                                <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->{$language['name']} == 'basic' ? '✓' : "" }}</td>
+                                <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->{$language['name']} == 'good' ? '✓' : "" }}</td>
+                            @else
+                                <td class="p-2 border bg-blue-100 italic" style="width: 25%;">&nbsp;</td>
+                                <td class="p-2 border text-center bg-blue-100 italic" style="width: 8.3%;">&nbsp;</td>
+                                <td class="p-2 border text-center bg-blue-100 italic" style="width: 8.3%;">&nbsp;</td>
+                                <td class="p-2 border text-center bg-blue-100 italic" style="width: 8.3%;">&nbsp;</td>
+                            @endif
+                        </tr>
+                        @php $experienceIndex++; @endphp
+                    @endforeach
+                    
+                    @if(count($workExperiences) == 0)
+                        <tr>
+                            <td class="p-2 border text-center italic" colspan="2">{{ __('messages.no_work_experience') }}</td>
+                            <td class="p-2 border text-center bg-blue-100 italic" style="width: 25%;">{{ __('messages.cantonese') }}</td>
+                            <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->cantonese == 'learning' ? '✓' : "" }}</td>
+                            <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->cantonese == 'basic' ? '✓' : "" }}</td>
+                            <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->cantonese == 'good' ? '✓' : "" }}</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border text-center italic" colspan="2">&nbsp;</td>
+                            <td class="p-2 border bg-blue-100 text-center italic" style="width: 25%;">{{ __('messages.mandarine') }}</td>
+                            <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->mandarine == 'learning' ? '✓' : "" }}</td>
+                            <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->mandarine == 'basic' ? '✓' : "" }}</td>
+                            <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->mandarine == 'good' ? '✓' : "" }}</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border text-center italic" colspan="2">&nbsp;</td>
+                            <td class="p-2 border text-center italic bg-blue-100" style="width: 25%;">{{ __('messages.english') }}</td>
+                            <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->english == 'learning' ? '✓' : "" }}</td>
+                            <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->english == 'basic' ? '✓' : "" }}</td>
+                            <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->english == 'good' ? '✓' : "" }}</td>
+                        </tr>
+                    @endif
+                    
+                    @while($experienceIndex < 3)
+                        @php $language = $languages[$experienceIndex]; @endphp
+                        <tr>
+                            <td class="p-2 border text-center italic" colspan="2">&nbsp;</td>
+                            <td class="p-2 border text-center bg-blue-100 italic" style="width: 25%;">{{ $language['label'] }}</td>
+                            <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->{$language['name']} == 'learning' ? '✓' : "" }}</td>
+                            <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->{$language['name']} == 'basic' ? '✓' : "" }}</td>
+                            <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->{$language['name']} == 'good' ? '✓' : "" }}</td>
+                        </tr>
+                        @php $experienceIndex++; @endphp
+                    @endwhile
+                        <!-- <td class="p-2 border text-center italic" style="width: 8.3%;">{{ $participant->english == 'good' ? '✓' : "" }}</td> -->
                     </tr>
                     <tr>
                         <td class="p-2 border text-center italic bg-blue-100" style="width: 25%;">{{ __('messages.brunei') }}</td>

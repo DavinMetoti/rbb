@@ -242,43 +242,61 @@
 
                 <!-- Work Experience Section -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                    <h2 class="text-lg font-medium text-gray-900 mb-6 pb-3 border-b border-gray-100">{{ __('messages.work_experience_years') }}</h2>
+                    <div class="flex justify-between items-center mb-6 pb-3 border-b border-gray-100">
+                        <h2 class="text-lg font-medium text-gray-900">{{ __('messages.work_experience_years') }}</h2>
+                        <button type="button" id="add-work-experience" 
+                                class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all duration-200 text-sm font-medium">
+                            <span class="flex items-center space-x-1">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                </svg>
+                                <span>{{ __('messages.add_country') }}</span>
+                            </span>
+                        </button>
+                    </div>
                     <p class="text-sm text-gray-500 mb-4">{{ __('messages.no_experience_note') }}</p>
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                        <div class="space-y-1">
-                            <label for="hongkong_year" class="block text-sm font-medium text-gray-700">{{ __('messages.hong_kong') }}</label>
-                            <input type="number" name="hongkong_year" id="hongkong_year" value="{{ old('hongkong_year', $participant->hongkong_year) }}"
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
-                                   placeholder="0" min="0">
-                        </div>
+                    
+                    <div id="work-experience-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        @php
+                            $defaultCountries = ['Hong Kong', 'Singapore', 'Taiwan', 'Malaysia', 'Brunei'];
+                            $existingExperiences = $participant->workExperiences->pluck('years', 'country')->toArray();
+                        @endphp
                         
-                        <div class="space-y-1">
-                            <label for="singapore_year" class="block text-sm font-medium text-gray-700">{{ __('messages.singapore') }}</label>
-                            <input type="number" name="singapore_year" id="singapore_year" value="{{ old('singapore_year', $participant->singapore_year) }}"
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
-                                   placeholder="0" min="0">
-                        </div>
+                        @foreach($defaultCountries as $index => $country)
+                            <div class="work-experience-entry space-y-1">
+                                <div class="flex justify-between items-center">
+                                    <label class="block text-sm font-medium text-gray-700">{{ __('messages.' . strtolower(str_replace(' ', '_', $country))) }}</label>
+                                </div>
+                                <input type="text" name="work_experiences[{{ $index }}][country]" value="{{ $country }}" readonly 
+                                       class="hidden">
+                                <input type="number" name="work_experiences[{{ $index }}][years]" 
+                                       value="{{ old('work_experiences.'.$index.'.years', $existingExperiences[$country] ?? 0) }}"
+                                       class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
+                                       placeholder="0" min="0">
+                            </div>
+                        @endforeach
                         
-                        <div class="space-y-1">
-                            <label for="taiwan_year" class="block text-sm font-medium text-gray-700">{{ __('messages.taiwan') }}</label>
-                            <input type="number" name="taiwan_year" id="taiwan_year" value="{{ old('taiwan_year', $participant->taiwan_year) }}"
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
-                                   placeholder="0" min="0">
-                        </div>
-                        
-                        <div class="space-y-1">
-                            <label for="malaysia_year" class="block text-sm font-medium text-gray-700">{{ __('messages.malaysia') }}</label>
-                            <input type="number" name="malaysia_year" id="malaysia_year" value="{{ old('malaysia_year', $participant->malaysia_year) }}"
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
-                                   placeholder="0" min="0">
-                        </div>
-                        
-                        <div class="space-y-1">
-                            <label for="brunei_year" class="block text-sm font-medium text-gray-700">{{ __('messages.brunei') }}</label>
-                            <input type="number" name="brunei_year" id="brunei_year" value="{{ old('brunei_year', $participant->brunei_year) }}"
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
-                                   placeholder="0" min="0">
-                        </div>
+                        @foreach($participant->workExperiences as $index => $experience)
+                            @if(!in_array($experience->country, $defaultCountries))
+                                <div class="work-experience-entry space-y-1">
+                                    <div class="flex justify-between items-center">
+                                        <input type="text" name="work_experiences[{{ $index + 5 }}][country]" 
+                                               value="{{ old('work_experiences.'.($index + 5).'.country', $experience->country) }}"
+                                               class="flex-1 px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white text-sm font-medium text-gray-700" 
+                                               placeholder="Enter country name" required>
+                                        <button type="button" class="remove-work-experience ml-2 text-red-500 hover:text-red-700 focus:outline-none">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <input type="number" name="work_experiences[{{ $index + 5 }}][years]" 
+                                           value="{{ old('work_experiences.'.($index + 5).'.years', $experience->years) }}"
+                                           class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
+                                           placeholder="0" min="0">
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
 
@@ -646,6 +664,75 @@
                         input.setAttribute('name', newName);
                     }
                 });
+            });
+        }
+
+        // Work Experience Dynamic Functionality
+        let workExperienceIndex = {{ $participant->workExperiences->count() + 5 }}; // Start after existing experiences
+        const workExperienceContainer = document.getElementById('work-experience-container');
+        const addWorkExperienceButton = document.getElementById('add-work-experience');
+
+        // Add work experience entry
+        if (addWorkExperienceButton) {
+            addWorkExperienceButton.addEventListener('click', function() {
+                const newEntry = document.createElement('div');
+                newEntry.className = 'work-experience-entry space-y-1';
+                
+                newEntry.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <input type="text" name="work_experiences[${workExperienceIndex}][country]" 
+                               class="flex-1 px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white text-sm font-medium text-gray-700" 
+                               placeholder="Enter country name" required>
+                        <button type="button" class="remove-work-experience ml-2 text-red-500 hover:text-red-700 focus:outline-none">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <input type="number" name="work_experiences[${workExperienceIndex}][years]" 
+                           class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
+                           placeholder="0" min="0" value="0">
+                `;
+
+                workExperienceContainer.appendChild(newEntry);
+                workExperienceIndex++;
+
+                // Add remove functionality to the new entry
+                const removeButton = newEntry.querySelector('.remove-work-experience');
+                removeButton.addEventListener('click', function() {
+                    newEntry.remove();
+                    updateWorkExperienceIndexes();
+                });
+
+                // Smooth scroll to the new entry
+                newEntry.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        }
+
+        // Function to update work experience indexes
+        function updateWorkExperienceIndexes() {
+            const entries = workExperienceContainer.querySelectorAll('.work-experience-entry');
+            entries.forEach((entry, index) => {
+                const inputs = entry.querySelectorAll('input');
+                inputs.forEach(input => {
+                    const name = input.getAttribute('name');
+                    if (name && name.includes('work_experiences')) {
+                        const newName = name.replace(/\[\d+\]/, `[${index}]`);
+                        input.setAttribute('name', newName);
+                    }
+                });
+            });
+            workExperienceIndex = entries.length;
+        }
+
+        // Add remove functionality to existing dynamic entries
+        if (workExperienceContainer) {
+            workExperienceContainer.addEventListener('click', function(e) {
+                if (e.target.closest('.remove-work-experience')) {
+                    const entry = e.target.closest('.work-experience-entry');
+                    entry.remove();
+                    updateWorkExperienceIndexes();
+                }
             });
         }
     </script>

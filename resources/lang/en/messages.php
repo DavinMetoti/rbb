@@ -258,5 +258,15 @@ return [
     'visibility_settings' => 'Visibility Settings',
     'make_profile_public' => 'Make this profile public',
     'public_profile_note' => 'When enabled, this participant profile will be visible to other users. Disable to keep it private.',
+    
+    // Work experience
+    'add_country' => 'Add Country',
+    'work_experience_years' => 'Work Experience Years',
+    'no_work_experience' => 'No Work Experience',
+    'hong_kong' => 'Hong Kong',
+    'singapore' => 'Singapore', 
+    'taiwan' => 'Taiwan',
+    'malaysia' => 'Malaysia',
+    'brunei' => 'Brunei',
     'public_profiles_only' => 'Only public participant profiles are shown. Login to view all profiles.',
 ];

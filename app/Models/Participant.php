@@ -21,11 +21,6 @@ class Participant extends Model
         'education',
         'no_of_children',
         'status',
-        'hongkong_year',
-        'singapore_year',
-        'taiwan_year',
-        'malaysia_year',
-        'brunei_year',
         'cantonese',
         'mandarine',
         'english',
@@ -64,5 +59,10 @@ class Participant extends Model
     public function workHistories()
     {
         return $this->hasMany(ParticipantWorkHistory::class);
+    }
+
+    public function workExperiences()
+    {
+        return $this->hasMany(ParticipantWorkExperience::class);
     }
 }

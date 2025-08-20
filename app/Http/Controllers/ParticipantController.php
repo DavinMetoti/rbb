@@ -76,11 +76,6 @@ class ParticipantController extends Controller
             'education' => 'required|string|max:255',
             'no_of_children' => 'nullable|string|max:255',
             'status' => 'required|string|max:255',
-            'hongkong_year' => 'nullable|integer|min:0',
-            'singapore_year' => 'nullable|integer|min:0',
-            'taiwan_year' => 'nullable|integer|min:0',
-            'malaysia_year' => 'nullable|integer|min:0',
-            'brunei_year' => 'nullable|integer|min:0',
             'cantonese' => 'nullable|in:learning,basic,good',
             'mandarine' => 'nullable|in:learning,basic,good',
             'english' => 'nullable|in:learning,basic,good',
@@ -91,6 +86,11 @@ class ParticipantController extends Controller
             'new_job' => 'nullable|string|max:255',
             'date' => 'nullable|date',
             'is_public' => 'nullable|boolean',
+            
+            // Work experiences validation
+            'work_experiences' => 'nullable|array',
+            'work_experiences.*.country' => 'required|string|max:255',
+            'work_experiences.*.years' => 'required|integer|min:0',
             
             // Experience/Skills validation - all boolean fields
             'elderly_healthy_care_experience' => 'nullable|boolean',
@@ -210,7 +210,7 @@ class ParticipantController extends Controller
             }
 
             // Prepare participant data
-            $participantData = $request->except(['photo_path', 'work_history', '_token']);
+            $participantData = $request->except(['photo_path', 'work_history', 'work_experiences', '_token']);
             Log::info('Participant data prepared', ['data_keys' => array_keys($participantData)]);
             
             // Add photo path
@@ -254,12 +254,6 @@ class ParticipantController extends Controller
                 $participantData[$field] = $request->has($field) ? 1 : 0;
             }
 
-            // Handle experience fields with default values
-            $experienceFields = ['hongkong_year', 'singapore_year', 'taiwan_year', 'malaysia_year', 'brunei_year'];
-            foreach ($experienceFields as $field) {
-                $participantData[$field] = $request->input($field, 0); // Default to 0 if empty
-            }
-
             // Handle language fields (allow null if empty)
             $languageFields = ['cantonese', 'mandarine', 'english'];
             foreach ($languageFields as $field) {
@@ -272,6 +266,21 @@ class ParticipantController extends Controller
             Log::info('Attempting to create participant');
             $participant = Participant::create($participantData);
             Log::info('Participant created successfully', ['participant_id' => $participant->id]);
+
+            // Handle work experiences
+            if ($request->has('work_experiences') && is_array($request->work_experiences)) {
+                Log::info('Processing work experiences', ['work_experiences_count' => count($request->work_experiences)]);
+                foreach ($request->work_experiences as $index => $workExperience) {
+                    // Only create work experience if country is filled and years > 0
+                    if (!empty($workExperience['country']) && isset($workExperience['years']) && $workExperience['years'] > 0) {
+                        $workExperienceRecord = $participant->workExperiences()->create([
+                            'country' => $workExperience['country'],
+                            'years' => $workExperience['years']
+                        ]);
+                        Log::info('Work experience created', ['work_experience_id' => $workExperienceRecord->id, 'index' => $index]);
+                    }
+                }
+            }
 
             // Handle work history
             if ($request->has('work_history') && is_array($request->work_history)) {
@@ -447,11 +456,6 @@ class ParticipantController extends Controller
             'education' => 'nullable|string|max:255', // Changed to nullable
             'no_of_children' => 'nullable|string|max:255',
             'status' => 'nullable|string|max:255', // Changed to nullable
-            'hongkong_year' => 'nullable|integer|min:0',
-            'singapore_year' => 'nullable|integer|min:0',
-            'taiwan_year' => 'nullable|integer|min:0',
-            'malaysia_year' => 'nullable|integer|min:0',
-            'brunei_year' => 'nullable|integer|min:0',
             'cantonese' => 'nullable|in:learning,basic,good',
             'mandarine' => 'nullable|in:learning,basic,good',
             'english' => 'nullable|in:learning,basic,good',
@@ -461,6 +465,11 @@ class ParticipantController extends Controller
             'new_job' => 'nullable|string|max:255',
             'date' => 'nullable|date',
             'is_public' => 'nullable|boolean',
+            
+            // Work experiences validation
+            'work_experiences' => 'nullable|array',
+            'work_experiences.*.country' => 'required|string|max:255',
+            'work_experiences.*.years' => 'required|integer|min:0',
             
             // Experience/Skills validation - all boolean fields
             'elderly_healthy_care_experience' => 'nullable|boolean',
@@ -563,7 +572,7 @@ class ParticipantController extends Controller
             }
 
             // Prepare participant data
-            $participantData = $request->except(['photo_path', 'work_history', '_token', '_method']);
+            $participantData = $request->except(['photo_path', 'work_history', 'work_experiences', '_token', '_method']);
             Log::info('Participant data prepared for update', ['data_keys' => array_keys($participantData)]);
             
             // Add photo path
@@ -605,12 +614,6 @@ class ParticipantController extends Controller
                 $participantData[$field] = $request->has($field) ? 1 : 0;
             }
 
-            // Handle experience fields with default values
-            $experienceFields = ['hongkong_year', 'singapore_year', 'taiwan_year', 'malaysia_year', 'brunei_year'];
-            foreach ($experienceFields as $field) {
-                $participantData[$field] = $request->input($field, 0); // Default to 0 if empty
-            }
-
             // Handle numeric fields with null handling
             $numericFields = ['height', 'weight'];
             foreach ($numericFields as $field) {
@@ -636,6 +639,23 @@ class ParticipantController extends Controller
             Log::info('Attempting to update participant');
             $participant->update($participantData);
             Log::info('Participant updated successfully', ['participant_id' => $participant->id]);
+
+            // Handle work experiences - delete existing and create new ones
+            $participant->workExperiences()->delete();
+            
+            if ($request->has('work_experiences') && is_array($request->work_experiences)) {
+                Log::info('Processing work experiences update', ['work_experiences_count' => count($request->work_experiences)]);
+                foreach ($request->work_experiences as $index => $workExperience) {
+                    // Only create work experience if country is filled and years > 0
+                    if (!empty($workExperience['country']) && isset($workExperience['years']) && $workExperience['years'] > 0) {
+                        $workExperienceRecord = $participant->workExperiences()->create([
+                            'country' => $workExperience['country'],
+                            'years' => $workExperience['years']
+                        ]);
+                        Log::info('Work experience updated', ['work_experience_id' => $workExperienceRecord->id, 'index' => $index]);
+                    }
+                }
+            }
 
             // Handle work history - delete existing and create new ones
             $participant->workHistories()->delete();

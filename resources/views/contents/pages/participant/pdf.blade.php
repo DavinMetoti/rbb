@@ -257,37 +257,71 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class="bg-blue" style="width: 25%;">{{ __('messages.hong_kong') }}</td>
-                <td style="width: 25%;">{{ $participant->hongkong_year == 0 || !$participant->hongkong_year ? '-' : $participant->hongkong_year . ' ' . __('messages.years') }}</td>
-                <td class="bg-blue" style="width: 25%;">&nbsp;</td>
-                <td class="bg-blue" style="width: 8.3%;">{{ __('messages.learning') }}</td>
-                <td class="bg-blue" style="width: 8.3%;">{{ __('messages.basic') }}</td>
-                <td class="bg-blue" style="width: 8.3%;">{{ __('messages.good') }}</td>
-            </tr>
-            <tr>
-                <td class="bg-blue" style="width: 25%;">{{ __('messages.singapore') }}</td>
-                <td style="width: 25%;">{{ $participant->singapore_year == 0 || !$participant->singapore_year ? '-' : $participant->singapore_year . ' ' . __('messages.years') }}</td>
-                <td class="bg-blue" style="width: 25%;">{{ __('messages.cantonese') }}</td>
-                <td style="width: 8.3%;">{{ $participant->cantonese == 'learning' ? '✓' : "" }}</td>
-                <td style="width: 8.3%;">{{ $participant->cantonese == 'basic' ? '✓' : "" }}</td>
-                <td style="width: 8.3%;">{{ $participant->cantonese == 'good' ? '✓' : "" }}</td>
-            </tr>
-            <tr>
-                <td class="bg-blue" style="width: 25%;">{{ __('messages.taiwan') }}</td>
-                <td style="width: 25%;">{{ $participant->taiwan_year == 0 || !$participant->taiwan_year ? '-' : $participant->taiwan_year . ' ' . __('messages.years') }}</td>
-                <td class="bg-blue" style="width: 25%;">{{ __('messages.mandarine') }}</td>
-                <td style="width: 8.3%;">{{ $participant->mandarine == 'learning' ? '✓' : "" }}</td>
-                <td style="width: 8.3%;">{{ $participant->mandarine == 'basic' ? '✓' : "" }}</td>
-                <td style="width: 8.3%;">{{ $participant->mandarine == 'good' ? '✓' : "" }}</td>
-            </tr>
-            <tr>
-                <td class="bg-blue" style="width: 25%;">{{ __('messages.malaysia') }}</td>
-                <td style="width: 25%;">{{ $participant->malaysia_year == 0 || !$participant->malaysia_year ? '-' : $participant->malaysia_year . ' ' . __('messages.years') }}</td>
-                <td class="bg-blue" style="width: 25%;">{{ __('messages.english') }}</td>
-                <td style="width: 8.3%;">{{ $participant->english == 'learning' ? '✓' : "" }}</td>
-                <td style="width: 8.3%;">{{ $participant->english == 'basic' ? '✓' : "" }}</td>
-                <td style="width: 8.3%;">{{ $participant->english == 'good' ? '✓' : "" }}</td>
+            @php
+                $workExperiences = $participant->workExperiences->pluck('years', 'country')->toArray();
+                $languages = [
+                    ['name' => 'cantonese', 'label' => __('messages.cantonese')],
+                    ['name' => 'mandarine', 'label' => __('messages.mandarine')],
+                    ['name' => 'english', 'label' => __('messages.english')]
+                ];
+                $experienceIndex = 0;
+            @endphp
+            
+            @foreach($workExperiences as $country => $years)
+                <tr>
+                    <td class="bg-blue" style="width: 25%;">{{ $country }}</td>
+                    <td style="width: 25%;">{{ $years == 0 ? '-' : $years . ' ' . __('messages.years') }}</td>
+                    @if($experienceIndex < count($languages))
+                        @php $language = $languages[$experienceIndex]; @endphp
+                        <td class="bg-blue" style="width: 25%;">{{ $language['label'] }}</td>
+                        <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'learning' ? '✓' : "" }}</td>
+                        <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'basic' ? '✓' : "" }}</td>
+                        <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'good' ? '✓' : "" }}</td>
+                    @else
+                        <td class="bg-blue" style="width: 25%;">&nbsp;</td>
+                        <td class="bg-blue" style="width: 8.3%;">&nbsp;</td>
+                        <td class="bg-blue" style="width: 8.3%;">&nbsp;</td>
+                        <td class="bg-blue" style="width: 8.3%;">&nbsp;</td>
+                    @endif
+                </tr>
+                @php $experienceIndex++; @endphp
+            @endforeach
+            
+            @if(count($workExperiences) == 0)
+                <tr>
+                    <td colspan="2">{{ __('messages.no_work_experience') }}</td>
+                    <td class="bg-blue" style="width: 25%;">{{ __('messages.cantonese') }}</td>
+                    <td style="width: 8.3%;">{{ $participant->cantonese == 'learning' ? '✓' : "" }}</td>
+                    <td style="width: 8.3%;">{{ $participant->cantonese == 'basic' ? '✓' : "" }}</td>
+                    <td style="width: 8.3%;">{{ $participant->cantonese == 'good' ? '✓' : "" }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                    <td class="bg-blue" style="width: 25%;">{{ __('messages.mandarine') }}</td>
+                    <td style="width: 8.3%;">{{ $participant->mandarine == 'learning' ? '✓' : "" }}</td>
+                    <td style="width: 8.3%;">{{ $participant->mandarine == 'basic' ? '✓' : "" }}</td>
+                    <td style="width: 8.3%;">{{ $participant->mandarine == 'good' ? '✓' : "" }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                    <td class="bg-blue" style="width: 25%;">{{ __('messages.english') }}</td>
+                    <td style="width: 8.3%;">{{ $participant->english == 'learning' ? '✓' : "" }}</td>
+                    <td style="width: 8.3%;">{{ $participant->english == 'basic' ? '✓' : "" }}</td>
+                    <td style="width: 8.3%;">{{ $participant->english == 'good' ? '✓' : "" }}</td>
+                </tr>
+            @endif
+            
+            @while($experienceIndex < 3)
+                @php $language = $languages[$experienceIndex]; @endphp
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                    <td class="bg-blue" style="width: 25%;">{{ $language['label'] }}</td>
+                    <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'learning' ? '✓' : "" }}</td>
+                    <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'basic' ? '✓' : "" }}</td>
+                    <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'good' ? '✓' : "" }}</td>
+                </tr>
+                @php $experienceIndex++; @endphp
+            @endwhile
             </tr>
             <tr>
                 <td class="bg-blue" style="width: 25%;">{{ __('messages.brunei') }}</td>
