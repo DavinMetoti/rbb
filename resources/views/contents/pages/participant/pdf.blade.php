@@ -211,39 +211,39 @@
         <tbody>
             <tr>
                 <td class="bg-blue col-25">{{ __('messages.name') }}</td>
-                <td class="col-25" style="font-style: italic;">{{ $participant->name }}</td>
+                <td class="col-25" style="font-style: italic; text-transform: uppercase;">{{ $participant->name }}</td>
                 <td class="bg-blue col-25">{{ __('messages.birth_date') }}</td>
-                <td class="col-25" style="font-style: italic;">{{ $participant->birth_date }}</td>
+                <td class="col-25" style="font-style: italic; text-transform: uppercase;">{{ $participant->birth_date }}</td>
             </tr>
             <tr>
                 <td class="bg-blue col-25">{{ __('messages.gender') }}</td>
-                <td class="col-25" style="font-style: italic;">{{ $participant->gender }}</td>
+                <td class="col-25" style="font-style: italic; text-transform: uppercase;">{{ $participant->gender }}</td>
                 <td class="bg-blue col-25">{{ __('messages.age') }}</td>
-                <td class="col-25" style="font-style: italic;">{{ \Carbon\Carbon::parse($participant->birth_date)->age }}</td>
+                <td class="col-25" style="font-style: italic; text-transform: uppercase;">{{ \Carbon\Carbon::parse($participant->birth_date)->age }}</td>
             </tr>
             <tr>
                 <td class="bg-blue col-25">{{ __('messages.nationality') }}</td>
-                <td class="col-25" style="font-style: italic;">{{ $participant->nationality }}</td>
+                <td class="col-25" style="font-style: italic; text-transform: uppercase;">{{ $participant->nationality }}</td>
                 <td class="bg-blue col-25">{{ __('messages.height') }}</td>
                 <td class="col-25" style="font-style: italic;">{{ $participant->height }} cm</td>
             </tr>
             <tr>
                 <td class="bg-blue col-25">{{ __('messages.religion') }}</td>
-                <td class="col-25" style="font-style: italic;">{{ $participant->religion }}</td>
+                <td class="col-25" style="font-style: italic; text-transform: uppercase;">{{ $participant->religion }}</td>
                 <td class="bg-blue col-25">{{ __('messages.weight') }}</td>
                 <td class="col-25" style="font-style: italic;">{{ $participant->weight }} kg</td>
             </tr>
             <tr>
                 <td class="bg-blue col-25">{{ __('messages.marital_status') }}</td>
-                <td class="col-25" style="font-style: italic;">{{ $participant->marital_status }}</td>
+                <td class="col-25" style="font-style: italic; text-transform: uppercase;">{{ $participant->marital_status }}</td>
                 <td class="bg-blue col-25">{{ __('messages.education') }}</td>
-                <td class="col-25" style="font-style: italic;">{{ $participant->education }}</td>
+                <td class="col-25" style="font-style: italic; text-transform: uppercase;">{{ $participant->education }}</td>
             </tr>
             <tr>
                 <td class="bg-blue col-25">{{ __('messages.number_of_children') }}</td>
-                <td class="col-25" style="font-style: italic;">{{ $participant->no_of_children }}</td>
+                <td class="col-25" style="font-style: italic; text-transform: uppercase;">{{ $participant->no_of_children }}</td>
                 <td class="bg-blue col-25">{{ __('messages.status') }}</td>
-                <td class="col-25" style="font-style: italic;">{{ $participant->status }}</td>
+                <td class="col-25" style="font-style: italic; text-transform: uppercase;">{{ $participant->status }}</td>
             </tr>
         </tbody>
     </table>
@@ -255,6 +255,14 @@
                 <th class="bg-red" colspan="2" style="width: 50%;">{{ __('messages.work_experience') }}</th>
                 <th class="bg-red" colspan="4" style="width: 50%;">{{ __('messages.language_skills') }}</th>
             </tr>
+            <tr>
+                <th class="bg-blue" style="width: 25%;">Country</th>
+                <th class="bg-blue" style="width: 25%;">Years</th>
+                <th class="bg-blue" style="width: 25%;">Language</th>
+                <th class="bg-blue" style="width: 8.3%;">Learning</th>
+                <th class="bg-blue" style="width: 8.3%;">Basic</th>
+                <th class="bg-blue" style="width: 8.3%;">Good</th>
+            </tr>
         </thead>
         <tbody>
             @php
@@ -264,13 +272,30 @@
                     ['name' => 'mandarine', 'label' => __('messages.mandarine')],
                     ['name' => 'english', 'label' => __('messages.english')]
                 ];
+                
+                // Default countries
+                $defaultCountries = ['Hongkong', 'Singapore', 'Malaysia', 'Taiwan', 'Brunei'];
+                $displayExperiences = [];
+                
+                // Add default countries first
+                foreach($defaultCountries as $country) {
+                    $displayExperiences[$country] = $workExperiences[$country] ?? '-';
+                }
+                
+                // Add any additional countries that are not in defaults
+                foreach($workExperiences as $country => $years) {
+                    if (!in_array($country, $defaultCountries)) {
+                        $displayExperiences[$country] = $years;
+                    }
+                }
+                
                 $experienceIndex = 0;
             @endphp
             
-            @foreach($workExperiences as $country => $years)
+            @foreach($displayExperiences as $country => $years)
                 <tr>
-                    <td class="bg-blue" style="width: 25%;">{{ $country }}</td>
-                    <td style="width: 25%;">{{ $years == 0 ? '-' : $years . ' ' . __('messages.years') }}</td>
+                    <td class="bg-blue" style="width: 25%; text-transform: uppercase;">{{ $country }}</td>
+                    <td style="width: 25%;">{{ $years === '-' ? '-' : ($years == 0 ? '-' : $years . ' ' . __('messages.years')) }}</td>
                     @if($experienceIndex < count($languages))
                         @php $language = $languages[$experienceIndex]; @endphp
                         <td class="bg-blue" style="width: 25%;">{{ $language['label'] }}</td>
@@ -287,28 +312,25 @@
                 @php $experienceIndex++; @endphp
             @endforeach
             
-            @if(count($workExperiences) == 0)
-                <tr>
-                    <td colspan="2">{{ __('messages.no_work_experience') }}</td>
-                    <td class="bg-blue" style="width: 25%;">{{ __('messages.cantonese') }}</td>
-                    <td style="width: 8.3%;">{{ $participant->cantonese == 'learning' ? '✓' : "" }}</td>
-                    <td style="width: 8.3%;">{{ $participant->cantonese == 'basic' ? '✓' : "" }}</td>
-                    <td style="width: 8.3%;">{{ $participant->cantonese == 'good' ? '✓' : "" }}</td>
-                </tr>
-                <tr>
-                    <td colspan="2">&nbsp;</td>
-                    <td class="bg-blue" style="width: 25%;">{{ __('messages.mandarine') }}</td>
-                    <td style="width: 8.3%;">{{ $participant->mandarine == 'learning' ? '✓' : "" }}</td>
-                    <td style="width: 8.3%;">{{ $participant->mandarine == 'basic' ? '✓' : "" }}</td>
-                    <td style="width: 8.3%;">{{ $participant->mandarine == 'good' ? '✓' : "" }}</td>
-                </tr>
-                <tr>
-                    <td colspan="2">&nbsp;</td>
-                    <td class="bg-blue" style="width: 25%;">{{ __('messages.english') }}</td>
-                    <td style="width: 8.3%;">{{ $participant->english == 'learning' ? '✓' : "" }}</td>
-                    <td style="width: 8.3%;">{{ $participant->english == 'basic' ? '✓' : "" }}</td>
-                    <td style="width: 8.3%;">{{ $participant->english == 'good' ? '✓' : "" }}</td>
-                </tr>
+            @if(count($displayExperiences) == 0)
+                @foreach($defaultCountries as $index => $country)
+                    <tr>
+                        <td class="bg-blue" style="width: 25%; text-transform: uppercase;">{{ $country }}</td>
+                        <td style="width: 25%;">-</td>
+                        @if($index < count($languages))
+                            @php $language = $languages[$index]; @endphp
+                            <td class="bg-blue" style="width: 25%;">{{ $language['label'] }}</td>
+                            <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'learning' ? '✓' : "" }}</td>
+                            <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'basic' ? '✓' : "" }}</td>
+                            <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'good' ? '✓' : "" }}</td>
+                        @else
+                            <td class="bg-blue" style="width: 25%;">&nbsp;</td>
+                            <td class="bg-blue" style="width: 8.3%;">&nbsp;</td>
+                            <td class="bg-blue" style="width: 8.3%;">&nbsp;</td>
+                            <td class="bg-blue" style="width: 8.3%;">&nbsp;</td>
+                        @endif
+                    </tr>
+                @endforeach
             @endif
             
             @while($experienceIndex < 3)
@@ -322,15 +344,6 @@
                 </tr>
                 @php $experienceIndex++; @endphp
             @endwhile
-            </tr>
-            <tr>
-                <td class="bg-blue" style="width: 25%;">{{ __('messages.brunei') }}</td>
-                <td style="width: 25%;">{{ $participant->brunei_year == 0 || !$participant->brunei_year ? '-' : $participant->brunei_year . ' ' . __('messages.years') }}</td>
-                <td class="bg-blue" style="width: 25%;">&nbsp;</td>
-                <td style="width: 8.3%;">&nbsp;</td>
-                <td style="width: 8.3%;">&nbsp;</td>
-                <td style="width: 8.3%;">&nbsp;</td>
-            </tr>
         </tbody>
     </table>
 

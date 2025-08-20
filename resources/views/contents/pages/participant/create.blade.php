@@ -424,8 +424,6 @@
                             $allExperience = [
                                 'elderly_healthy_care_experience' => 'ELDERLY HEALTHY CARE EXPERIENCE',
                                 'elderly_sick_care_experience' => 'ELDERLY SICK CARE EXPERIENCE',
-                                'elderly_healthy_care_experience_v' => 'ELDERLY HEALTHY CARE EXPERIENCE (VERIFIED)',
-                                'elderly_sick_care_experience_v' => 'ELDERLY SICK CARE EXPERIENCE (VERIFIED)',
                                 'newborn_care_experience' => 'NEWBORN CARE EXPERIENCE',
                                 'children_care_experience' => 'CHILDREN CARE EXPERIENCE',
                                 'i_can_take_care_of_dog' => 'I CAN TAKE CARE OF DOG',

@@ -249,26 +249,39 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td class="border border-gray-200 px-2 py-1 font-medium">{{ __('messages.hong_kong') }}</td>
-                                                        <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $participant->hongkong_year == 0 || !$participant->hongkong_year ? '-' : $participant->hongkong_year }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="border border-gray-200 px-2 py-1 font-medium">{{ __('messages.singapore') }}</td>
-                                                        <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $participant->singapore_year == 0 || !$participant->singapore_year ? '-' : $participant->singapore_year }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="border border-gray-200 px-2 py-1 font-medium">{{ __('messages.taiwan') }}</td>
-                                                        <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $participant->taiwan_year == 0 || !$participant->taiwan_year ? '-' : $participant->taiwan_year }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="border border-gray-200 px-2 py-1 font-medium">{{ __('messages.malaysia') }}</td>
-                                                        <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $participant->malaysia_year == 0 || !$participant->malaysia_year ? '-' : $participant->malaysia_year }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="border border-gray-200 px-2 py-1 font-medium">{{ __('messages.brunei') }}</td>
-                                                        <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $participant->brunei_year == 0 || !$participant->brunei_year ? '-' : $participant->brunei_year }}</td>
-                                                    </tr>
+                                                    @php
+                                                        $workExperiences = $participant->workExperiences->pluck('years', 'country')->toArray();
+                                                        $defaultCountries = ['Hongkong', 'Singapore', 'Malaysia', 'Taiwan', 'Brunei'];
+                                                        $displayExperiences = [];
+                                                        
+                                                        // Add default countries first
+                                                        foreach($defaultCountries as $country) {
+                                                            $displayExperiences[$country] = $workExperiences[$country] ?? '-';
+                                                        }
+                                                        
+                                                        // Add any additional countries that are not in defaults
+                                                        foreach($workExperiences as $country => $years) {
+                                                            if (!in_array($country, $defaultCountries)) {
+                                                                $displayExperiences[$country] = $years;
+                                                            }
+                                                        }
+                                                    @endphp
+                                                    
+                                                    @foreach($displayExperiences as $country => $years)
+                                                        <tr>
+                                                            <td class="border border-gray-200 px-2 py-1 font-medium">{{ $country }}</td>
+                                                            <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $years === '-' ? '-' : ($years == 0 ? '-' : $years) }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                    
+                                                    @if(count($displayExperiences) == 0)
+                                                        @foreach($defaultCountries as $country)
+                                                            <tr>
+                                                                <td class="border border-gray-200 px-2 py-1 font-medium">{{ $country }}</td>
+                                                                <td class="border border-gray-200 px-2 py-1 text-center font-semibold">-</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    @endif
                                                 </tbody>
                                             </table>
                                         </div>
