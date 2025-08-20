@@ -188,7 +188,7 @@ return [
     // Work history fields
     'country' => '国家',
     'period' => '期间',
-    'target_employer' => '目标/雇主',
+    'target_employer' => '目标',
     'reason_for_leaving' => '离职原因',
     'remarks' => '备注',
     'work_history_number' => '工作历史 #:number',

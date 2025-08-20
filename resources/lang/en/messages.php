@@ -183,7 +183,7 @@ return [
     // Work history fields
     'country' => 'Country',
     'period' => 'Period',
-    'target_employer' => 'Target/Employer',
+    'target_employer' => 'Target',
     'reason_for_leaving' => 'Reason for Leaving',
     'remarks' => 'Remarks',
     'work_history_number' => 'Work History #:number',

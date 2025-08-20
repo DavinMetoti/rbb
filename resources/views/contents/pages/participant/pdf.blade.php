@@ -273,18 +273,56 @@
                     ['name' => 'english', 'label' => __('messages.english')]
                 ];
                 
+                // Function to normalize country names
+                function normalizeCountryNamePdf($country) {
+                    $normalized = strtolower(trim($country));
+                    $normalized = str_replace(' ', '', $normalized);
+                    return $normalized;
+                }
+                
                 // Default countries
                 $defaultCountries = ['Hongkong', 'Singapore', 'Malaysia', 'Taiwan', 'Brunei'];
                 $displayExperiences = [];
                 
-                // Add default countries first
+                // Add default countries first, check for both exact match and normalized match
                 foreach($defaultCountries as $country) {
-                    $displayExperiences[$country] = $workExperiences[$country] ?? '-';
+                    $found = false;
+                    $years = '-';
+                    
+                    // First check exact match
+                    if (isset($workExperiences[$country])) {
+                        $years = $workExperiences[$country];
+                        $found = true;
+                    } else {
+                        // Check for normalized match (e.g., "Hong Kong" matches "Hongkong")
+                        $normalizedDefault = normalizeCountryNamePdf($country);
+                        foreach($workExperiences as $dbCountry => $dbYears) {
+                            if (normalizeCountryNamePdf($dbCountry) === $normalizedDefault) {
+                                $years = $dbYears;
+                                $found = true;
+                                break;
+                            }
+                        }
+                    }
+                    
+                    $displayExperiences[$country] = $years;
                 }
                 
-                // Add any additional countries that are not in defaults
+                // Add any additional countries that are not in defaults, avoiding duplicates
                 foreach($workExperiences as $country => $years) {
-                    if (!in_array($country, $defaultCountries)) {
+                    $isDefault = false;
+                    $normalizedCountry = normalizeCountryNamePdf($country);
+                    
+                    // Check if this country matches any default country (normalized)
+                    foreach($defaultCountries as $defaultCountry) {
+                        if ($normalizedCountry === normalizeCountryNamePdf($defaultCountry)) {
+                            $isDefault = true;
+                            break;
+                        }
+                    }
+                    
+                    // If not a default country and not already added, add it
+                    if (!$isDefault && !array_key_exists($country, $displayExperiences)) {
                         $displayExperiences[$country] = $years;
                     }
                 }
