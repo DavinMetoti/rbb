@@ -133,6 +133,7 @@ return [
     
     // Education options
     'elementary_school' => 'Elementary School',
+    'primary_high_school' => 'Primary High School',
     'junior_high_school' => 'Junior High School',
     'senior_high_school' => 'Senior High School',
     'vocational_school' => 'Vocational School',

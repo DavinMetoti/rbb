@@ -203,6 +203,7 @@
                                     class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('education') border-red-300 @enderror" required>
                                 <option value="">{{ __('messages.select_education') }}</option>
                                 <option value="Elementary School" {{ old('education') == 'Elementary School' ? 'selected' : '' }}>{{ __('messages.elementary_school') }}</option>
+                                <option value="Primary High School" {{ old('education') == 'Primary High School' ? 'selected' : '' }}>{{ __('messages.primary_high_school') }}</option>
                                 <option value="Junior High School" {{ old('education') == 'Junior High School' ? 'selected' : '' }}>{{ __('messages.junior_high_school') }}</option>
                                 <option value="Senior High School" {{ old('education') == 'Senior High School' ? 'selected' : '' }}>{{ __('messages.senior_high_school') }}</option>
                                 <option value="Vocational School" {{ old('education') == 'Vocational School' ? 'selected' : '' }}>{{ __('messages.vocational_school') }}</option>
