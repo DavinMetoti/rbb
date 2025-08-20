@@ -89,6 +89,8 @@
         
         .bg-red {
             background-color: #fee2e2;
+            font-style: normal;
+            text-transform: uppercase;
         }
         
         .bg-blue {
