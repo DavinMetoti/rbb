@@ -67,7 +67,7 @@
                 <table class="w-full bg-gray-50 rounded-lg shadow-sm border border-gray-200">
                 <thead>
                     <tr>
-                        <th class="p-2 border bg-red-100 italic" colspan="4">{{ __('messages.personal_information') }}</th>
+                        <th class="p-2 border bg-red-100" colspan="4">{{ __('messages.personal_information') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -113,8 +113,8 @@
             <table class="w-full mb-8 bg-gray-50 rounded-lg shadow-sm border border-gray-200">
                 <thead>
                     <tr>
-                        <th class="p-2 border bg-red-100 italic" colspan="2" style="width: 50%;">{{ __('messages.work_experience') }}</th>
-                        <th class="p-2 border bg-red-100 italic" colspan="4" style="width: 50%;">{{ __('messages.language_skills') }}</th>
+                        <th class="p-2 border bg-red-100" colspan="2" style="width: 50%;">{{ __('messages.work_experience') }}</th>
+                        <th class="p-2 border bg-red-100" colspan="4" style="width: 50%;">{{ __('messages.language_skills') }}</th>
                     </tr>
                 </thead>
                 <tbody>
