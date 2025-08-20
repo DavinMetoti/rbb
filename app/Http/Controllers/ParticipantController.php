@@ -17,7 +17,7 @@ class ParticipantController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Participant::query();
+        $query = Participant::with('workExperiences');
         
         // Filter by visibility for non-authenticated users
         if (!Auth::check()) {
@@ -337,7 +337,7 @@ class ParticipantController extends Controller
      */
     public function show(string $id)
     {
-        $participant = Participant::with('workHistories')->findOrFail($id);
+        $participant = Participant::with(['workHistories', 'workExperiences'])->findOrFail($id);
         
         // Check if participant is private and user is not authenticated
         if (!$participant->is_public && !Auth::check()) {
@@ -352,7 +352,7 @@ class ParticipantController extends Controller
      */
     public function downloadPdf(string $id)
     {
-        $participant = Participant::with('workHistories')->findOrFail($id);
+        $participant = Participant::with(['workHistories', 'workExperiences'])->findOrFail($id);
         
         // Check if participant is private and user is not authenticated
         if (!$participant->is_public && !Auth::check()) {
@@ -394,7 +394,7 @@ class ParticipantController extends Controller
      */
     public function edit(string $id)
     {
-        $participant = Participant::with('workHistories')->findOrFail($id);
+        $participant = Participant::with(['workHistories', 'workExperiences'])->findOrFail($id);
         
         // Define all experience fields for the view
         $allExperience = [

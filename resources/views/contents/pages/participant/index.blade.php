@@ -250,74 +250,54 @@
                                                 </thead>
                                                 <tbody>
                                                     @php
-                                                        $workExperiences = $participant->workExperiences->pluck('years', 'country')->toArray();
-                                                        $defaultCountries = ['Hongkong', 'Singapore', 'Malaysia', 'Taiwan', 'Brunei'];
-                                                        $displayExperiences = [];
-                                                        
-                                                        // Function to normalize country names
-                                                        function normalizeCountryName($country) {
-                                                            $normalized = strtolower(trim($country));
-                                                            $normalized = str_replace(' ', '', $normalized);
-                                                            return $normalized;
+                                                        // Create a map of countries to years from work experiences
+                                                        $experienceMap = [];
+                                                        foreach ($participant->workExperiences as $experience) {
+                                                            $experienceMap[strtolower($experience->country)] = $experience->years;
                                                         }
                                                         
-                                                        // Add default countries first, check for both exact match and normalized match
-                                                        foreach($defaultCountries as $country) {
-                                                            $found = false;
-                                                            $years = '-';
+                                                        // Define the countries to display
+                                                        $countries = [
+                                                            'hong_kong' => __('messages.hong_kong'),
+                                                            'singapore' => __('messages.singapore'),
+                                                            'taiwan' => __('messages.taiwan'),
+                                                            'malaysia' => __('messages.malaysia'),
+                                                            'brunei' => __('messages.brunei')
+                                                        ];
+                                                    @endphp
+                                                    
+                                                    @foreach($countries as $countryKey => $countryName)
+                                                        @php
+                                                            // Try to find the experience for this country
+                                                            $years = 0;
+                                                            $searchKeys = [
+                                                                strtolower($countryName),
+                                                                strtolower(str_replace(' ', '', $countryName)),
+                                                                strtolower(str_replace('_', ' ', $countryKey)),
+                                                                $countryKey
+                                                            ];
                                                             
-                                                            // First check exact match
-                                                            if (isset($workExperiences[$country])) {
-                                                                $years = $workExperiences[$country];
-                                                                $found = true;
-                                                            } else {
-                                                                // Check for normalized match (e.g., "Hong Kong" matches "Hongkong")
-                                                                $normalizedDefault = normalizeCountryName($country);
-                                                                foreach($workExperiences as $dbCountry => $dbYears) {
-                                                                    if (normalizeCountryName($dbCountry) === $normalizedDefault) {
-                                                                        $years = $dbYears;
-                                                                        $found = true;
-                                                                        break;
-                                                                    }
-                                                                }
-                                                            }
-                                                            
-                                                            $displayExperiences[$country] = $years;
-                                                        }
-                                                        
-                                                        // Add any additional countries that are not in defaults, avoiding duplicates
-                                                        foreach($workExperiences as $country => $years) {
-                                                            $isDefault = false;
-                                                            $normalizedCountry = normalizeCountryName($country);
-                                                            
-                                                            // Check if this country matches any default country (normalized)
-                                                            foreach($defaultCountries as $defaultCountry) {
-                                                                if ($normalizedCountry === normalizeCountryName($defaultCountry)) {
-                                                                    $isDefault = true;
+                                                            foreach ($searchKeys as $searchKey) {
+                                                                if (isset($experienceMap[$searchKey])) {
+                                                                    $years = $experienceMap[$searchKey];
                                                                     break;
                                                                 }
                                                             }
-                                                            
-                                                            // If not a default country and not already added, add it
-                                                            if (!$isDefault && !array_key_exists($country, $displayExperiences)) {
-                                                                $displayExperiences[$country] = $years;
-                                                            }
-                                                        }
-                                                    @endphp
-                                                    
-                                                    @foreach($displayExperiences as $country => $years)
+                                                        @endphp
                                                         <tr>
-                                                            <td class="border border-gray-200 px-2 py-1 font-medium">{{ $country }}</td>
-                                                            <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $years === '-' ? '-' : ($years == 0 ? '-' : $years) }}</td>
+                                                            <td class="border border-gray-200 px-2 py-1 font-medium">{{ $countryName }}</td>
+                                                            <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $years == 0 ? '-' : $years }}</td>
                                                         </tr>
                                                     @endforeach
                                                     
-                                                    @if(count($displayExperiences) == 0)
-                                                        @foreach($defaultCountries as $country)
-                                                            <tr>
-                                                                <td class="border border-gray-200 px-2 py-1 font-medium">{{ $country }}</td>
-                                                                <td class="border border-gray-200 px-2 py-1 text-center font-semibold">-</td>
-                                                            </tr>
+                                                    @if($participant->workExperiences->count() > 0)
+                                                        @foreach($participant->workExperiences as $experience)
+                                                            @if(!in_array(strtolower($experience->country), ['hong kong', 'singapore', 'taiwan', 'malaysia', 'brunei']))
+                                                                <tr>
+                                                                    <td class="border border-gray-200 px-2 py-1 font-medium">{{ $experience->country }}</td>
+                                                                    <td class="border border-gray-200 px-2 py-1 text-center font-semibold">{{ $experience->years }}</td>
+                                                                </tr>
+                                                            @endif
                                                         @endforeach
                                                     @endif
                                                 </tbody>
