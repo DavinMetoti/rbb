@@ -579,12 +579,8 @@
         document.addEventListener('click', function(e) {
             if (e.target.closest('.remove-work-history')) {
                 const entry = e.target.closest('.work-history-entry');
-                if (document.querySelectorAll('.work-history-entry').length > 1) {
-                    entry.remove();
-                    updateWorkHistoryNumbers();
-                } else {
-                    alert('{{ __('messages.work_history_required') }}');
-                }
+                entry.remove();
+                updateWorkHistoryNumbers();
             }
         });
 

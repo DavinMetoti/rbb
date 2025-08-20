@@ -312,19 +312,19 @@
             <tbody>
                 <tr>
                     <td class="bg-blue col-25">{{ __('messages.country') }}</td>
-                    <td class="col-25">{{ $workHistory->country ?? '' }}</td>
+                    <td class="col-25">{{ $workHistory->country ?? '-' }}</td>
                     <td class="bg-blue col-25">{{ __('messages.target_employer') }}</td>
-                    <td class="col-25">{{ $workHistory->target ?? '' }}</td>
+                    <td class="col-25">{{ $workHistory->target ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td class="bg-blue col-25">{{ __('messages.period') }}</td>
-                    <td class="col-25">{{ $workHistory->period ?? '' }}</td>
+                    <td class="col-25">{{ $workHistory->period ?? '-' }}</td>
                     <td class="bg-blue col-25">{{ __('messages.reason_for_leaving') }}</td>
-                    <td class="col-25">{{ $workHistory->reason_for_leaving ?? '' }}</td>
+                    <td class="col-25">{{ $workHistory->reason_for_leaving ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td class="bg-blue col-25">{{ __('messages.remarks') }}</td>
-                    <td class="text-left" colspan="3">{{ $workHistory->remake ?? '' }}</td>
+                    <td class="text-left" colspan="3">{{ $workHistory->remake ?? '-' }}</td>
                 </tr>
             </tbody>
         </table>
