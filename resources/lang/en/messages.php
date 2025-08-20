@@ -252,4 +252,10 @@ return [
     'navigation' => 'Navigation',
     'optional' => 'Optional',
     'download_pdf' => 'Download PDF',
+    
+    // Visibility settings
+    'visibility_settings' => 'Visibility Settings',
+    'make_profile_public' => 'Make this profile public',
+    'public_profile_note' => 'When enabled, this participant profile will be visible to other users. Disable to keep it private.',
+    'public_profiles_only' => 'Only public participant profiles are shown. Login to view all profiles.',
 ];

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ParticipantController extends Controller
 {
@@ -18,15 +19,16 @@ class ParticipantController extends Controller
     {
         $query = Participant::query();
         
+        // Filter by visibility for non-authenticated users
+        if (!Auth::check()) {
+            $query->where('is_public', true);
+        }
+        
         // Search functionality
         if ($request->has('search') && $request->search) {
             $searchTerm = $request->search;
             $query->where(function($q) use ($searchTerm) {
                 $q->where('name', 'LIKE', "%{$searchTerm}%")
-                  ->orWhere('code', 'LIKE', "%{$searchTerm}%")
-                  ->orWhere('nationality', 'LIKE', "%{$searchTerm}%")
-                  ->orWhere('education', 'LIKE', "%{$searchTerm}%")
-                  ->orWhere('religion', 'LIKE', "%{$searchTerm}%")
                   ->orWhere('status', 'LIKE', "%{$searchTerm}%");
             });
             
@@ -88,6 +90,7 @@ class ParticipantController extends Controller
             // New fields validation
             'new_job' => 'nullable|string|max:255',
             'date' => 'nullable|date',
+            'is_public' => 'nullable|boolean',
             
             // Experience/Skills validation - all boolean fields
             'elderly_healthy_care_experience' => 'nullable|boolean',
@@ -243,6 +246,7 @@ class ParticipantController extends Controller
                 'i_like_take_care_of_a_children',
                 'i_like_take_care_of_a_newborn_baby',
                 'i_like_take_care_of_the_elderly',
+                'is_public',
             ];
 
             // Set boolean fields to 0 if not present (unchecked checkboxes)
@@ -325,6 +329,12 @@ class ParticipantController extends Controller
     public function show(string $id)
     {
         $participant = Participant::with('workHistories')->findOrFail($id);
+        
+        // Check if participant is private and user is not authenticated
+        if (!$participant->is_public && !Auth::check()) {
+            abort(403, 'This participant profile is private. Please login to view.');
+        }
+        
         return view('contents.pages.participant.show', compact('participant'));
     }
 
@@ -334,6 +344,11 @@ class ParticipantController extends Controller
     public function downloadPdf(string $id)
     {
         $participant = Participant::with('workHistories')->findOrFail($id);
+        
+        // Check if participant is private and user is not authenticated
+        if (!$participant->is_public && !Auth::check()) {
+            abort(403, 'This participant profile is private. Please login to download PDF.');
+        }
         
         // Debug: Log participant photo info
         Log::info('PDF Generation', [
@@ -445,6 +460,7 @@ class ParticipantController extends Controller
             // New fields validation
             'new_job' => 'nullable|string|max:255',
             'date' => 'nullable|date',
+            'is_public' => 'nullable|boolean',
             
             // Experience/Skills validation - all boolean fields
             'elderly_healthy_care_experience' => 'nullable|boolean',
@@ -581,6 +597,7 @@ class ParticipantController extends Controller
                 'i_like_take_care_of_a_children',
                 'i_like_take_care_of_a_newborn_baby',
                 'i_like_take_care_of_the_elderly',
+                'is_public',
             ];
 
             // Set boolean fields to 0 if not present (unchecked checkboxes)

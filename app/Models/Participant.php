@@ -58,6 +58,7 @@ class Participant extends Model
         'photo_path',
         'new_job',
         'date',
+        'is_public',
     ];
 
     public function workHistories()

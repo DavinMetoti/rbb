@@ -468,6 +468,23 @@
                     </div>
                 </div>
 
+                <!-- Public Visibility Section -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                    <h2 class="text-lg font-medium text-gray-900 mb-6 pb-3 border-b border-gray-100">{{ __('messages.visibility_settings') }}</h2>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <input type="checkbox" name="is_public" id="is_public" value="1" 
+                                   {{ old('is_public', true) ? 'checked' : '' }}
+                                   class="w-5 h-5 text-gray-900 bg-gray-100 border-gray-300 rounded focus:ring-gray-900 focus:ring-2">
+                            <label for="is_public" class="ml-3 text-sm font-medium text-gray-700">
+                                {{ __('messages.make_profile_public') }}
+                            </label>
+                        </div>
+                        <p class="text-xs text-gray-500 ml-8">{{ __('messages.public_profile_note') }}</p>
+                    </div>
+                </div>
+
                 <!-- Submit Button -->
                 <div class="flex justify-center pt-6">
                     <button type="submit" 

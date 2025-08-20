@@ -105,81 +105,84 @@
             <table class="w-full mb-8 bg-gray-50 rounded-lg shadow-sm border border-gray-200">
                 <thead>
                     <tr>
-                        <th class="p-2 border bg-red-100" colspan="2">{{ __('messages.work_experience') }}</th>
-                        <th class="p-2 border bg-red-100" colspan="4">{{ __('messages.language_skills') }}</th>
+                        <th class="p-2 border bg-red-100" colspan="2" style="width: 50%;">{{ __('messages.work_experience') }}</th>
+                        <th class="p-2 border bg-red-100" colspan="4" style="width: 50%;">{{ __('messages.language_skills') }}</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="p-2 border text-center bg-blue-100">{{ __('messages.hong_kong') }}</td>
-                        <td class="p-2 border text-center">{{ $participant->hongkong_year == 0 || !$participant->hongkong_year ? '-' : $participant->hongkong_year . ' ' . __('messages.years') }}</td>
-                        <td class="p-2 border text-center bg-blue-100">&nbsp;</td>
-                        <td class="p-2 border text-center bg-blue-100">{{ __('messages.learning') }}</td>
-                        <td class="p-2 border text-center bg-blue-100">{{ __('messages.basic') }}</td>
-                        <td class="p-2 border text-center bg-blue-100">{{ __('messages.good') }}</td>
+                        <td class="p-2 border text-center bg-blue-100" style="width: 25%;">{{ __('messages.hong_kong') }}</td>
+                        <td class="p-2 border text-center" style="width: 25%;">{{ $participant->hongkong_year == 0 || !$participant->hongkong_year ? '-' : $participant->hongkong_year . ' ' . __('messages.years') }}</td>
+                        <td class="p-2 border text-center bg-blue-100" style="width: 25%;">&nbsp;</td>
+                        <td class="p-2 border text-center bg-blue-100" style="width: 8.3%;">{{ __('messages.learning') }}</td>
+                        <td class="p-2 border text-center bg-blue-100" style="width: 8.3%;">{{ __('messages.basic') }}</td>
+                        <td class="p-2 border text-center bg-blue-100" style="width: 8.3%;">{{ __('messages.good') }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border text-center bg-blue-100">{{ __('messages.singapore') }}</td>
-                        <td class="p-2 border text-center">{{ $participant->singapore_year == 0 || !$participant->singapore_year ? '-' : $participant->singapore_year . ' ' . __('messages.years') }}</td>
-                        <td class="p-2 border text-center bg-blue-100">{{ __('messages.cantonese') }}</td>
-                        <td class="p-2 border text-center">{{ $participant->cantonese == 'learning' ? '✓' : "" }}</td>
-                        <td class="p-2 border text-center">{{ $participant->cantonese == 'basic' ? '✓' : "" }}</td>
-                        <td class="p-2 border text-center">{{ $participant->cantonese == 'good' ? '✓' : "" }}</td>
+                        <td class="p-2 border text-center bg-blue-100" style="width: 25%;">{{ __('messages.singapore') }}</td>
+                        <td class="p-2 border text-center" style="width: 25%;">{{ $participant->singapore_year == 0 || !$participant->singapore_year ? '-' : $participant->singapore_year . ' ' . __('messages.years') }}</td>
+                        <td class="p-2 border text-center bg-blue-100" style="width: 25%;">{{ __('messages.cantonese') }}</td>
+                        <td class="p-2 border text-center" style="width: 8.3%;">{{ $participant->cantonese == 'learning' ? '✓' : "" }}</td>
+                        <td class="p-2 border text-center" style="width: 8.3%;">{{ $participant->cantonese == 'basic' ? '✓' : "" }}</td>
+                        <td class="p-2 border text-center" style="width: 8.3%;">{{ $participant->cantonese == 'good' ? '✓' : "" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border text-center bg-blue-100">{{ __('messages.taiwan') }}</td>
-                        <td class="p-2 border text-center">{{ $participant->taiwan_year == 0 || !$participant->taiwan_year ? '-' : $participant->taiwan_year . ' ' . __('messages.years') }}</td>
-                        <td class="p-2 border bg-blue-100 text-center">{{ __('messages.mandarine') }}</td>
-                        <td class="p-2 border text-center">{{ $participant->mandarine == 'learning' ? '✓' : "" }}</td>
-                        <td class="p-2 border text-center">{{ $participant->mandarine == 'basic' ? '✓' : "" }}</td>
-                        <td class="p-2 border text-center">{{ $participant->mandarine == 'good' ? '✓' : "" }}</td>
+                        <td class="p-2 border text-center bg-blue-100" style="width: 25%;">{{ __('messages.taiwan') }}</td>
+                        <td class="p-2 border text-center" style="width: 25%;">{{ $participant->taiwan_year == 0 || !$participant->taiwan_year ? '-' : $participant->taiwan_year . ' ' . __('messages.years') }}</td>
+                        <td class="p-2 border bg-blue-100 text-center" style="width: 25%;">{{ __('messages.mandarine') }}</td>
+                        <td class="p-2 border text-center" style="width: 8.3%;">{{ $participant->mandarine == 'learning' ? '✓' : "" }}</td>
+                        <td class="p-2 border text-center" style="width: 8.3%;">{{ $participant->mandarine == 'basic' ? '✓' : "" }}</td>
+                        <td class="p-2 border text-center" style="width: 8.3%;">{{ $participant->mandarine == 'good' ? '✓' : "" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border text-center bg-blue-100">{{ __('messages.malaysia') }}</td>
-                        <td class="p-2 border text-center">{{ $participant->malaysia_year == 0 || !$participant->malaysia_year ? '-' : $participant->malaysia_year . ' ' . __('messages.years') }}</td>
-                        <td class="p-2 border text-center bg-blue-100">{{ __('messages.english') }}</td>
-                        <td class="p-2 border text-center">{{ $participant->english == 'learning' ? '✓' : "" }}</td>
-                        <td class="p-2 border text-center">{{ $participant->english == 'basic' ? '✓' : "" }}</td>
-                        <td class="p-2 border text-center">{{ $participant->english == 'good' ? '✓' : "" }}</td>
+                        <td class="p-2 border text-center bg-blue-100" style="width: 25%;">{{ __('messages.malaysia') }}</td>
+                        <td class="p-2 border text-center" style="width: 25%;">{{ $participant->malaysia_year == 0 || !$participant->malaysia_year ? '-' : $participant->malaysia_year . ' ' . __('messages.years') }}</td>
+                        <td class="p-2 border text-center bg-blue-100" style="width: 25%;">{{ __('messages.english') }}</td>
+                        <td class="p-2 border text-center" style="width: 8.3%;">{{ $participant->english == 'learning' ? '✓' : "" }}</td>
+                        <td class="p-2 border text-center" style="width: 8.3%;">{{ $participant->english == 'basic' ? '✓' : "" }}</td>
+                        <td class="p-2 border text-center" style="width: 8.3%;">{{ $participant->english == 'good' ? '✓' : "" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border text-center bg-blue-100">{{ __('messages.brunei') }}</td>
-                        <td class="p-2 border text-center">{{ $participant->brunei_year == 0 || !$participant->brunei_year ? '-' : $participant->brunei_year . ' ' . __('messages.years') }}</td>
-                        <td class="p-2 border text-center bg-blue-100">&nbsp;</td>
-                        <td class="p-2 border text-center">&nbsp;</td>
-                        <td class="p-2 border text-center">&nbsp;</td>
-                        <td class="p-2 border text-center">&nbsp;</td>
+                        <td class="p-2 border text-center bg-blue-100" style="width: 25%;">{{ __('messages.brunei') }}</td>
+                        <td class="p-2 border text-center" style="width: 25%;">{{ $participant->brunei_year == 0 || !$participant->brunei_year ? '-' : $participant->brunei_year . ' ' . __('messages.years') }}</td>
+                        <td class="p-2 border text-center bg-blue-100" style="width: 25%;">&nbsp;</td>
+                        <td class="p-2 border text-center" style="width: 8.3%;">&nbsp;</td>
+                        <td class="p-2 border text-center" style="width: 8.3%;">&nbsp;</td>
+                        <td class="p-2 border text-center" style="width: 8.3%;">&nbsp;</td>
                     </tr>
                 </tbody>
             </table>
 
-            @foreach($participant->workHistories as $index => $workHistory)
-            <table class="w-full mb-8 bg-gray-50 rounded-lg shadow-sm border border-gray-200 work-history-table">
-                <thead>
-                    <tr>
-                        <th class="p-2 border bg-red-100" colspan="4">{{ __('messages.work_history') }} {{ $index + 1 }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="p-2 border text-center bg-blue-100">{{ __('messages.country') }}</td>
-                        <td class="p-2 border text-center">{{ $workHistory->country }}</td>
-                        <td class="p-2 border text-center bg-blue-100">{{ __('messages.target_employer') }}</td>
-                        <td class="p-2 border text-center">{{ $workHistory->target }}</td>
-                    </tr>
-                    <tr>
-                        <td class="p-2 border text-center bg-blue-100">{{ __('messages.period') }}</td>
-                        <td class="p-2 border text-center">{{ $workHistory->period }}</td>
-                        <td class="p-2 border text-center bg-blue-100">{{ __('messages.reason_for_leaving') }}</td>
-                        <td class="p-2 border text-center">{{ $workHistory->reason_for_leaving }}</td>
-                    </tr>
-                    <tr>
-                        <td class="p-2 border text-center bg-blue-100">{{ __('messages.remarks') }}</td>
-                        <td class="p-2 border text-left" colspan="3">{{ $workHistory->remake }}</td>
-                    </tr>
-                </tbody>
-            </table>
-            @endforeach
+            @for($i = 0; $i < 3; $i++)
+                @php
+                    $workHistory = $participant->workHistories->get($i);
+                @endphp
+                <table class="w-full mb-8 bg-gray-50 rounded-lg shadow-sm border border-gray-200 work-history-table">
+                    <thead>
+                        <tr>
+                            <th class="p-2 border bg-red-100" colspan="4">{{ __('messages.work_history') }} {{ $i + 1 }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="p-2 border text-center bg-blue-100">{{ __('messages.country') }}</td>
+                            <td class="p-2 border text-center">{{ $workHistory->country ?? '' }}</td>
+                            <td class="p-2 border text-center bg-blue-100">{{ __('messages.target_employer') }}</td>
+                            <td class="p-2 border text-center">{{ $workHistory->target ?? '' }}</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border text-center bg-blue-100">{{ __('messages.period') }}</td>
+                            <td class="p-2 border text-center">{{ $workHistory->period ?? '' }}</td>
+                            <td class="p-2 border text-center bg-blue-100">{{ __('messages.reason_for_leaving') }}</td>
+                            <td class="p-2 border text-center">{{ $workHistory->reason_for_leaving ?? '' }}</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border text-center bg-blue-100">{{ __('messages.remarks') }}</td>
+                            <td class="p-2 border text-left" colspan="3">{{ $workHistory->remake ?? '' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            @endfor
             <table class="w-full mb-8 bg-gray-50 rounded-lg shadow-sm border border-gray-200 experience-table">
                 <thead>
                     <tr>
@@ -193,16 +196,17 @@
                         <td class="p-2 border text-center">{{ $participant->elderly_healthy_care_experience ? "✓" : "-" }}</td>
                         <td class="p-2 border text-center align-top photo-container" rowspan="24" colspan="2">
                             @if($participant->photo_path)
-                                <div class="w-full h-auto max-h-[28rem] rounded-lg bg-gray-100 flex items-start justify-center mb-2 cursor-pointer photo-preview border border-gray-200 p-2"
+                                <div class="w-full h-auto cursor-pointer photo-preview"
                                      data-image="{{ asset('storage/' . $participant->photo_path) }}"
                                      data-name="{{ $participant->name }}">
                                     <img src="{{ asset('storage/' . $participant->photo_path) }}"
                                          alt="{{ $participant->name }}"
-                                         class="w-full h-auto max-h-[26rem] object-contain hover:scale-105 transition-transform duration-200">
+                                         class="w-full h-auto object-cover border-none block m-0">
                                 </div>
+                                <div class="mt-1 text-xs text-gray-500 px-1">{{ $participant->name }}</div>
                                 <p class="text-xs text-gray-500">{{ __('messages.click_to_enlarge') }}</p>
                             @else
-                                <div class="w-full h-[28rem] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center mb-2">
+                                <div class="w-full h-64 bg-gray-100 flex items-center justify-center">
                                     <svg class="w-32 h-32 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                                     </svg>
@@ -309,18 +313,18 @@
             <table class="w-full mb-8 bg-gray-50 rounded-lg shadow-sm border border-gray-200">
                 <tbody>
                     <tr>
-                        <td class="p-2 border text-center bg-blue-100" colspan="1">{{ __('messages.new_job') }}</td>
-                        <td class="p-2 border text-center" style="width: 60%;" colspan="2" rowspan="2">&nbsp;</td>
+                        <td class="p-2 border text-center bg-blue-100" style="width: 25%;">{{ __('messages.new_job') }}</td>
+                        <td class="p-2 border text-center" colspan="2" rowspan="2">&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border text-center" style="height: 60px; vertical-align: top; padding-top: 8px;">
+                        <td class="p-2 border text-left" style="width: 25%; vertical-align: top; padding-top: 8px;">
                             {{ $participant->new_job ?? '' }}
                         </td>
                     </tr>
                     <tr>
-                        <td class="p-2 border text-center bg-blue-100" style="width: 60%;">&nbsp;</td>
-                        <td class="p-2 border text-center bg-blue-100" style="width: 20%;">{{ __('messages.date') }}:</td>
-                        <td class="p-2 border text-center" style="width: 20%;" colspan="4">{{ $participant->date ? \Carbon\Carbon::parse($participant->date)->format('d/m/Y') : '' }}</td>
+                        <td class="p-2 border text-center bg-blue-100" style="width: 25%;">&nbsp;</td>
+                        <td class="p-2 border text-center bg-blue-100" style="width: 15%;">{{ __('messages.date') }}:</td>
+                        <td class="p-2 border text-center" style="width: 10%;">{{ $participant->date ? \Carbon\Carbon::parse($participant->date)->format('d/m/Y') : '' }}</td>
                     </tr>
                 </tbody>
             </table>

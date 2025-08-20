@@ -11,6 +11,7 @@
             margin: 0;
             padding: 1px;
             line-height: 1.2;
+            font-style: italic;
         }
         
         .header {
@@ -92,6 +93,7 @@
         
         .bg-blue {
             background-color: #dbeafe;
+            font-style: italic;
         }
         
         .bg-gray {
@@ -101,8 +103,17 @@
         .photo-container {
             text-align: center;
             vertical-align: top;
-            padding: 1px;
+            padding: 0;
             height: auto;
+        }
+        
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border: none;
+            display: block;
+            margin: 0;
         }
         
         .photo-row {
@@ -198,39 +209,39 @@
         <tbody>
             <tr>
                 <td class="bg-blue col-25">{{ __('messages.name') }}</td>
-                <td class="col-25">{{ $participant->name }}</td>
+                <td class="col-25" style="font-style: italic;">{{ $participant->name }}</td>
                 <td class="bg-blue col-25">{{ __('messages.birth_date') }}</td>
-                <td class="col-25">{{ $participant->birth_date }}</td>
+                <td class="col-25" style="font-style: italic;">{{ $participant->birth_date }}</td>
             </tr>
             <tr>
                 <td class="bg-blue col-25">{{ __('messages.gender') }}</td>
-                <td class="col-25">{{ $participant->gender }}</td>
+                <td class="col-25" style="font-style: italic;">{{ $participant->gender }}</td>
                 <td class="bg-blue col-25">{{ __('messages.age') }}</td>
-                <td class="col-25">{{ \Carbon\Carbon::parse($participant->birth_date)->age }}</td>
+                <td class="col-25" style="font-style: italic;">{{ \Carbon\Carbon::parse($participant->birth_date)->age }}</td>
             </tr>
             <tr>
                 <td class="bg-blue col-25">{{ __('messages.nationality') }}</td>
-                <td class="col-25">{{ $participant->nationality }}</td>
+                <td class="col-25" style="font-style: italic;">{{ $participant->nationality }}</td>
                 <td class="bg-blue col-25">{{ __('messages.height') }}</td>
-                <td class="col-25">{{ $participant->height }} cm</td>
+                <td class="col-25" style="font-style: italic;">{{ $participant->height }} cm</td>
             </tr>
             <tr>
                 <td class="bg-blue col-25">{{ __('messages.religion') }}</td>
-                <td class="col-25">{{ $participant->religion }}</td>
+                <td class="col-25" style="font-style: italic;">{{ $participant->religion }}</td>
                 <td class="bg-blue col-25">{{ __('messages.weight') }}</td>
-                <td class="col-25">{{ $participant->weight }} kg</td>
+                <td class="col-25" style="font-style: italic;">{{ $participant->weight }} kg</td>
             </tr>
             <tr>
                 <td class="bg-blue col-25">{{ __('messages.marital_status') }}</td>
-                <td class="col-25">{{ $participant->marital_status }}</td>
+                <td class="col-25" style="font-style: italic;">{{ $participant->marital_status }}</td>
                 <td class="bg-blue col-25">{{ __('messages.education') }}</td>
-                <td class="col-25">{{ $participant->education }}</td>
+                <td class="col-25" style="font-style: italic;">{{ $participant->education }}</td>
             </tr>
             <tr>
                 <td class="bg-blue col-25">{{ __('messages.number_of_children') }}</td>
-                <td class="col-25">{{ $participant->no_of_children }}</td>
+                <td class="col-25" style="font-style: italic;">{{ $participant->no_of_children }}</td>
                 <td class="bg-blue col-25">{{ __('messages.status') }}</td>
-                <td class="col-25">{{ $participant->status }}</td>
+                <td class="col-25" style="font-style: italic;">{{ $participant->status }}</td>
             </tr>
         </tbody>
     </table>
@@ -377,12 +388,10 @@
                                 }
                             @endphp
                             @if(isset($imageData) && $imageData)
-                                <div style="text-align: center; padding: 1px;">
-                                    <img src="data:{{ $mimeType }};base64,{{ $imageData }}" 
-                                         alt="{{ $participant->name }}" 
-                                         style="max-width: 100%; max-height: 400px; object-fit: contain; border: 1px solid #ddd; display: block; margin: 0 auto;">
-                                    <div style="margin-top: 5px; font-size: 8px; color: #666;">{{ $participant->name }}</div>
-                                </div>
+                                <img src="data:{{ $mimeType }};base64,{{ $imageData }}" 
+                                     alt="{{ $participant->name }}" 
+                                     style="width: 100%; height: auto; object-fit: cover; border: none; display: block; margin: 0;">
+                                <div style="margin-top: 5px; font-size: 8px; color: #666; padding: 0 5px;">{{ $participant->name }}</div>
                             @else
                                 <div class="no-photo">
                                     <div style="text-align: center; color: #666; font-size: 10px;">
