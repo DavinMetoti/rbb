@@ -79,7 +79,7 @@ return [
     'personal_information' => 'Personal Information',
     'physical_information' => 'Physical Information', 
     'personal_status' => 'Personal Status',
-    'work_experience' => 'Work Experience',
+    'work_experience' => 'Personal Data',
     'work_experience_years' => 'Work Experience (Years)',
     'language_skills' => 'Language Skills',
     'work_history' => 'Work History',

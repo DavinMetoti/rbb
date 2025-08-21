@@ -12,6 +12,7 @@
             padding: 1px;
             line-height: 1.2;
             font-style: italic;
+            font-weight: bold;
         }
         
         .header {
@@ -200,6 +201,10 @@
             </div>
         </div>
     </div>
+
+    <p style="font-style: italic;font-weight: bold;">
+        {{ $participant->code }}
+    </p>
     
     <!-- Personal Information -->
     <table>

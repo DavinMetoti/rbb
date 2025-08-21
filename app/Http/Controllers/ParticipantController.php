@@ -383,7 +383,7 @@ class ParticipantController extends Controller
             ]);
 
         // Generate filename
-        $filename = 'participant_' . $participant->code . '_' . date('Y-m-d_H-i-s') . '.pdf';
+        $filename = $participant->code . ' ( ' . $participant->name . ' ).pdf';
 
         // Return the PDF download response
         return $pdf->download($filename);

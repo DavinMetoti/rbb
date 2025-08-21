@@ -343,32 +343,34 @@
 
                 <!-- Pagination -->
                 <div class="mt-8">
-                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                        <div class="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
-                            <!-- Pagination Info -->
-                            <div class="text-sm text-gray-700">
-                                <span class="font-medium">{{ $participants->firstItem() ?? 0 }}</span>
-                                {{ __('messages.to') }}
-                                <span class="font-medium">{{ $participants->lastItem() ?? 0 }}</span>
-                                {{ __('messages.of') }}
-                                <span class="font-medium">{{ $participants->total() }}</span>
-                                {{ __('messages.participants') }}
+                    <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
+                        <!-- Pagination Info - Centered -->
+                        <div class="text-center mb-6">
+                            <div class="text-lg text-gray-700 font-medium">
+                                <span class="font-bold text-xl text-gray-900">{{ $participants->firstItem() ?? 0 }}</span>
+                                <span class="mx-2">{{ __('messages.to') }}</span>
+                                <span class="font-bold text-xl text-gray-900">{{ $participants->lastItem() ?? 0 }}</span>
+                                <span class="mx-2">{{ __('messages.of') }}</span>
+                                <span class="font-bold text-xl text-blue-600">{{ $participants->total() }}</span>
+                                <span class="ml-2">{{ __('messages.participants') }}</span>
                             </div>
+                        </div>
 
-                            <!-- Pagination Links -->
-                            @if ($participants->hasPages())
-                                <nav class="flex items-center space-x-1">
+                        <!-- Pagination Links - Centered -->
+                        @if ($participants->hasPages())
+                            <nav class="flex items-center justify-center">
+                                <div class="flex items-center space-x-2">
                                     {{-- Previous Page Link --}}
                                     @if ($participants->onFirstPage())
-                                        <span class="px-3 py-2 text-gray-400 bg-gray-100 rounded-lg cursor-not-allowed">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <span class="px-5 py-3 text-gray-400 bg-gray-100 rounded-xl cursor-not-allowed text-lg font-medium">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                                             </svg>
                                         </span>
                                     @else
                                         <a href="{{ $participants->previousPageUrl() }}" 
-                                           class="px-3 py-2 text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 hover:text-gray-800 transition-colors">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                           class="px-5 py-3 text-gray-600 bg-white border-2 border-gray-300 rounded-xl hover:bg-blue-50 hover:text-blue-600 hover:border-blue-300 transition-all duration-200 text-lg font-medium shadow-sm hover:shadow-md">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                                             </svg>
                                         </a>
@@ -377,10 +379,10 @@
                                     {{-- Pagination Elements --}}
                                     @foreach ($participants->getUrlRange(1, $participants->lastPage()) as $page => $url)
                                         @if ($page == $participants->currentPage())
-                                            <span class="px-3 py-2 text-white bg-gray-900 rounded-lg font-medium">{{ $page }}</span>
+                                            <span class="px-6 py-3 text-white bg-blue-600 rounded-xl font-bold text-lg shadow-lg border-2 border-blue-600 transform scale-110">{{ $page }}</span>
                                         @else
                                             <a href="{{ $url }}" 
-                                               class="px-3 py-2 text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 hover:text-gray-800 transition-colors">
+                                               class="px-5 py-3 text-gray-600 bg-white border-2 border-gray-300 rounded-xl hover:bg-blue-50 hover:text-blue-600 hover:border-blue-300 transition-all duration-200 text-lg font-medium shadow-sm hover:shadow-md hover:scale-105">
                                                 {{ $page }}
                                             </a>
                                         @endif
@@ -389,21 +391,21 @@
                                     {{-- Next Page Link --}}
                                     @if ($participants->hasMorePages())
                                         <a href="{{ $participants->nextPageUrl() }}" 
-                                           class="px-3 py-2 text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 hover:text-gray-800 transition-colors">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                           class="px-5 py-3 text-gray-600 bg-white border-2 border-gray-300 rounded-xl hover:bg-blue-50 hover:text-blue-600 hover:border-blue-300 transition-all duration-200 text-lg font-medium shadow-sm hover:shadow-md">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                             </svg>
                                         </a>
                                     @else
-                                        <span class="px-3 py-2 text-gray-400 bg-gray-100 rounded-lg cursor-not-allowed">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <span class="px-5 py-3 text-gray-400 bg-gray-100 rounded-xl cursor-not-allowed text-lg font-medium">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                             </svg>
                                         </span>
                                     @endif
-                                </nav>
-                            @endif
-                        </div>
+                                </div>
+                            </nav>
+                        @endif
                     </div>
                 </div>
             @else
