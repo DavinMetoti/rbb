@@ -50,6 +50,12 @@
         .col-40 { width: 40% !important; }
         .col-10 { width: 10% !important; }
         .col-15 { width: 15% !important; }
+        
+        /* Make all red and blue background cells uppercase */
+        .print-content .bg-red-100,
+        .print-content .bg-blue-100 {
+            text-transform: uppercase !important;
+        }
     </style>
     <div class="min-h-screen bg-gray-50 py-8 px-4 content-area">
         <div class="max-w-6xl mx-auto">
@@ -117,39 +123,39 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-25">{{ __('messages.name') }}</td>
+                        <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-25">{{ __('messages.name') }}</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic uppercase col-25">{{ $participant->name }}</td>
-                        <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-25">{{ __('messages.birth_date') }}</td>
+                        <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-25">{{ __('messages.birth_date') }}</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic uppercase col-25">{{ $participant->birth_date }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-25">{{ __('messages.gender') }}</td>
+                        <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-25">{{ __('messages.gender') }}</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic uppercase col-25">{{ $participant->gender }}</td>
-                        <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-25">{{ __('messages.age') }}</td>
+                        <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-25">{{ __('messages.age') }}</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic uppercase col-25">{{ \Carbon\Carbon::parse($participant->birth_date)->age }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-25">{{ __('messages.nationality') }}</td>
+                        <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-25">{{ __('messages.nationality') }}</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic uppercase col-25">{{ $participant->nationality }}</td>
-                        <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-25">{{ __('messages.height') }}</td>
+                        <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-25">{{ __('messages.height') }}</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic col-25">{{ $participant->height }} cm</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-25">{{ __('messages.religion') }}</td>
+                        <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-25">{{ __('messages.religion') }}</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic uppercase col-25">{{ $participant->religion }}</td>
-                        <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-25">{{ __('messages.weight') }}</td>
+                        <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-25">{{ __('messages.weight') }}</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic col-25">{{ $participant->weight }} kg</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-25">{{ __('messages.marital_status') }}</td>
+                        <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-25">{{ __('messages.marital_status') }}</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic uppercase col-25">{{ $participant->marital_status }}</td>
-                        <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-25">{{ __('messages.education') }}</td>
+                        <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-25">{{ __('messages.education') }}</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic uppercase col-25">{{ $participant->education }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-25">{{ __('messages.number_of_children') }}</td>
+                        <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-25">{{ __('messages.number_of_children') }}</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic uppercase col-25">{{ $participant->no_of_children }}</td>
-                        <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-25">{{ __('messages.status') }}</td>
+                        <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-25">{{ __('messages.status') }}</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic uppercase col-25">{{ $participant->status }}</td>
                     </tr>
                 </tbody>
@@ -238,19 +244,19 @@
                     
                     @foreach($displayExperiences as $country => $years)
                         <tr>
-                            <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic uppercase col-16-67">{{ $country }}</td>
+                            <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-16-67">{{ $country }}</td>
                             <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $years === '-' ? '-' : (empty($years) ? '-' : $years) }}</td>
                             @if($experienceIndex < count($languages))
                                 @php $language = $languages[$experienceIndex]; @endphp
-                                <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-16-67">{{ $language['label'] }}</td>
+                                <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-16-67">{{ $language['label'] }}</td>
                                 <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'learning' ? '✓' : "" }}</td>
                                 <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'basic' ? '✓' : "" }}</td>
                                 <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'good' ? '✓' : "" }}</td>
                             @else
                                 <td class="p-2 border-2 font-bold border-black bg-red-100 italic col-16-67">&nbsp;</td>
-                                <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-16-67">&nbsp;</td>
-                                <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-16-67">&nbsp;</td>
-                                <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-16-67">&nbsp;</td>
+                                <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-16-67">&nbsp;</td>
+                                <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-16-67">&nbsp;</td>
+                                <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-16-67">&nbsp;</td>
                             @endif
                         </tr>
                         @php $experienceIndex++; @endphp
@@ -259,19 +265,19 @@
                     @if(count($displayExperiences) == 0)
                         @foreach($defaultCountries as $index => $country)
                             <tr>
-                                <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic uppercase col-16-67">{{ $country }}</td>
+                                <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-16-67">{{ $country }}</td>
                                 <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">-</td>
                                 @if($index < count($languages))
                                     @php $language = $languages[$index]; @endphp
-                                    <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-16-67">{{ $language['label'] }}</td>
+                                    <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-16-67">{{ $language['label'] }}</td>
                                     <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'learning' ? '✓' : "" }}</td>
                                     <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'basic' ? '✓' : "" }}</td>
                                     <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'good' ? '✓' : "" }}</td>
                                 @else
                                     <td class="p-2 border-2 font-bold border-black bg-red-100 italic col-16-67">&nbsp;</td>
-                                    <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-16-67">&nbsp;</td>
-                                    <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-16-67">&nbsp;</td>
-                                    <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-16-67">&nbsp;</td>
+                                    <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-16-67">&nbsp;</td>
+                                    <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-16-67">&nbsp;</td>
+                                    <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-16-67">&nbsp;</td>
                                 @endif
                             </tr>
                         @endforeach
@@ -281,7 +287,7 @@
                         @php $language = $languages[$experienceIndex]; @endphp
                         <tr>
                             <td class="p-2 border-2 font-bold border-black text-center italic col-16-67" colspan="2">&nbsp;</td>
-                            <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-16-67">{{ $language['label'] }}</td>
+                            <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-16-67">{{ $language['label'] }}</td>
                             <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'learning' ? '✓' : "" }}</td>
                             <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'basic' ? '✓' : "" }}</td>
                             <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'good' ? '✓' : "" }}</td>
@@ -305,19 +311,19 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="p-2 border-2 font-bold border-black text-center italic bg-red-100 col-25">{{ __('messages.country') }}</td>
+                            <td class="p-2 border-2 font-bold border-black text-center italic bg-red-100 uppercase col-25">{{ __('messages.country') }}</td>
                             <td class="p-2 border-2 font-bold border-black text-center italic col-25">{{ $workHistory->country ?? '-' }}</td>
-                            <td class="p-2 border-2 font-bold border-black text-center italic bg-red-100 col-25">{{ __('messages.target_employer') }}</td>
+                            <td class="p-2 border-2 font-bold border-black text-center italic bg-red-100 uppercase col-25">{{ __('messages.target_employer') }}</td>
                             <td class="p-2 border-2 font-bold border-black text-center italic col-25">{{ $workHistory->target ?? '-' }}</td>
                         </tr>
                         <tr>
-                            <td class="p-2 border-2 font-bold border-black text-center italic bg-red-100 col-25">{{ __('messages.period') }}</td>
+                            <td class="p-2 border-2 font-bold border-black text-center italic bg-red-100 uppercase col-25">{{ __('messages.period') }}</td>
                             <td class="p-2 border-2 font-bold border-black text-center italic col-25">{{ $workHistory->period ?? '-' }}</td>
-                            <td class="p-2 border-2 font-bold border-black text-center italic bg-red-100 col-25">{{ __('messages.reason_for_leaving') }}</td>
+                            <td class="p-2 border-2 font-bold border-black text-center italic bg-red-100 uppercase col-25">{{ __('messages.reason_for_leaving') }}</td>
                             <td class="p-2 border-2 font-bold border-black text-center italic col-25">{{ $workHistory->reason_for_leaving ?? '-' }}</td>
                         </tr>
                         <tr>
-                            <td class="p-2 border-2 font-bold border-black text-center italic bg-red-100 col-25">{{ __('messages.remarks') }}</td>
+                            <td class="p-2 border-2 font-bold border-black text-center italic bg-red-100 uppercase col-25">{{ __('messages.remarks') }}</td>
                             <td class="p-2 border-2 font-bold border-black text-left italic col-25" colspan="3">{{ $workHistory->remake ?? '-' }}</td>
                         </tr>
                     </tbody>
@@ -332,7 +338,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black bg-red-100 italic col-40">ELDERLY HEALTHY CARE EXPERIENCE</td>
+                        <td class="p-2 border-2 font-bold border-black bg-red-100 italic uppercase col-40">ELDERLY HEALTHY CARE EXPERIENCE</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic col-10">{{ $participant->elderly_healthy_care_experience ? "✓" : "-" }}</td>
                         <td class="p-2 border-2 font-bold border-black text-center align-top photo-container col-50" rowspan="24" colspan="2">
                             @if($participant->photo_path)
@@ -356,23 +362,23 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black bg-red-100 italic">ELDERLY SICK CARE EXPERIENCE</td>
+                        <td class="p-2 border-2 font-bold border-black bg-red-100 italic uppercase">ELDERLY SICK CARE EXPERIENCE</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic">{{ $participant->elderly_sick_care_experience ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black bg-red-100 italic">NEWBORN CARE EXPERIENCE</td>
+                        <td class="p-2 border-2 font-bold border-black bg-red-100 italic uppercase">NEWBORN CARE EXPERIENCE</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic">{{ $participant->newborn_care_experience ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black bg-red-100 italic">CHILDREN CARE EXPERIENCE</td>
+                        <td class="p-2 border-2 font-bold border-black bg-red-100 italic uppercase">CHILDREN CARE EXPERIENCE</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic">{{ $participant->children_care_experience ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black bg-red-100 italic">I CAN TAKE CARE OF DOG</td>
+                        <td class="p-2 border-2 font-bold border-black bg-red-100 italic uppercase">I CAN TAKE CARE OF DOG</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic">{{ $participant->i_can_take_care_of_dog ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black bg-red-100 italic">I CAN TAKE CARE OF CAT</td>
+                        <td class="p-2 border-2 font-bold border-black bg-red-100 italic uppercase">I CAN TAKE CARE OF CAT</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic">{{ $participant->i_can_take_care_of_cat ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
@@ -453,7 +459,7 @@
             <table class="w-full mb-8 bg-gray-50 border-2 font-bold border-black">
                 <tbody>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black text-center bg-red-100 italic col-25">{{ __('messages.new_job') }}</td>
+                        <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-25">{{ __('messages.new_job') }}</td>
                         <td class="p-2 border-2 font-bold border-black text-center col-25" colspan="2" rowspan="2">&nbsp;</td>
                     </tr>
                     <tr>
@@ -462,8 +468,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black text-center bg-red-100 col-25">&nbsp;</td>
-                        <td class="p-2 border-2 font-bold border-black text-center bg-red-100 col-15">{{ __('messages.date') }}:</td>
+                        <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 uppercase col-25">&nbsp;</td>
+                        <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 uppercase col-15">{{ __('messages.date') }}:</td>
                         <td class="p-2 border-2 font-bold border-black text-center col-10">{{ $participant->date ? \Carbon\Carbon::parse($participant->date)->format('d/m/Y') : '' }}</td>
                     </tr>
                 </tbody>

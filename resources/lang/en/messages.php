@@ -268,5 +268,22 @@ return [
     'taiwan' => 'Taiwan',
     'malaysia' => 'Malaysia',
     'brunei' => 'Brunei',
+    // Password change related
+    'change_password' => 'Change Password',
+    'change_password_desc' => 'Enter your current password and new password',
+    'current_password' => 'Current Password',
+    'new_password' => 'New Password',
+    'confirm_new_password' => 'Confirm New Password',
+    'enter_current_password' => 'Enter your current password',
+    'enter_new_password' => 'Enter your new password',
+    'confirm_new_password_placeholder' => 'Re-enter your new password',
+    'password_requirements' => 'Password must be at least 8 characters',
+    'password_strength' => 'Password Strength:',
+    'enter_password_to_check' => 'Enter password to check strength',
+    'weak_password' => 'Weak',
+    'fair_password' => 'Fair',
+    'good_password' => 'Good',
+    'strong_password' => 'Strong',
+    
     'public_profiles_only' => 'Only public participant profiles are shown. Login to view all profiles.',
 ];

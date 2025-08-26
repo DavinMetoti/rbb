@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ParticipantController;
+use App\Http\Controllers\PasswordController;
 use Illuminate\Support\Facades\Route;
 
 // Redirect root to participants (public view)
@@ -29,6 +30,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/participants/{participant}/edit', [ParticipantController::class, 'edit'])->name('participants.edit');
     Route::put('/participants/{participant}', [ParticipantController::class, 'update'])->name('participants.update');
     Route::delete('/participants/{participant}', [ParticipantController::class, 'destroy'])->name('participants.destroy');
+    
+    // Password change routes
+    Route::get('/password/change', [PasswordController::class, 'showChangePasswordForm'])->name('password.change');
+    Route::post('/password/change', [PasswordController::class, 'changePassword'])->name('password.update');
 });
 
 // Public routes - anyone can view participants (read-only access)

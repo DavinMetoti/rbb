@@ -3,10 +3,63 @@
 @section('content')
     <div class="min-h-screen bg-gray-50 py-8 px-4">
         <div class="max-w-7xl mx-auto">
+            <!-- Company Logos Section -->
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-100 mx-4 sm:mx-8 lg:mx-16 mb-12 py-8 px-6">
+                <div class="flex flex-col lg:flex-row justify-center items-center space-y-8 lg:space-y-0 lg:space-x-12">
+                    <!-- PT Rizaldi Logo -->
+                    <div class="flex-shrink-0 text-center logo-container floating-animation">
+                        @php
+                            $rizaldiLogoPath = public_path('assets/images/rizaldi-logo.jpg');
+                            $rizaldiLogoExists = file_exists($rizaldiLogoPath);
+                        @endphp
+                        @if($rizaldiLogoExists)
+                            <img src="{{ asset('assets/images/rizaldi-logo.jpg') }}" 
+                                 alt="PT Rizaldi Logo" 
+                                 class="h-24 w-24 sm:h-28 sm:w-28 md:h-36 md:w-36 lg:h-44 lg:w-44 object-contain mx-auto mb-3">
+                        @else
+                            <div class="h-24 w-24 sm:h-28 sm:w-28 md:h-36 md:w-36 lg:h-44 lg:w-44 bg-gradient-to-br from-blue-100 to-blue-200 border-2 border-blue-300 rounded-xl flex items-center justify-center shadow-lg mx-auto mb-3">
+                                <span class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-blue-700">RBB</span>
+                            </div>
+                        @endif
+                    </div>
+                    
+                    <!-- Company Title -->
+                    <div class="text-center flex-1">
+                        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold gradient-text mb-4">
+                            PT Rizaldi Bina Bersama
+                        </h1>
+                        <div class="h-1 w-24 sm:w-32 md:w-40 bg-gradient-to-r from-blue-500 to-orange-500 mx-auto mb-4 rounded-full"></div>
+                        <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-medium">
+                            Professional Overseas Helper Services
+                        </p>
+                        <p class="text-sm sm:text-base md:text-lg text-gray-500 mt-2">
+                            {{ __('messages.manage_participants') ?? 'Trusted Partner for International Employment' }}
+                        </p>
+                    </div>
+                    
+                    <!-- Golden Tiger Logo -->
+                    <div class="flex-shrink-0 text-center logo-container floating-animation" style="animation-delay: 2s;">
+                        @php
+                            $goldenLogoPath = public_path('assets/images/golder-logo.jpg');
+                            $goldenLogoExists = file_exists($goldenLogoPath);
+                        @endphp
+                        @if($goldenLogoExists)
+                            <img src="{{ asset('assets/images/golder-logo.jpg') }}"  style="width: 200px;"
+                                 alt="Golden Tiger Logo" 
+                                 class="object-contain mx-auto mb-3">
+                        @else
+                            <div class="h-24 w-32 sm:h-28 sm:w-36 md:h-36 md:w-48 lg:h-44 lg:w-80 bg-gradient-to-br from-orange-100 to-yellow-200 border-2 border-orange-300 rounded-xl flex items-center justify-center shadow-lg mx-auto mb-3">
+                                <span class="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-orange-700">GOLDEN TIGER</span>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
             <!-- Header -->
             <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-8 space-y-4 lg:space-y-0">
-                <div>
-                    <h1 class="text-3xl font-light text-gray-900">{{ __('messages.participants') }}</h1>
+                <div class="text-center lg:text-left">
+                    <h2 class="text-2xl lg:text-3xl font-light text-gray-900">{{ __('messages.participants') }}</h2>
                     <p class="text-gray-500 text-sm mt-1">{{ __('messages.manage_participants') }}</p>
                 </div>
                 
@@ -196,11 +249,11 @@
                                 <!-- Participant Info -->
                                 <div class="flex-1 min-w-0">
                                     <!-- Name and Code -->
-                                    <div class="mb-3 bg-blue-800 p-2 rounded-lg">
+                                    <div class="mb-3 bg-red-200 p-2 rounded-lg">
                                         <div class="flex items-center justify-between">
                                             <div class="flex-1 min-w-0">
-                                                <h3 class="text-lg font-semibold text-white mb-1 truncate">{{ $participant->name }}</h3>
-                                                <p class="text-sm text-gray-300 font-mono">{{ $participant->code }}</p>
+                                                <h3 class="text-lg font-semibold mb-1 truncate">{{ $participant->name }}</h3>
+                                                <p class="text-sm font-mono">{{ $participant->code }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1095,4 +1148,34 @@
             }
         });
     </script>
+
+    <!-- Additional styling for logo section -->
+    <style>
+        .logo-container img, .logo-container div {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .logo-container:hover img, .logo-container:hover div {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb, #ea580c);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 4s ease-in-out infinite;
+        }
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+    </style>
 @endsection

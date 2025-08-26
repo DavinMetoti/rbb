@@ -462,7 +462,7 @@
                 <!-- New Job & Date Section -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                     <h2 class="text-lg font-medium text-gray-900 mb-6 pb-3 border-b border-gray-100">{{ __('messages.new_job') }} & {{ __('messages.date') }}</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 gap-6">
                         <div class="space-y-1">
                             <label for="new_job" class="block text-sm font-medium text-gray-700">{{ __('messages.new_job') }}</label>
                             <div id="new_job_editor" style="height: 200px;" 
@@ -534,6 +534,7 @@
             </form>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -745,7 +746,4 @@
             newJobQuill.root.innerHTML = initialContent;
         }
     </script>
-
-    <!-- Include Quill.js library -->
-    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 @endsection

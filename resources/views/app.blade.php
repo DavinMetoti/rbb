@@ -24,39 +24,22 @@
     @endif
 </head>
 <body class="bg-gray-50">
-    <!-- Responsive Header -->
+    <!-- Responsive Header with improved breakpoints -->
     <header class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-40" x-data="{ mobileMenuOpen: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-14 md:h-16">
+            <div class="flex justify-between items-center h-14 lg:h-16">
                 
-                <!-- Logo/Brand (Left side) -->
+                <!-- Brand/Navigation Only -->
                 <div class="flex items-center space-x-3">
-                    <!-- PT Rizaldi Logo -->
-                    <div class="flex-shrink-0">
-                        @php
-                            $rizaldiLogoPath = public_path('assets/images/rizaldi-logo.jpg');
-                            $rizaldiLogoExists = file_exists($rizaldiLogoPath);
-                        @endphp
-                        @if($rizaldiLogoExists)
-                            <img src="{{ asset('assets/images/rizaldi-logo.jpg') }}" 
-                                 alt="PT Rizaldi Logo" 
-                                 class="h-8 w-8 sm:h-10 sm:w-10 object-contain rounded">
-                        @else
-                            <div class="h-8 w-8 sm:h-10 sm:w-10 bg-blue-100 border border-blue-200 rounded flex items-center justify-center">
-                                <span class="text-xs font-bold text-blue-600">RBB</span>
-                            </div>
-                        @endif
-                    </div>
-                    
                     <!-- Company Name -->
-                    <h1 class="text-base sm:text-lg md:text-xl font-semibold text-gray-900 truncate">
+                    <h1 class="text-base sm:text-lg lg:text-xl font-semibold text-gray-900 truncate">
                         <span class="hidden sm:inline">PT Rizaldi Bina Bersama</span>
                         <span class="sm:hidden">PT RBB</span>
                     </h1>
                 </div>
                 
-                <!-- Desktop Navigation (Hidden on mobile) -->
-                <div class="hidden md:flex items-center space-x-6">
+                <!-- Desktop Navigation (Hidden on mobile/tablet) -->
+                <div class="hidden lg:flex items-center space-x-6">
                     <!-- User Menu (if authenticated) -->
                     @auth
                         <nav class="flex items-center space-x-4">
@@ -65,7 +48,17 @@
                                 {{ __('participants') ?? 'Participants' }}
                             </a>
                             <span class="text-sm text-gray-300">•</span>
-                            <span class="text-sm text-gray-600 truncate max-w-32 lg:max-w-48">
+                            <a href="{{ route('password.change') }}" 
+                               class="text-sm font-medium text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md hover:bg-gray-100 transition-colors">
+                                {{ __('messages.change_password') ?? 'Ubah Password' }}
+                            </a>
+                            <span class="text-sm text-gray-300">•</span>
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-desktop').submit();" 
+                               class="text-sm font-medium text-red-600 hover:text-red-700 px-3 py-2 rounded-md hover:bg-red-50 transition-colors">
+                                {{ __('messages.logout') ?? 'Logout' }}
+                            </a>
+                            <span class="text-sm text-gray-300">•</span>
+                            <span class="text-sm text-gray-600 truncate max-w-32 xl:max-w-48">
                                 {{ __('messages.welcome') ?? 'Welcome' }}, {{ auth()->user()->name ?? auth()->user()->email }}
                             </span>
                         </nav>
@@ -91,14 +84,14 @@
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
                             </svg>
-                            <span class="hidden lg:inline">
+                            <span class="hidden xl:inline">
                                 @if(session('applocale') === 'zh')
                                     中文
                                 @else
                                     English
                                 @endif
                             </span>
-                            <span class="lg:hidden">
+                            <span class="xl:hidden">
                                 @if(session('applocale') === 'zh')
                                     中文
                                 @else
@@ -159,27 +152,10 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Golden Tiger Logo -->
-                    <div class="flex-shrink-0">
-                        @php
-                            $goldenLogoPath = public_path('assets/images/golder-logo.jpg');
-                            $goldenLogoExists = file_exists($goldenLogoPath);
-                        @endphp
-                        @if($goldenLogoExists)
-                            <img src="{{ asset('assets/images/golder-logo.jpg') }}" 
-                                 alt="Golden Tiger Logo" 
-                                 class="h-8 w-12 sm:h-10 sm:w-16 object-contain">
-                        @else
-                            <div class="h-8 w-12 sm:h-10 sm:w-16 bg-orange-100 border border-orange-200 rounded flex items-center justify-center">
-                                <span class="text-xs font-bold text-orange-600">GT</span>
-                            </div>
-                        @endif
-                    </div>
                 </div>
                 
-                <!-- Mobile Menu Button & Language Quick Toggle (Visible on mobile) -->
-                <div class="flex items-center space-x-2 md:hidden">
+                <!-- Mobile Menu Button & Language Quick Toggle (Visible on mobile/tablet) -->
+                <div class="flex items-center space-x-2 lg:hidden">
                     <!-- Mobile Language Quick Toggle -->
                     <div class="relative" x-data="{ open: false }">
                         <button @click="open = !open" 
@@ -212,23 +188,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Golden Tiger Logo (Mobile) -->
-                    <div class="flex-shrink-0">
-                        @php
-                            $goldenLogoPath = public_path('assets/images/golder-logo.jpg');
-                            $goldenLogoExists = file_exists($goldenLogoPath);
-                        @endphp
-                        @if($goldenLogoExists)
-                            <img src="{{ asset('assets/images/golder-logo.jpg') }}" 
-                                 alt="Golden Tiger Logo" 
-                                 class="h-6 w-10 object-contain">
-                        @else
-                            <div class="h-6 w-10 bg-orange-100 border border-orange-200 rounded flex items-center justify-center">
-                                <span class="text-xs font-bold text-orange-600">GT</span>
-                            </div>
-                        @endif
-                    </div>
 
                     <!-- Mobile Menu Button -->
                     <button @click="mobileMenuOpen = !mobileMenuOpen" 
@@ -254,7 +213,7 @@
                  x-transition:leave="transition ease-in duration-150"
                  x-transition:leave-start="transform opacity-100 translate-y-0"
                  x-transition:leave-end="transform opacity-0 -translate-y-2"
-                 class="md:hidden border-t border-gray-200 bg-white">
+                 class="lg:hidden border-t border-gray-200 bg-white">
                 <div class="px-4 pt-4 pb-6 space-y-3">
                     @auth
                         <!-- User Info -->
@@ -270,6 +229,13 @@
                             </svg>
                             {{ __('participants') ?? 'Participants' }}
                         </a>
+                        <a href="{{ route('password.change') }}" 
+                           class="flex items-center px-3 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors">
+                            <svg class="w-5 h-5 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                            </svg>
+                            {{ __('messages.change_password') ?? 'Ubah Password' }}
+                        </a>
                         <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
                            class="flex items-center px-3 py-3 text-base font-medium text-red-600 hover:text-red-700 hover:bg-red-50 rounded-md transition-colors">
                             <svg class="w-5 h-5 mr-3 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -278,6 +244,9 @@
                             {{ __('messages.logout') ?? 'Logout' }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                            @csrf
+                        </form>
+                        <form id="logout-form-desktop" action="{{ route('logout') }}" method="POST" class="hidden">
                             @csrf
                         </form>
                     @else
@@ -345,7 +314,7 @@
 
     <!-- Alpine.js for dropdown functionality -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
+
     <!-- Global Translation Trigger Script -->
     <script>
         // Global function to trigger translation from anywhere
@@ -363,6 +332,7 @@
                 console.log('Translation functions not available on this page');
             }
         };
+        
         
         // Auto-trigger translation if language is Chinese and page has translatable content
         document.addEventListener('DOMContentLoaded', function() {

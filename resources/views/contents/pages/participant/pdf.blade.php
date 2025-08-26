@@ -95,7 +95,7 @@
         }
         
         .bg-blue {
-            background-color: #fee2e2;
+            background-color: #dbeafe;
             text-transform: uppercase;
             font-style: italic;
         }
@@ -614,7 +614,7 @@
             </tr>
             <tr>
                 <td class="col-25" style="vertical-align: top; padding-top: 1px; text-align: left; padding-left: 1px;">
-                    {{ $participant->new_job ?? '' }}
+                    {!! $participant->new_job ?? '' !!}
                 </td>
             </tr>
             <tr>

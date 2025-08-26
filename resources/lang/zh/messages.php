@@ -269,5 +269,22 @@ return [
     'close_menu' => '关闭菜单',
     'navigation' => '导航',
     'optional' => '可选',
+    // Password change related
+    'change_password' => '更改密码',
+    'change_password_desc' => '输入您的当前密码和新密码',
+    'current_password' => '当前密码',
+    'new_password' => '新密码',
+    'confirm_new_password' => '确认新密码',
+    'enter_current_password' => '输入您的当前密码',
+    'enter_new_password' => '输入您的新密码',
+    'confirm_new_password_placeholder' => '重新输入您的新密码',
+    'password_requirements' => '密码必须至少8个字符',
+    'password_strength' => '密码强度：',
+    'enter_password_to_check' => '输入密码检查强度',
+    'weak_password' => '弱',
+    'fair_password' => '一般',
+    'good_password' => '良好',
+    'strong_password' => '强',
+    
     'download_pdf' => '下载PDF',
 ];
