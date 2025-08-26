@@ -66,7 +66,7 @@
                             <label for="code" class="block text-sm font-medium text-gray-700">{{ __('messages.code') }}</label>
                             <input type="text" name="code" id="code" value="{{ old('code') }}"
                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('code') border-red-300 @enderror" 
-                                   placeholder="{{ __('messages.enter_code') }}" required>
+                                   placeholder="{{ __('messages.enter_code') }}">
                             @error('code')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -76,7 +76,7 @@
                             <label for="name" class="block text-sm font-medium text-gray-700">{{ __('messages.full_name') }}</label>
                             <input type="text" name="name" id="name" value="{{ old('name') }}"
                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('name') border-red-300 @enderror" 
-                                   placeholder="{{ __('messages.enter_name') }}" required>
+                                   placeholder="{{ __('messages.enter_name') }}">
                             @error('name')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -85,7 +85,7 @@
                         <div class="space-y-1">
                             <label for="gender" class="block text-sm font-medium text-gray-700">{{ __('messages.gender') }}</label>
                             <select name="gender" id="gender" 
-                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('gender') border-red-300 @enderror" required>
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('gender') border-red-300 @enderror">
                                 <option value="">{{ __('messages.select_gender') }}</option>
                                 <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>{{ __('messages.male') }}</option>
                                 <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>{{ __('messages.female') }}</option>
@@ -99,7 +99,7 @@
                         <div class="space-y-1">
                             <label for="birth_date" class="block text-sm font-medium text-gray-700">{{ __('messages.birth_date') }}</label>
                             <input type="date" name="birth_date" id="birth_date" value="{{ old('birth_date') }}"
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('birth_date') border-red-300 @enderror" required>
+                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('birth_date') border-red-300 @enderror">
                             @error('birth_date')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -108,7 +108,7 @@
                         <div class="space-y-1">
                             <label for="nationality" class="block text-sm font-medium text-gray-700">{{ __('messages.nationality') }}</label>
                             <select name="nationality" id="nationality" 
-                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('nationality') border-red-300 @enderror" required>
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('nationality') border-red-300 @enderror">
                                 <option value="">{{ __('messages.select_nationality') }}</option>
                                 <option value="Indonesian" {{ old('nationality') == 'Indonesian' ? 'selected' : '' }}>{{ __('messages.indonesian') }}</option>
                                 <option value="Malaysian" {{ old('nationality') == 'Malaysian' ? 'selected' : '' }}>{{ __('messages.malaysian') }}</option>
@@ -129,7 +129,7 @@
                         <div class="space-y-1">
                             <label for="religion" class="block text-sm font-medium text-gray-700">{{ __('messages.religion') }}</label>
                             <select name="religion" id="religion" 
-                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('religion') border-red-300 @enderror" required>
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('religion') border-red-300 @enderror">
                                 <option value="">{{ __('messages.select_religion') }}</option>
                                 <option value="Islam" {{ old('religion') == 'Islam' ? 'selected' : '' }}>{{ __('messages.islam') }}</option>
                                 <option value="Christian" {{ old('religion') == 'Christian' ? 'selected' : '' }}>{{ __('messages.christian') }}</option>
@@ -155,7 +155,7 @@
                             <div class="relative">
                                 <input type="number" name="height" id="height" value="{{ old('height') }}"
                                        class="w-full px-4 py-3 pr-12 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('height') border-red-300 @enderror" 
-                                       placeholder="0" required>
+                                       placeholder="0">
                                 <span class="absolute right-4 top-3 text-gray-400 text-sm">cm</span>
                             </div>
                             @error('height')
@@ -168,7 +168,7 @@
                             <div class="relative">
                                 <input type="number" name="weight" id="weight" value="{{ old('weight') }}"
                                        class="w-full px-4 py-3 pr-12 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('weight') border-red-300 @enderror" 
-                                       placeholder="0" required>
+                                       placeholder="0">
                                 <span class="absolute right-4 top-3 text-gray-400 text-sm">kg</span>
                             </div>
                             @error('weight')
@@ -185,7 +185,7 @@
                         <div class="space-y-1">
                             <label for="marital_status" class="block text-sm font-medium text-gray-700">{{ __('messages.marital') }}</label>
                             <select name="marital_status" id="marital_status" 
-                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('marital_status') border-red-300 @enderror" required>
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('marital_status') border-red-300 @enderror">
                                 <option value="">{{ __('messages.select_status') }}</option>
                                 <option value="single" {{ old('marital_status') == 'single' ? 'selected' : '' }}>{{ __('messages.single') }}</option>
                                 <option value="married" {{ old('marital_status') == 'married' ? 'selected' : '' }}>{{ __('messages.married') }}</option>
@@ -200,7 +200,7 @@
                         <div class="space-y-1">
                             <label for="education" class="block text-sm font-medium text-gray-700">{{ __('messages.education') }}</label>
                             <select name="education" id="education" 
-                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('education') border-red-300 @enderror" required>
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('education') border-red-300 @enderror">
                                 <option value="">{{ __('messages.select_education') }}</option>
                                 <option value="Elementary School" {{ old('education') == 'Elementary School' ? 'selected' : '' }}>{{ __('messages.elementary_school') }}</option>
                                 <option value="Primary High School" {{ old('education') == 'Primary High School' ? 'selected' : '' }}>{{ __('messages.primary_high_school') }}</option>
@@ -465,9 +465,11 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-1">
                             <label for="new_job" class="block text-sm font-medium text-gray-700">{{ __('messages.new_job') }}</label>
-                            <input type="text" name="new_job" id="new_job" value="{{ old('new_job') }}"
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('new_job') border-red-300 @enderror"
-                                   placeholder="Enter new job">
+                            <div id="new_job_editor" style="height: 200px;" 
+                                 class="border border-gray-200 rounded-lg focus-within:ring-2 focus-within:ring-gray-900 focus-within:border-transparent @error('new_job') border-red-300 @enderror">
+                                {!! old('new_job', '') !!}
+                            </div>
+                            <input type="hidden" name="new_job" id="new_job" value="{{ old('new_job') }}">
                             @error('new_job')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -714,5 +716,36 @@
                 }
             });
         });
+
+        // Initialize Quill editor for new_job field
+        const newJobQuill = new Quill('#new_job_editor', {
+            theme: 'snow',
+            placeholder: 'Enter detailed job description...',
+            modules: {
+                toolbar: [
+                    [{ 'header': [1, 2, 3, false] }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    [{ 'color': [] }, { 'background': [] }],
+                    ['link'],
+                    ['clean']
+                ]
+            }
+        });
+
+        // Update hidden input when Quill content changes
+        newJobQuill.on('text-change', function() {
+            const content = newJobQuill.root.innerHTML;
+            document.getElementById('new_job').value = content;
+        });
+
+        // Set initial content if exists
+        const initialContent = @json(old('new_job', ''));
+        if (initialContent) {
+            newJobQuill.root.innerHTML = initialContent;
+        }
     </script>
+
+    <!-- Include Quill.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 @endsection

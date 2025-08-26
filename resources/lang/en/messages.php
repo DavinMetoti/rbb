@@ -101,7 +101,7 @@ return [
     'current_status' => 'Current Status',
     'number_of_children' => 'Number of Children',
     'add_work_history' => 'Add Work History',
-    'new_job' => 'New Job',
+    'new_job' => 'Next Job',
     'date' => 'Date',
     
     // Options

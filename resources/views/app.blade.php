@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
+    <!-- Quill.js CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+
     <!-- Styles / Scripts -->
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -27,7 +30,25 @@
             <div class="flex justify-between items-center h-14 md:h-16">
                 
                 <!-- Logo/Brand (Left side) -->
-                <div class="flex items-center">
+                <div class="flex items-center space-x-3">
+                    <!-- PT Rizaldi Logo -->
+                    <div class="flex-shrink-0">
+                        @php
+                            $rizaldiLogoPath = public_path('assets/images/rizaldi-logo.jpg');
+                            $rizaldiLogoExists = file_exists($rizaldiLogoPath);
+                        @endphp
+                        @if($rizaldiLogoExists)
+                            <img src="{{ asset('assets/images/rizaldi-logo.jpg') }}" 
+                                 alt="PT Rizaldi Logo" 
+                                 class="h-8 w-8 sm:h-10 sm:w-10 object-contain rounded">
+                        @else
+                            <div class="h-8 w-8 sm:h-10 sm:w-10 bg-blue-100 border border-blue-200 rounded flex items-center justify-center">
+                                <span class="text-xs font-bold text-blue-600">RBB</span>
+                            </div>
+                        @endif
+                    </div>
+                    
+                    <!-- Company Name -->
                     <h1 class="text-base sm:text-lg md:text-xl font-semibold text-gray-900 truncate">
                         <span class="hidden sm:inline">PT Rizaldi Bina Bersama</span>
                         <span class="sm:hidden">PT RBB</span>
@@ -138,6 +159,23 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Golden Tiger Logo -->
+                    <div class="flex-shrink-0">
+                        @php
+                            $goldenLogoPath = public_path('assets/images/golder-logo.jpg');
+                            $goldenLogoExists = file_exists($goldenLogoPath);
+                        @endphp
+                        @if($goldenLogoExists)
+                            <img src="{{ asset('assets/images/golder-logo.jpg') }}" 
+                                 alt="Golden Tiger Logo" 
+                                 class="h-8 w-12 sm:h-10 sm:w-16 object-contain">
+                        @else
+                            <div class="h-8 w-12 sm:h-10 sm:w-16 bg-orange-100 border border-orange-200 rounded flex items-center justify-center">
+                                <span class="text-xs font-bold text-orange-600">GT</span>
+                            </div>
+                        @endif
+                    </div>
                 </div>
                 
                 <!-- Mobile Menu Button & Language Quick Toggle (Visible on mobile) -->
@@ -173,6 +211,23 @@
                                 </a>
                             </div>
                         </div>
+                    </div>
+                    
+                    <!-- Golden Tiger Logo (Mobile) -->
+                    <div class="flex-shrink-0">
+                        @php
+                            $goldenLogoPath = public_path('assets/images/golder-logo.jpg');
+                            $goldenLogoExists = file_exists($goldenLogoPath);
+                        @endphp
+                        @if($goldenLogoExists)
+                            <img src="{{ asset('assets/images/golder-logo.jpg') }}" 
+                                 alt="Golden Tiger Logo" 
+                                 class="h-6 w-10 object-contain">
+                        @else
+                            <div class="h-6 w-10 bg-orange-100 border border-orange-200 rounded flex items-center justify-center">
+                                <span class="text-xs font-bold text-orange-600">GT</span>
+                            </div>
+                        @endif
                     </div>
 
                     <!-- Mobile Menu Button -->

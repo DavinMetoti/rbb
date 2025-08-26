@@ -5,6 +5,16 @@
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
           <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+              <!-- Back Button -->
+              <div class="flex items-center justify-start mb-4">
+                  <button onclick="goBack()" class="flex items-center text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                      </svg>
+                      {{ __('messages.back') ?? 'Kembali ke halaman participants' }}
+                  </button>
+              </div>
+              
               <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                   Sign in to your account
               </h1>
@@ -24,4 +34,10 @@
       </div>
   </div>
 </section>
+
+<script>
+function goBack() {
+    window.location.href = "{{ route('participants.index') }}";
+}
+</script>
 @endsection

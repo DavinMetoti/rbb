@@ -38,8 +38,8 @@ class ParticipantController extends Controller
         // Sort by creation date (newest first)
         $query->orderBy('created_at', 'desc');
         
-        // Pagination with 5 items per page
-        $participants = $query->paginate(5)->withQueryString();
+        // Pagination with 9 items per page
+        $participants = $query->paginate(9)->withQueryString();
         
         return view('contents.pages.participant.index', compact('participants'));
     }
@@ -62,20 +62,20 @@ class ParticipantController extends Controller
             'request_data' => $request->except(['photo_path', '_token'])
         ]);
 
-        // Validation rules
+        // Validation rules - removed all required validations
         $request->validate([
-            'code' => 'required|string|max:255|unique:participants,code',
-            'name' => 'required|string|max:255',
-            'gender' => 'required|in:male,female,other',
-            'birth_date' => 'required|date',
-            'nationality' => 'required|string|max:255',
-            'height' => 'required|numeric|min:1',
-            'weight' => 'required|numeric|min:1',
-            'religion' => 'required|string|max:255',
-            'marital_status' => 'required|in:single,married,divorced,widowed',
-            'education' => 'required|string|max:255',
+            'code' => 'nullable|string|max:255|unique:participants,code',
+            'name' => 'nullable|string|max:255',
+            'gender' => 'nullable|in:male,female,other',
+            'birth_date' => 'nullable|date',
+            'nationality' => 'nullable|string|max:255',
+            'height' => 'nullable|numeric|min:1',
+            'weight' => 'nullable|numeric|min:1',
+            'religion' => 'nullable|string|max:255',
+            'marital_status' => 'nullable|in:single,married,divorced,widowed',
+            'education' => 'nullable|string|max:255',
             'no_of_children' => 'nullable|string|max:255',
-            'status' => 'required|string|max:255',
+            'status' => 'nullable|string|max:255',
             'cantonese' => 'nullable|in:learning,basic,good',
             'mandarine' => 'nullable|in:learning,basic,good',
             'english' => 'nullable|in:learning,basic,good',
@@ -83,7 +83,7 @@ class ParticipantController extends Controller
             'photo_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:10240', // 10MB max, webp support
             
             // New fields validation
-            'new_job' => 'nullable|string|max:255',
+            'new_job' => 'nullable|string',
             'date' => 'nullable|date',
             'is_public' => 'nullable|boolean',
             
@@ -216,6 +216,35 @@ class ParticipantController extends Controller
             // Add photo path
             if ($photoPath) {
                 $participantData['photo_path'] = $photoPath;
+            }
+
+            // Handle empty fields for not nullable columns - fill with "-"
+            $notNullableFields = [
+                'code', 'name', 'gender', 'birth_date', 'nationality', 'religion',
+                'height', 'weight', 'marital_status', 'education', 'status'
+            ];
+
+            foreach ($notNullableFields as $field) {
+                if (empty($participantData[$field]) || $participantData[$field] === '') {
+                    if (in_array($field, ['height', 'weight'])) {
+                        $participantData[$field] = 0; // Use 0 for numeric fields
+                    } elseif ($field === 'birth_date') {
+                        $participantData[$field] = '1900-01-01'; // Default date
+                    } else {
+                        $participantData[$field] = '-'; // Use "-" for string fields
+                    }
+                }
+            }
+
+            // Handle optional fields that can be null
+            if (empty($participantData['no_of_children'])) {
+                $participantData['no_of_children'] = '-';
+            }
+            if (empty($participantData['new_job'])) {
+                $participantData['new_job'] = '-';
+            }
+            if (empty($participantData['date'])) {
+                $participantData['date'] = null;
             }
 
             // Handle boolean fields (checkboxes)
@@ -442,27 +471,27 @@ class ParticipantController extends Controller
             'request_data' => $request->except(['photo_path', '_token'])
         ]);
 
-        // Validation rules (code must be unique except for current participant)
+        // Validation rules (code must be unique except for current participant) - removed all required validations
         $request->validate([
-            'code' => 'required|string|max:255|unique:participants,code,' . $id,
-            'name' => 'required|string|max:255',
-            'gender' => 'required|in:male,female,other',
-            'birth_date' => 'required|date',
-            'nationality' => 'required|string|max:255',
-            'height' => 'nullable|numeric|min:1',  // Changed to nullable
-            'weight' => 'nullable|numeric|min:1',  // Changed to nullable
-            'religion' => 'required|string|max:255',
-            'marital_status' => 'required|in:single,married,divorced,widowed',
-            'education' => 'nullable|string|max:255', // Changed to nullable
+            'code' => 'nullable|string|max:255|unique:participants,code,' . $id,
+            'name' => 'nullable|string|max:255',
+            'gender' => 'nullable|in:male,female,other',
+            'birth_date' => 'nullable|date',
+            'nationality' => 'nullable|string|max:255',
+            'height' => 'nullable|numeric|min:1',
+            'weight' => 'nullable|numeric|min:1',
+            'religion' => 'nullable|string|max:255',
+            'marital_status' => 'nullable|in:single,married,divorced,widowed',
+            'education' => 'nullable|string|max:255',
             'no_of_children' => 'nullable|string|max:255',
-            'status' => 'nullable|string|max:255', // Changed to nullable
+            'status' => 'nullable|string|max:255',
             'cantonese' => 'nullable|in:learning,basic,good',
             'mandarine' => 'nullable|in:learning,basic,good',
             'english' => 'nullable|in:learning,basic,good',
             'photo_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:10240', // 10MB max, webp support, optional for update
             
             // New fields validation
-            'new_job' => 'nullable|string|max:255',
+            'new_job' => 'nullable|string',
             'date' => 'nullable|date',
             'is_public' => 'nullable|boolean',
             
@@ -577,6 +606,35 @@ class ParticipantController extends Controller
             
             // Add photo path
             $participantData['photo_path'] = $photoPath;
+
+            // Handle empty fields for not nullable columns - fill with "-"
+            $notNullableFields = [
+                'code', 'name', 'gender', 'birth_date', 'nationality', 'religion',
+                'height', 'weight', 'marital_status', 'education', 'status'
+            ];
+
+            foreach ($notNullableFields as $field) {
+                if (empty($participantData[$field]) || $participantData[$field] === '') {
+                    if (in_array($field, ['height', 'weight'])) {
+                        $participantData[$field] = 0; // Use 0 for numeric fields
+                    } elseif ($field === 'birth_date') {
+                        $participantData[$field] = '1900-01-01'; // Default date
+                    } else {
+                        $participantData[$field] = '-'; // Use "-" for string fields
+                    }
+                }
+            }
+
+            // Handle optional fields that can be null
+            if (empty($participantData['no_of_children'])) {
+                $participantData['no_of_children'] = '-';
+            }
+            if (empty($participantData['new_job'])) {
+                $participantData['new_job'] = '-';
+            }
+            if (empty($participantData['date'])) {
+                $participantData['date'] = null;
+            }
 
             // Handle boolean fields (checkboxes)
             $booleanFields = [

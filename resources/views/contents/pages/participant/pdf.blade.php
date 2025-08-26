@@ -95,7 +95,8 @@
         }
         
         .bg-blue {
-            background-color: #dbeafe;
+            background-color: #fee2e2;
+            text-transform: uppercase;
             font-style: italic;
         }
         

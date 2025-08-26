@@ -346,9 +346,11 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-1">
                             <label for="new_job" class="block text-sm font-medium text-gray-700">{{ __('messages.new_job') }}</label>
-                            <input type="text" name="new_job" id="new_job" value="{{ old('new_job', $participant->new_job) }}"
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('new_job') border-red-300 @enderror"
-                                   placeholder="Enter new job">
+                            <div id="new_job_editor" style="height: 200px;" 
+                                 class="border border-gray-200 rounded-lg focus-within:ring-2 focus-within:ring-gray-900 focus-within:border-transparent @error('new_job') border-red-300 @enderror">
+                                {!! old('new_job', $participant->new_job) !!}
+                            </div>
+                            <input type="hidden" name="new_job" id="new_job" value="{{ old('new_job', $participant->new_job) }}">
                             @error('new_job')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
@@ -735,5 +737,36 @@
                 }
             });
         }
+
+        // Initialize Quill editor for new_job field
+        const newJobQuill = new Quill('#new_job_editor', {
+            theme: 'snow',
+            placeholder: 'Enter detailed job description...',
+            modules: {
+                toolbar: [
+                    [{ 'header': [1, 2, 3, false] }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    [{ 'color': [] }, { 'background': [] }],
+                    ['link'],
+                    ['clean']
+                ]
+            }
+        });
+
+        // Update hidden input when Quill content changes
+        newJobQuill.on('text-change', function() {
+            const content = newJobQuill.root.innerHTML;
+            document.getElementById('new_job').value = content;
+        });
+
+        // Set initial content if exists
+        const initialContent = @json(old('new_job', $participant->new_job));
+        if (initialContent) {
+            newJobQuill.root.innerHTML = initialContent;
+        }
     </script>
+
+    <!-- Include Quill.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 @endsection
