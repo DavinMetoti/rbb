@@ -382,9 +382,9 @@
                 <tr>
                     <td colspan="2">&nbsp;</td>
                     <td class="bg-blue" style="width: 25%;">{{ $language['label'] }}</td>
-                    <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'learning' ? '✓' : "" }}</td>
-                    <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'basic' ? '✓' : "" }}</td>
-                    <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'good' ? '✓' : "" }}</td>
+                    <td style="width: 8.3%;font-weight: bold;">{{ $participant->{$language['name']} == 'learning' ? 'V' : "" }}</td>
+                    <td style="width: 8.3%;font-weight: bold;">{{ $participant->{$language['name']} == 'basic' ? 'V' : "" }}</td>
+                    <td style="width: 8.3%;font-weight: bold;">{{ $participant->{$language['name']} == 'good' ? 'V' : "" }}</td>
                 </tr>
                 @php $experienceIndex++; @endphp
             @endwhile
