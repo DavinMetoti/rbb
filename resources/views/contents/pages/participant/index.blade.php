@@ -24,11 +24,11 @@
                     </div>
                     
                     <!-- Company Title -->
-                    <div class="text-center flex-1">
+                    <div class="text-left flex-1">
                         <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold gradient-text mb-4">
                             PT Rizaldi Bina Bersama
                         </h1>
-                        <div class="h-1 w-24 sm:w-32 md:w-40 bg-gradient-to-r from-blue-500 to-orange-500 mx-auto mb-4 rounded-full"></div>
+                        <div class="h-1 w-24 sm:w-32 md:w-40 bg-gradient-to-r from-blue-500 to-orange-500 mb-4 rounded-full"></div>
                         <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-medium">
                             Professional Overseas Helper Services
                         </p>
@@ -44,7 +44,7 @@
                             $goldenLogoExists = file_exists($goldenLogoPath);
                         @endphp
                         @if($goldenLogoExists)
-                            <img src="{{ asset('assets/images/golder-logo.jpg') }}"  style="width: 200px;"
+                            <img src="{{ asset('assets/images/golder-logo.jpg') }}"  style="width: 400px;"
                                  alt="Golden Tiger Logo" 
                                  class="object-contain mx-auto mb-3">
                         @else
@@ -239,12 +239,12 @@
                                                 </div>
                                             @endif
                                             @if($participant->mandarine)
-                                                <div class="px-1 py-1 bg-purple-100 text-purple-800 rounded text-xs text-center">
+                                                <div class="px-1 py-1 bg-blue-100 text-blue-800 rounded text-xs text-center">
                                                     {{ __('messages.chinese') }}: {{ ucfirst($participant->mandarine) }}
                                                 </div>
                                             @endif
                                             @if($participant->cantonese)
-                                                <div class="px-1 py-1 bg-orange-100 text-orange-800 rounded text-xs text-center">
+                                                <div class="px-1 py-1 bg-blue-100 text-blue-800 rounded text-xs text-center">
                                                     {{ __('messages.cantonese') }}: {{ ucfirst($participant->cantonese) }}
                                                 </div>
                                             @endif
@@ -260,11 +260,11 @@
                                 <!-- Participant Info -->
                                 <div class="flex-1 min-w-0">
                                     <!-- Name and Code -->
-                                    <div class="mb-3 bg-red-200 p-2 rounded-lg">
+                                    <div class="mb-3 bg-blue-500 p-2 rounded-lg">
                                         <div class="flex items-center justify-between">
                                             <div class="flex-1 min-w-0">
-                                                <h3 class="text-lg font-semibold mb-1 truncate">{{ $participant->name }}</h3>
-                                                <p class="text-sm font-mono">{{ $participant->code }}</p>
+                                                <h3 class="text-lg font-semibold text-white mb-1 truncate">{{ $participant->name }}</h3>
+                                                <p class="text-sm font-mono text-white">{{ $participant->code }}</p>
                                             </div>
                                         </div>
                                     </div>
