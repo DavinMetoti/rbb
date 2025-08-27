@@ -311,19 +311,19 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="p-2 border-2 font-bold border-black text-center italic bg-red-100 uppercase col-25">{{ __('messages.country') }}</td>
+                            <td class="p-2 border-2 font-bold border-black text-center italic bg-blue-100 uppercase col-25">{{ __('messages.country') }}</td>
                             <td class="p-2 border-2 font-bold border-black text-center italic col-25">{{ $workHistory->country ?? '-' }}</td>
-                            <td class="p-2 border-2 font-bold border-black text-center italic bg-red-100 uppercase col-25">{{ __('messages.target_employer') }}</td>
+                            <td class="p-2 border-2 font-bold border-black text-center italic bg-blue-100 uppercase col-25">{{ __('messages.target_employer') }}</td>
                             <td class="p-2 border-2 font-bold border-black text-center italic col-25">{{ $workHistory->target ?? '-' }}</td>
                         </tr>
                         <tr>
-                            <td class="p-2 border-2 font-bold border-black text-center italic bg-red-100 uppercase col-25">{{ __('messages.period') }}</td>
+                            <td class="p-2 border-2 font-bold border-black text-center italic bg-blue-100 uppercase col-25">{{ __('messages.period') }}</td>
                             <td class="p-2 border-2 font-bold border-black text-center italic col-25">{{ $workHistory->period ?? '-' }}</td>
-                            <td class="p-2 border-2 font-bold border-black text-center italic bg-red-100 uppercase col-25">{{ __('messages.reason_for_leaving') }}</td>
+                            <td class="p-2 border-2 font-bold border-black text-center italic bg-blue-100 uppercase col-25">{{ __('messages.reason_for_leaving') }}</td>
                             <td class="p-2 border-2 font-bold border-black text-center italic col-25">{{ $workHistory->reason_for_leaving ?? '-' }}</td>
                         </tr>
                         <tr>
-                            <td class="p-2 border-2 font-bold border-black text-center italic bg-red-100 uppercase col-25">{{ __('messages.remarks') }}</td>
+                            <td class="p-2 border-2 font-bold border-black text-center italic bg-blue-100 uppercase col-25">{{ __('messages.remarks') }}</td>
                             <td class="p-2 border-2 font-bold border-black text-left italic col-25" colspan="3">{{ $workHistory->remake ?? '-' }}</td>
                         </tr>
                     </tbody>
@@ -338,7 +338,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black bg-red-100 italic uppercase col-40">ELDERLY HEALTHY CARE EXPERIENCE</td>
+                        <td class="p-2 border-2 font-bold border-black bg-blue-100 italic uppercase col-40">ELDERLY HEALTHY CARE EXPERIENCE</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic col-10">{{ $participant->elderly_healthy_care_experience ? "✓" : "-" }}</td>
                         <td class="p-2 border-2 font-bold border-black text-center align-top photo-container col-50" rowspan="24" colspan="2">
                             @if($participant->photo_path)
@@ -362,95 +362,95 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black bg-red-100 italic uppercase">ELDERLY SICK CARE EXPERIENCE</td>
+                        <td class="p-2 border-2 font-bold border-black bg-blue-100 italic uppercase">ELDERLY SICK CARE EXPERIENCE</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic">{{ $participant->elderly_sick_care_experience ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black bg-red-100 italic uppercase">NEWBORN CARE EXPERIENCE</td>
+                        <td class="p-2 border-2 font-bold border-black bg-blue-100 italic uppercase">NEWBORN CARE EXPERIENCE</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic">{{ $participant->newborn_care_experience ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black bg-red-100 italic uppercase">CHILDREN CARE EXPERIENCE</td>
+                        <td class="p-2 border-2 font-bold border-black bg-blue-100 italic uppercase">CHILDREN CARE EXPERIENCE</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic">{{ $participant->children_care_experience ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black bg-red-100 italic uppercase">I CAN TAKE CARE OF DOG</td>
+                        <td class="p-2 border-2 font-bold border-black bg-blue-100 italic uppercase">I CAN TAKE CARE OF DOG</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic">{{ $participant->i_can_take_care_of_dog ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border-2 font-bold border-black bg-red-100 italic uppercase">I CAN TAKE CARE OF CAT</td>
+                        <td class="p-2 border-2 font-bold border-black bg-blue-100 italic uppercase">I CAN TAKE CARE OF CAT</td>
                         <td class="p-2 border-2 font-bold border-black text-center italic">{{ $participant->i_can_take_care_of_cat ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-red-100 italic">COOKING’ CLEANING’ WASHING’IRONING GO TO MARKET</td>
+                        <td class="p-2 border bg-blue-100 italic">COOKING’ CLEANING’ WASHING’IRONING GO TO MARKET</td>
                         <td class="p-2 border text-center italic">{{ $participant->cooking_cleaning_washing_ironing_go_to_market ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-red-100 italic">I CAN WASH CAR</td>
+                        <td class="p-2 border bg-blue-100 italic">I CAN WASH CAR</td>
                         <td class="p-2 border text-center italic">{{ $participant->i_can_wash_car ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-red-100 italic">SHUTTLE SCHOOL</td>
+                        <td class="p-2 border bg-blue-100 italic">SHUTTLE SCHOOL</td>
                         <td class="p-2 border text-center italic">{{ $participant->shuttle_school ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-red-100 italic">ASSIST TOILETING’ CHANGE DIAPER’ BATH EXPERIENCE</td>
+                        <td class="p-2 border bg-blue-100 italic">ASSIST TOILETING’ CHANGE DIAPER’ BATH EXPERIENCE</td>
                         <td class="p-2 border text-center italic">{{ $participant->assist_toileting_change_diaper_bath_experience ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-red-100 italic">GO TO HOSPITAL’ HANDLE MEDICATION EXPERIENCE</td>
+                        <td class="p-2 border bg-blue-100 italic">GO TO HOSPITAL’ HANDLE MEDICATION EXPERIENCE</td>
                         <td class="p-2 border text-center italic">{{ $participant->go_to_hospital_handle_medication_experience ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-red-100 italic">DO EXERCISE</td>
+                        <td class="p-2 border bg-blue-100 italic">DO EXERCISE</td>
                         <td class="p-2 border text-center italic">{{ $participant->do_exercise ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-red-100 italic">USE WHEELCHAIR</td>
+                        <td class="p-2 border bg-blue-100 italic">USE WHEELCHAIR</td>
                         <td class="p-2 border text-center italic">{{ $participant->use_wheelchair ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-red-100 italic">PROVIDE DAILY ASSISTANCE</td>
+                        <td class="p-2 border bg-blue-100 italic">PROVIDE DAILY ASSISTANCE</td>
                         <td class="p-2 border text-center italic">{{ $participant->provide_daily_assistance ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-red-100 italic">ORAL FEEDING</td>
+                        <td class="p-2 border bg-blue-100 italic">ORAL FEEDING</td>
                         <td class="p-2 border text-center italic">{{ $participant->oral_feeding ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-red-100 italic">WITH DEMENTIA CARE EXPERIENCE</td>
+                        <td class="p-2 border bg-blue-100 italic">WITH DEMENTIA CARE EXPERIENCE</td>
                         <td class="p-2 border text-center italic">{{ $participant->with_dementia_care_experience ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-red-100 italic">ASSIST WALKING</td>
+                        <td class="p-2 border bg-blue-100 italic">ASSIST WALKING</td>
                         <td class="p-2 border text-center italic">{{ $participant->assist_walking ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-red-100 italic">RECEIVED COVID-19 VACCINE INJECTION (3 DOSE)</td>
+                        <td class="p-2 border bg-blue-100 italic">RECEIVED COVID-19 VACCINE INJECTION (3 DOSE)</td>
                         <td class="p-2 border text-center italic">{{ $participant->received_covid19_vaccine_injection_3_dose ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-red-100 italic">I CAN INJECT DIABETES</td>
+                        <td class="p-2 border bg-blue-100 italic">I CAN INJECT DIABETES</td>
                         <td class="p-2 border text-center italic">{{ $participant->i_can_inject_diabetes ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-red-100 italic">I CAN TAKE CARE OF IDIOTS</td>
+                        <td class="p-2 border bg-blue-100 italic">I CAN TAKE CARE OF IDIOTS</td>
                         <td class="p-2 border text-center italic">{{ $participant->i_can_take_care_of_idiots ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-red-100 italic">SUCTION PHLEGM I CAN DO IT</td>
+                        <td class="p-2 border bg-blue-100 italic">SUCTION PHLEGM I CAN DO IT</td>
                         <td class="p-2 border text-center italic">{{ $participant->suction_phlegm_ican_do_it ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-red-100 italic">I LIKE TAKE CARE OF A CHILDREN</td>
+                        <td class="p-2 border bg-blue-100 italic">I LIKE TAKE CARE OF A CHILDREN</td>
                         <td class="p-2 border text-center italic">{{ $participant->i_like_take_care_of_a_children ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-red-100 italic">I LIKE TAKE CARE OF A NEWBORN BABY</td>
+                        <td class="p-2 border bg-blue-100 italic">I LIKE TAKE CARE OF A NEWBORN BABY</td>
                         <td class="p-2 border text-center italic">{{ $participant->i_like_take_care_of_a_newborn_baby ? "✓" : "-" }}</td>
                     </tr>
                     <tr>
-                        <td class="p-2 border bg-red-100 italic">I LIKE TAKE CARE OF THE ELDERLY</td>
+                        <td class="p-2 border bg-blue-100 italic">I LIKE TAKE CARE OF THE ELDERLY</td>
                         <td class="p-2 border text-center italic">{{ $participant->i_like_take_care_of_the_elderly ? "✓" : "-" }}</td>
                     </tr>
                 </tbody>

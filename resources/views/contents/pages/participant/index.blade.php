@@ -234,17 +234,17 @@
                                         <p class="text-xs text-gray-500 mb-1">{{ __('messages.languages') }}</p>
                                         <div class="space-y-1">
                                             @if($participant->english)
-                                                <div class="px-1 py-1 bg-blue-100 text-blue-800 rounded text-xs text-center">
+                                                <div class="px-1 py-1 bg-blue-800 text-white rounded text-xs text-center">
                                                     {{ __('messages.english') }}: {{ ucfirst($participant->english) }}
                                                 </div>
                                             @endif
                                             @if($participant->mandarine)
-                                                <div class="px-1 py-1 bg-blue-100 text-blue-800 rounded text-xs text-center">
+                                                <div class="px-1 py-1 bg-blue-800 text-white rounded text-xs text-center">
                                                     {{ __('messages.chinese') }}: {{ ucfirst($participant->mandarine) }}
                                                 </div>
                                             @endif
                                             @if($participant->cantonese)
-                                                <div class="px-1 py-1 bg-blue-100 text-blue-800 rounded text-xs text-center">
+                                                <div class="px-1 py-1 bg-blue-800 text-white rounded text-xs text-center">
                                                     {{ __('messages.cantonese') }}: {{ ucfirst($participant->cantonese) }}
                                                 </div>
                                             @endif
