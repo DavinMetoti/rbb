@@ -64,8 +64,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                         <div>
-                            <h3 class="text-blue-700 font-medium mb-1">{{ __('messages.form_instructions') }}</h3>
-                            <p class="text-blue-600 text-sm">{{ __('messages.required_fields_note') }} <span class="text-red-500">*</span></p>
+                            <h3 class="text-blue-700 font-medium mb-1">Form Instructions</h3>
+                            <p class="text-blue-600 text-sm">Fields marked with <span class="text-red-500">*</span> are required</p>
                         </div>
                     </div>
                 </div>
@@ -645,11 +645,11 @@
                 });
 
                 if (emptyFields.length > 0) {
-                    let message = 'Mohon lengkapi field yang wajib diisi berikut:\n\n';
+                    let message = 'Please fill in the following required fields:\n\n';
                     emptyFields.forEach((field, index) => {
                         message += `${index + 1}. ${field}\n`;
                     });
-                    message += '\nSemua field yang bertanda (*) wajib diisi.';
+                    message += '\nAll fields marked with (*) are required.';
                     
                     alert(message);
                     
@@ -680,7 +680,7 @@
                     }
                     
                     // Then ask for confirmation
-                    const confirmMessage = 'Apakah Anda yakin data yang dimasukkan sudah benar?\n\nData participant akan disimpan ke dalam sistem.';
+                    const confirmMessage = 'Are you sure the data entered is correct?\n\nParticipant data will be saved to the system.';
                     if (!confirm(confirmMessage)) {
                         e.preventDefault();
                         return false;
@@ -696,7 +696,7 @@
                                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                 </svg>
-                                <span>Menyimpan...</span>
+                                <span>Saving...</span>
                             </span>
                         `;
                     }

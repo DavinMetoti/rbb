@@ -347,10 +347,10 @@
                         <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'basic' ? '✓' : "" }}</td>
                         <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'good' ? '✓' : "" }}</td>
                     @else
-                        <td class="bg-blue" style="width: 25%;">&nbsp;</td>
-                        <td class="bg-blue" style="width: 8.3%;">&nbsp;</td>
-                        <td class="bg-blue" style="width: 8.3%;">&nbsp;</td>
-                        <td class="bg-blue" style="width: 8.3%;">&nbsp;</td>
+                        <td style="width: 25%;">&nbsp;</td>
+                        <td style="width: 8.3%;">&nbsp;</td>
+                        <td style="width: 8.3%;">&nbsp;</td>
+                        <td style="width: 8.3%;">&nbsp;</td>
                     @endif
                 </tr>
                 @php $experienceIndex++; @endphp

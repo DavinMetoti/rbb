@@ -260,7 +260,7 @@
                                 <!-- Participant Info -->
                                 <div class="flex-1 min-w-0">
                                     <!-- Name and Code -->
-                                    <div class="mb-3 bg-blue-500 p-2 rounded-lg">
+                                    <div class="mb-3 bg-blue-800 p-2 rounded-lg">
                                         <div class="flex items-center justify-between">
                                             <div class="flex-1 min-w-0">
                                                 <h3 class="text-lg font-semibold text-white mb-1 truncate">{{ $participant->name }}</h3>
