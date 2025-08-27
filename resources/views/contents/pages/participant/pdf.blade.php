@@ -606,7 +606,7 @@
     </table>
 
     <!-- New Job Section -->
-    <!-- <table>
+    <table>
         <tbody>
             <tr>
                 <td class="bg-blue col-25">{{ __('messages.new_job') }}</td>
@@ -623,6 +623,6 @@
                 <td class="col-10">{{ $participant->date ? \Carbon\Carbon::parse($participant->date)->format('d/m/Y') : '' }}</td>
             </tr>
         </tbody>
-    </table> -->
+    </table>
 </body>
 </html>

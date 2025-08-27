@@ -57,13 +57,26 @@
             <form action="{{ route('participants.store') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
                 @csrf
                 
+                <!-- Form Instructions -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                    <div class="flex items-start">
+                        <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <div>
+                            <h3 class="text-blue-700 font-medium mb-1">{{ __('messages.form_instructions') }}</h3>
+                            <p class="text-blue-600 text-sm">{{ __('messages.required_fields_note') }} <span class="text-red-500">*</span></p>
+                        </div>
+                    </div>
+                </div>
+                
                 <!-- Personal Information Section -->
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                     <h2 class="text-lg font-medium text-gray-900 mb-6 pb-3 border-b border-gray-100">{{ __('messages.personal_information') }}</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <!-- Basic Info -->
                         <div class="space-y-1">
-                            <label for="code" class="block text-sm font-medium text-gray-700">{{ __('messages.code') }}</label>
+                            <label for="code" class="block text-sm font-medium text-gray-700">{{ __('messages.code') }} <span class="text-red-500">*</span></label>
                             <input type="text" name="code" id="code" value="{{ old('code') }}"
                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('code') border-red-300 @enderror" 
                                    placeholder="{{ __('messages.enter_code') }}">
@@ -73,7 +86,7 @@
                         </div>
                         
                         <div class="space-y-1">
-                            <label for="name" class="block text-sm font-medium text-gray-700">{{ __('messages.full_name') }}</label>
+                            <label for="name" class="block text-sm font-medium text-gray-700">{{ __('messages.full_name') }} <span class="text-red-500">*</span></label>
                             <input type="text" name="name" id="name" value="{{ old('name') }}"
                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('name') border-red-300 @enderror" 
                                    placeholder="{{ __('messages.enter_name') }}">
@@ -83,7 +96,7 @@
                         </div>
                         
                         <div class="space-y-1">
-                            <label for="gender" class="block text-sm font-medium text-gray-700">{{ __('messages.gender') }}</label>
+                            <label for="gender" class="block text-sm font-medium text-gray-700">{{ __('messages.gender') }} <span class="text-red-500">*</span></label>
                             <select name="gender" id="gender" 
                                     class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('gender') border-red-300 @enderror">
                                 <option value="">{{ __('messages.select_gender') }}</option>
@@ -97,7 +110,7 @@
                         </div>
                         
                         <div class="space-y-1">
-                            <label for="birth_date" class="block text-sm font-medium text-gray-700">{{ __('messages.birth_date') }}</label>
+                            <label for="birth_date" class="block text-sm font-medium text-gray-700">{{ __('messages.birth_date') }} <span class="text-red-500">*</span></label>
                             <input type="date" name="birth_date" id="birth_date" value="{{ old('birth_date') }}"
                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('birth_date') border-red-300 @enderror">
                             @error('birth_date')
@@ -106,7 +119,7 @@
                         </div>
                         
                         <div class="space-y-1">
-                            <label for="nationality" class="block text-sm font-medium text-gray-700">{{ __('messages.nationality') }}</label>
+                            <label for="nationality" class="block text-sm font-medium text-gray-700">{{ __('messages.nationality') }} <span class="text-red-500">*</span></label>
                             <select name="nationality" id="nationality" 
                                     class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('nationality') border-red-300 @enderror">
                                 <option value="">{{ __('messages.select_nationality') }}</option>
@@ -127,7 +140,7 @@
                         </div>
                         
                         <div class="space-y-1">
-                            <label for="religion" class="block text-sm font-medium text-gray-700">{{ __('messages.religion') }}</label>
+                            <label for="religion" class="block text-sm font-medium text-gray-700">{{ __('messages.religion') }} <span class="text-red-500">*</span></label>
                             <select name="religion" id="religion" 
                                     class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('religion') border-red-300 @enderror">
                                 <option value="">{{ __('messages.select_religion') }}</option>
@@ -151,7 +164,7 @@
                     <h2 class="text-lg font-medium text-gray-900 mb-6 pb-3 border-b border-gray-100">{{ __('messages.physical_information') }}</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div class="space-y-1">
-                            <label for="height" class="block text-sm font-medium text-gray-700">{{ __('messages.height') }}</label>
+                            <label for="height" class="block text-sm font-medium text-gray-700">{{ __('messages.height') }} <span class="text-red-500">*</span></label>
                             <div class="relative">
                                 <input type="number" name="height" id="height" value="{{ old('height') }}"
                                        class="w-full px-4 py-3 pr-12 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('height') border-red-300 @enderror" 
@@ -164,7 +177,7 @@
                         </div>
                         
                         <div class="space-y-1">
-                            <label for="weight" class="block text-sm font-medium text-gray-700">{{ __('messages.weight') }}</label>
+                            <label for="weight" class="block text-sm font-medium text-gray-700">{{ __('messages.weight') }} <span class="text-red-500">*</span></label>
                             <div class="relative">
                                 <input type="number" name="weight" id="weight" value="{{ old('weight') }}"
                                        class="w-full px-4 py-3 pr-12 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('weight') border-red-300 @enderror" 
@@ -183,7 +196,7 @@
                     <h2 class="text-lg font-medium text-gray-900 mb-6 pb-3 border-b border-gray-100">{{ __('messages.personal_status') }}</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div class="space-y-1">
-                            <label for="marital_status" class="block text-sm font-medium text-gray-700">{{ __('messages.marital') }}</label>
+                            <label for="marital_status" class="block text-sm font-medium text-gray-700">{{ __('messages.marital') }} <span class="text-red-500">*</span></label>
                             <select name="marital_status" id="marital_status" 
                                     class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('marital_status') border-red-300 @enderror">
                                 <option value="">{{ __('messages.select_status') }}</option>
@@ -198,7 +211,7 @@
                         </div>
                         
                         <div class="space-y-1">
-                            <label for="education" class="block text-sm font-medium text-gray-700">{{ __('messages.education') }}</label>
+                            <label for="education" class="block text-sm font-medium text-gray-700">{{ __('messages.education') }} <span class="text-red-500">*</span></label>
                             <select name="education" id="education" 
                                     class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('education') border-red-300 @enderror">
                                 <option value="">{{ __('messages.select_education') }}</option>
@@ -220,15 +233,18 @@
                         
                         <div class="space-y-1">
                             <label for="no_of_children" class="block text-sm font-medium text-gray-700">{{ __('messages.number_of_children') }}</label>
-                            <input type="text" name="no_of_children" id="no_of_children" 
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white" 
+                            <input type="text" name="no_of_children" id="no_of_children" value="{{ old('no_of_children') }}"
+                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('no_of_children') border-red-300 @enderror" 
                                    placeholder="BOY 9 Y.O">
+                            @error('no_of_children')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
                         
                         <div class="space-y-1">
-                            <label for="status" class="block text-sm font-medium text-gray-700">{{ __('messages.current_status') }}</label>
+                            <label for="status" class="block text-sm font-medium text-gray-700">{{ __('messages.current_status') }} <span class="text-red-500">*</span></label>
                             <select name="status" id="status" 
-                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('status') border-red-300 @enderror" required>
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 bg-white @error('status') border-red-300 @enderror">
                                 <option value="">{{ __('messages.select_status') }}</option>
                                 <option value="OVERSEAS HELPER" {{ old('status') == 'OVERSEAS HELPER' ? 'selected' : '' }}>{{ __('messages.overseas_helper') }}</option>
                             </select>
@@ -424,6 +440,8 @@
                             $allExperience = [
                                 'elderly_healthy_care_experience' => 'ELDERLY HEALTHY CARE EXPERIENCE',
                                 'elderly_sick_care_experience' => 'ELDERLY SICK CARE EXPERIENCE',
+                                'elderly_healthy_care_experience_v' => 'ELDERLY HEALTHY CARE EXPERIENCE (VERIFIED)',
+                                'elderly_sick_care_experience_v' => 'ELDERLY SICK CARE EXPERIENCE (VERIFIED)',
                                 'newborn_care_experience' => 'NEWBORN CARE EXPERIENCE',
                                 'children_care_experience' => 'CHILDREN CARE EXPERIENCE',
                                 'i_can_take_care_of_dog' => 'I CAN TAKE CARE OF DOG',
@@ -445,6 +463,17 @@
                                 'suction_phlegm_ican_do_it' => 'SUCTION PHLEGM I CAN DO IT',
                                 'i_like_take_care_of_a_children' => 'I LIKE TAKE CARE OF A CHILDREN',
                                 'i_like_take_care_of_a_newborn_baby' => 'I LIKE TAKE CARE OF A NEWBORN BABY',
+                                'i_like_take_care_of_the_elderly' => 'I LIKE TAKE CARE OF THE ELDERLY',
+                            ];
+                        @endphp
+                        @foreach($allExperience as $field => $label)
+                            <label class="flex items-center space-x-3 p-3 rounded-lg border border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors duration-200">
+                                <input type="checkbox" name="{{ $field }}" value="1" {{ old($field) ? 'checked' : '' }}
+                                       class="w-5 h-5 text-gray-900 border-gray-300 rounded focus:ring-gray-900 focus:ring-2">
+                                <span class="text-sm font-medium text-gray-700">{{ $label }}</span>
+                            </label>
+                        @endforeach
+                    </div>
                                 'i_like_take_care_of_the_elderly' => 'I LIKE TAKE CARE OF THE ELDERLY',
                             ];
                         @endphp
@@ -534,10 +563,218 @@
             </form>
         </div>
     </div>
+    <style>
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        .field-error {
+            border-color: #ef4444 !important;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+        
+        .field-success {
+            border-color: #10b981 !important;
+        }
+    </style>
+    
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Form validation function
+            function validateForm() {
+                const requiredFields = [
+                    { name: 'code', label: 'Code' },
+                    { name: 'name', label: 'Full Name' },
+                    { name: 'gender', label: 'Gender' },
+                    { name: 'birth_date', label: 'Birth Date' },
+                    { name: 'nationality', label: 'Nationality' },
+                    { name: 'religion', label: 'Religion' },
+                    { name: 'height', label: 'Height' },
+                    { name: 'weight', label: 'Weight' },
+                    { name: 'marital_status', label: 'Marital Status' },
+                    { name: 'education', label: 'Education' },
+                    { name: 'status', label: 'Current Status' }
+                ];
+
+                const emptyFields = [];
+                
+                // Clear previous error styling
+                requiredFields.forEach(field => {
+                    const element = document.querySelector(`[name="${field.name}"]`);
+                    if (element) {
+                        element.classList.remove('border-red-500', 'border-red-300');
+                        element.classList.add('border-gray-200');
+                    }
+                });
+
+                requiredFields.forEach(field => {
+                    const element = document.querySelector(`[name="${field.name}"]`);
+                    if (element) {
+                        const value = element.value.trim();
+                        let isFieldValid = true;
+                        
+                        if (!value || value === '') {
+                            isFieldValid = false;
+                        } else {
+                            // Special validation for numeric fields
+                            if (field.name === 'height' || field.name === 'weight') {
+                                const numValue = parseFloat(value);
+                                if (isNaN(numValue) || numValue <= 0) {
+                                    isFieldValid = false;
+                                }
+                            }
+                        }
+                        
+                        if (!isFieldValid) {
+                            emptyFields.push(field.label);
+                            // Add error styling
+                            element.classList.remove('border-gray-200');
+                            element.classList.add('border-red-500');
+                            
+                            // Add shake animation
+                            element.style.animation = 'shake 0.5s';
+                            setTimeout(() => {
+                                element.style.animation = '';
+                            }, 500);
+                        }
+                    }
+                });
+
+                if (emptyFields.length > 0) {
+                    let message = 'Mohon lengkapi field yang wajib diisi berikut:\n\n';
+                    emptyFields.forEach((field, index) => {
+                        message += `${index + 1}. ${field}\n`;
+                    });
+                    message += '\nSemua field yang bertanda (*) wajib diisi.';
+                    
+                    alert(message);
+                    
+                    // Scroll to first empty field
+                    const firstEmptyField = document.querySelector('.border-red-500');
+                    if (firstEmptyField) {
+                        firstEmptyField.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'center' 
+                        });
+                        firstEmptyField.focus();
+                    }
+                    
+                    return false;
+                }
+
+                return true;
+            }
+
+            // Add form submission validation
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    // First check required fields
+                    if (!validateForm()) {
+                        e.preventDefault();
+                        return false;
+                    }
+                    
+                    // Then ask for confirmation
+                    const confirmMessage = 'Apakah Anda yakin data yang dimasukkan sudah benar?\n\nData participant akan disimpan ke dalam sistem.';
+                    if (!confirm(confirmMessage)) {
+                        e.preventDefault();
+                        return false;
+                    }
+                    
+                    // Show loading state on submit button
+                    const submitButton = form.querySelector('button[type="submit"]');
+                    if (submitButton) {
+                        submitButton.disabled = true;
+                        submitButton.innerHTML = `
+                            <span class="flex items-center space-x-2">
+                                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                <span>Menyimpan...</span>
+                            </span>
+                        `;
+                    }
+                });
+            }
+
+            // Add real-time validation for required fields
+            const requiredFieldNames = ['code', 'name', 'gender', 'birth_date', 'nationality', 'religion', 'height', 'weight', 'marital_status', 'education', 'status'];
+            
+            requiredFieldNames.forEach(fieldName => {
+                const element = document.querySelector(`[name="${fieldName}"]`);
+                if (element) {
+                    // Validate on blur (when user leaves the field)
+                    element.addEventListener('blur', function() {
+                        validateSingleField(this, fieldName);
+                    });
+                    
+                    // Clear error styling on input/change
+                    element.addEventListener('input', function() {
+                        if (this.value.trim() !== '') {
+                            this.classList.remove('border-red-500', 'field-error');
+                            this.classList.add('field-success');
+                        }
+                    });
+                    
+                    element.addEventListener('change', function() {
+                        if (this.value.trim() !== '') {
+                            this.classList.remove('border-red-500', 'field-error');
+                            this.classList.add('field-success');
+                        }
+                    });
+                }
+            });
+
+            // Single field validation function
+            function validateSingleField(element, fieldName) {
+                const value = element.value.trim();
+                let isValid = true;
+                
+                if (!value || value === '') {
+                    isValid = false;
+                } else {
+                    // Special validation for numeric fields
+                    if (fieldName === 'height' || fieldName === 'weight') {
+                        const numValue = parseFloat(value);
+                        if (isNaN(numValue) || numValue <= 0) {
+                            isValid = false;
+                        }
+                    }
+                }
+                
+                if (!isValid) {
+                    element.classList.remove('border-gray-200', 'field-success');
+                    element.classList.add('field-error');
+                } else {
+                    element.classList.remove('border-red-500', 'field-error');
+                    element.classList.add('field-success');
+                }
+            }
+
+            // Add numeric validation for height and weight
+            const numericFields = ['height', 'weight'];
+            numericFields.forEach(fieldName => {
+                const element = document.querySelector(`[name="${fieldName}"]`);
+                if (element) {
+                    element.addEventListener('input', function() {
+                        // Remove non-numeric characters except decimal point
+                        this.value = this.value.replace(/[^0-9.]/g, '');
+                        
+                        // Ensure only one decimal point
+                        const parts = this.value.split('.');
+                        if (parts.length > 2) {
+                            this.value = parts[0] + '.' + parts.slice(1).join('');
+                        }
+                    });
+                }
+            });
+
             let workHistoryIndex = 1;
             const container = document.getElementById('work-history-container');
             const addButton = document.getElementById('add-work-history');
