@@ -249,11 +249,11 @@
                             @if($experienceIndex < count($languages))
                                 @php $language = $languages[$experienceIndex]; @endphp
                                 <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-16-67">{{ $language['label'] }}</td>
-                                <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'learning' ? '✓' : "" }}</td>
-                                <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'basic' ? '✓' : "" }}</td>
-                                <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'good' ? '✓' : "" }}</td>
+                                <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'learning' ? 'V' : "" }}</td>
+                                <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'basic' ? 'V' : "" }}</td>
+                                <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'good' ? 'V' : "" }}</td>
                             @else
-                                <td class="p-2 border-2 font-bold border-black italic col-16-67">&nbsp;</td>
+                                <td class="p-2 border-2 font-bold border-black italic col-16-67 bg-blue-100">&nbsp;</td>
                                 <td class="p-2 border-2 font-bold border-black text-center italic uppercase col-16-67">&nbsp;</td>
                                 <td class="p-2 border-2 font-bold border-black text-center italic uppercase col-16-67">&nbsp;</td>
                                 <td class="p-2 border-2 font-bold border-black text-center italic uppercase col-16-67">&nbsp;</td>
@@ -288,9 +288,9 @@
                         <tr>
                             <td class="p-2 border-2 font-bold border-black text-center italic col-16-67" colspan="2">&nbsp;</td>
                             <td class="p-2 border-2 font-bold border-black text-center bg-blue-100 italic uppercase col-16-67">{{ $language['label'] }}</td>
-                            <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'learning' ? '✓' : "" }}</td>
-                            <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'basic' ? '✓' : "" }}</td>
-                            <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'good' ? '✓' : "" }}</td>
+                            <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'learning' ? 'V' : "" }}</td>
+                            <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'basic' ? 'V' : "" }}</td>
+                            <td class="p-2 border-2 font-bold border-black text-center italic col-16-67">{{ $participant->{$language['name']} == 'good' ? 'V' : "" }}</td>
                         </tr>
                         @php $experienceIndex++; @endphp
                     @endwhile

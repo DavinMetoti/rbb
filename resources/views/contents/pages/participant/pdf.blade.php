@@ -343,11 +343,11 @@
                     @if($experienceIndex < count($languages))
                         @php $language = $languages[$experienceIndex]; @endphp
                         <td class="bg-blue" style="width: 25%;">{{ $language['label'] }}</td>
-                        <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'learning' ? '✓' : "" }}</td>
-                        <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'basic' ? '✓' : "" }}</td>
-                        <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'good' ? '✓' : "" }}</td>
+                        <td style="width: 8.3%;font-weight: bold;">{{ $participant->{$language['name']} == 'learning' ? 'V' : "" }}</td>
+                        <td style="width: 8.3%;font-weight: bold;">{{ $participant->{$language['name']} == 'basic' ? 'V' : "" }}</td>
+                        <td style="width: 8.3%;font-weight: bold;">{{ $participant->{$language['name']} == 'good' ? 'V' : "" }}</td>
                     @else
-                        <td style="width: 25%;">&nbsp;</td>
+                        <td class="bg-blue" style="width: 25%;">&nbsp;</td>
                         <td style="width: 8.3%;">&nbsp;</td>
                         <td style="width: 8.3%;">&nbsp;</td>
                         <td style="width: 8.3%;">&nbsp;</td>
@@ -364,9 +364,9 @@
                         @if($index < count($languages))
                             @php $language = $languages[$index]; @endphp
                             <td class="bg-blue" style="width: 25%;">{{ $language['label'] }}</td>
-                            <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'learning' ? '✓' : "" }}</td>
-                            <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'basic' ? '✓' : "" }}</td>
-                            <td style="width: 8.3%;">{{ $participant->{$language['name']} == 'good' ? '✓' : "" }}</td>
+                            <td style="width: 8.3%;font-weight: bold;">{{ $participant->{$language['name']} == 'learning' ? 'V' : "" }}</td>
+                            <td style="width: 8.3%;font-weight: bold;">{{ $participant->{$language['name']} == 'basic' ? 'V' : "" }}</td>
+                            <td style="width: 8.3%;font-weight: bold;">{{ $participant->{$language['name']} == 'good' ? 'V' : "" }}</td>
                         @else
                             <td class="bg-blue" style="width: 25%;">&nbsp;</td>
                             <td class="bg-blue" style="width: 8.3%;">&nbsp;</td>
